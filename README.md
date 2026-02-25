@@ -9,40 +9,28 @@ Sistema interativo de flashcards para treinamento de pilotos da Azul Airlines. C
 - Simulador Mosaico e CRM/PSI
 - **Limitações Operacionais (AFM/QRH)**
 
-## 🚀 Quick Start
+## 🚀 Quick Start (2 MINUTOS)
 
-### 1. Clonar/Setup do Projeto
+### 1. Instalar dependências
 
 ```bash
 cd flashcards-azul
 npm install
 ```
 
-### 2. Configurar Supabase
-
-1. Criar conta em [supabase.com](https://supabase.com)
-2. Criar novo projeto
-3. Copiar URL e Anon Key
-4. Criar arquivo `.env.local`:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=sua_url_aqui
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_key_aqui
-```
-
-### 3. Setup do Banco de Dados
-
-1. No Supabase, ir para **SQL Editor**
-2. Executar o conteúdo de `scripts/seed.sql`
-3. Isso criará a tabela e inserirá os 600 flashcards
-
-### 4. Rodar Localmente
+### 2. Rodar localmente
 
 ```bash
 npm run dev
 ```
 
-Acessar em [http://localhost:3000](http://localhost:3000)
+### 3. Abrir no navegador
+
+```
+http://localhost:3000
+```
+
+**Pronto!** Sem configuração, sem custos, sem backend! ✈️
 
 ## 📖 Como Usar
 

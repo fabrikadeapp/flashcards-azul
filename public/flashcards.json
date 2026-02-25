@@ -1,0 +1,107 @@
+[
+  {
+    "numero": 1,
+    "pergunta": "Descreva o sistema Hidráulico",
+    "resposta": "3 sistemas independentes (Verde, Azul, Amarelo) a 3000 PSI. A PTU liga com diferencial de 500 PSI entre verde e amarelo. Não há transferência de fluido.",
+    "modulo": "Módulo 1",
+    "categoria": "AVT"
+  },
+  {
+    "numero": 2,
+    "pergunta": "Superfície atuada pelos 3 sistemas hidráulicos",
+    "resposta": "Leme de direção",
+    "modulo": "Módulo 1",
+    "categoria": "AVT"
+  },
+  {
+    "numero": 3,
+    "pergunta": "Perda do sistema azul afeta o gerador de emergência",
+    "resposta": "Sim, o Emergency Gen fica inoperante",
+    "modulo": "Módulo 1",
+    "categoria": "AVT"
+  },
+  {
+    "numero": 4,
+    "pergunta": "Objetivo das Priority Valves",
+    "resposta": "Cortar demanda dos altos consumidores se a pressão da linha hidráulica cair",
+    "modulo": "Módulo 1",
+    "categoria": "AVT"
+  },
+  {
+    "numero": 5,
+    "pergunta": "Prioridade de fontes elétricas AC 1 e 2",
+    "resposta": "GEN on side, Ext Power, APU, GEN off side",
+    "modulo": "Módulo 1",
+    "categoria": "AVT"
+  },
+  {
+    "numero": 501,
+    "pergunta": "Qual é a limitação de inclinação (Runway Slope) da pista para decolagem e pouso",
+    "resposta": "A inclinação média máxima permitida é de ±2%",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 502,
+    "pergunta": "Qual a altitude máxima de pista (Runway Altitude) padrão para pouso e decolagem no A320",
+    "resposta": "9.200 ft (sendo 14.100 ft a restrição específica para as matrículas YYs)",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 503,
+    "pergunta": "Qual a altitude máxima de pista permitida para pouso em pistas ranhuradas",
+    "resposta": "A redução de distância só é aplicável se a altitude de pressão da pista for inferior a 4.000 ft",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 504,
+    "pergunta": "Qual a largura nominal de pista exigida e a largura mínima certificada",
+    "resposta": "A largura nominal é de 45 metros e a largura mínima absoluta é de 30 metros",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 505,
+    "pergunta": "Qual o limite máximo de vento de través (Crosswind) para decolagem e pouso no A320",
+    "resposta": "25 kt (já incluindo rajadas)",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 506,
+    "pergunta": "Qual o limite máximo de vento de cauda (Tailwind) para a manobra de decolagem",
+    "resposta": "15 kt de cauda",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 507,
+    "pergunta": "Qual o limite máximo de vento de cauda (Tailwind) para a manobra de pouso",
+    "resposta": "10 kt de cauda",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 508,
+    "pergunta": "Qual a limitação máxima de vento para operar as portas de passageiros",
+    "resposta": "O vento máximo para operar a porta de passageiros é de 65 kt",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 509,
+    "pergunta": "Qual o limite de vento para abertura das portas de porão (FWD e AFT Cargo Doors)",
+    "resposta": "O limite é de 40 kt (ou até 50 kt se o nariz da aeronave estiver virado contra o vento)",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  },
+  {
+    "numero": 510,
+    "pergunta": "Com qual velocidade de vento as portas do porão devem obrigatoriamente estar fechadas",
+    "resposta": "Devem ser fechadas antes que o vento exceda 65 kt",
+    "modulo": "Módulo 23",
+    "categoria": "LIMITATIONS"
+  }
+]

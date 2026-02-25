@@ -1,16 +1,23 @@
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
-
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
+// Interface para Flashcard
 export interface Flashcard {
-  id: number
   numero: number
   pergunta: string
   resposta: string
   modulo: string
   categoria: string
-  created_at?: string
+}
+
+// Função para carregar flashcards do JSON
+export async function getFlashcards(): Promise<Flashcard[]> {
+  try {
+    const response = await fetch('/flashcards.json')
+    if (!response.ok) {
+      throw new Error('Erro ao carregar flashcards.json')
+    }
+    const data = await response.json()
+    return data
+  } catch (error) {
+    console.error('Erro ao carregar flashcards:', error)
+    return []
+  }
 }

@@ -2,61 +2,32 @@
 
 Bem-vindo ao Sistema de Flashcards A320 da Azul Airlines!
 
-Este é o seu guia rápido para colocar o sistema em funcionamento em **5 minutos**.
+Este é o seu guia rápido para colocar o sistema em funcionamento em **2 MINUTOS** (SEM CUSTOS!).
 
 ---
 
-## ⚡ Quick Start (5 minutos)
+## ⚡ Quick Start (2 minutos)
 
-### 1️⃣ Clone o projeto
+### 1️⃣ Instalar dependências
 
 ```bash
-git clone seu-repo-aqui
-cd flashcards-azul
+cd /Users/gustavoholderbaumvieira/Desktop/code/flashcards-azul
 npm install
 ```
 
-### 2️⃣ Criar conta Supabase (1 minuto)
-
-1. Ir para [supabase.com](https://supabase.com)
-2. Clicar "Start your project"
-3. Signup com GitHub
-4. Criar novo projeto
-
-### 3️⃣ Obter credenciais (30 segundos)
-
-No Supabase:
-1. Settings → API
-2. Copiar **Project URL** e **anon key**
-
-### 4️⃣ Configurar `.env.local` (30 segundos)
-
-```bash
-cp .env.example .env.local
-```
-
-Editar e colar:
-```env
-NEXT_PUBLIC_SUPABASE_URL=seu_url_aqui
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_key_aqui
-```
-
-### 5️⃣ Criar banco de dados (2 minutos)
-
-No Supabase SQL Editor:
-1. Novo query
-2. Copiar conteúdo de `scripts/seed.sql`
-3. Clicar Run
-
-### 6️⃣ Testar localmente (1 minuto)
+### 2️⃣ Rodar localmente
 
 ```bash
 npm run dev
 ```
 
-Abrir [http://localhost:3000](http://localhost:3000)
+### 3️⃣ Abrir no navegador
 
-✅ **Pronto!** Seu sistema está funcionando!
+```
+http://localhost:3000
+```
+
+✅ **PRONTO!** Flashcards funcionando! ✈️
 
 ---
 
