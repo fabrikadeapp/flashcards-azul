@@ -32,7 +32,12 @@ export default function LandingPage() {
                 if (!res.ok) throw new Error(data.error)
 
                 localStorage.setItem('currentUser', JSON.stringify(data.user))
-                router.push('/dashboard')
+
+                if (data.user.role === 'admin') {
+                    router.push('/admin')
+                } else {
+                    router.push('/dashboard')
+                }
             } else {
                 // Fluxo de Cadastro
                 const res = await fetch('/api/auth/register', {
