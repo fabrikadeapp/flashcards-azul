@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
     try {
         const { email, canEdit } = await req.json();
@@ -32,17 +34,24 @@ export async function POST(req: Request) {
             currentConfig.editors = currentConfig.editors.filter((e: string) => e !== email);
         }
 
+        console.log('Updating edit permission for:', email, 'to:', canEdit);
+        console.log('New Config to save:', currentConfig);
+
         // 3. Salva a nova configuração
-        const { error: upsertError } = await supabase
+        const { data, error: upsertError } = await supabase
             .from('settings')
             .upsert({
                 id: 'config',
                 value: currentConfig
-            }, { onConflict: 'id' });
+            }, { onConflict: 'id' })
+            .select();
 
         if (upsertError) {
+            console.error('Upsert Error:', upsertError);
             throw upsertError;
         }
+
+        console.log('Config updated successfully:', data);
 
         return NextResponse.json({ success: true, message: 'Permissão de edição atualizada!' });
     } catch (err) {

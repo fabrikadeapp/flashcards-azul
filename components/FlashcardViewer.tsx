@@ -183,7 +183,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#0B1F3B] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 transition-colors duration-500 overflow-hidden relative">
+    <div className="min-h-screen bg-white dark:bg-[#0B1F3B] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 transition-colors duration-500 overflow-hidden relative">
 
       {/* Background glow para ambiente Premium */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1E63FF] rounded-full mix-blend-screen filter blur-[200px] opacity-20 pointer-events-none"></div>
@@ -193,7 +193,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
 
       {/* Header */}
       <div className="text-center z-10 mb-8 sm:mb-12 mt-12 sm:mt-0">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFFFFF] tracking-tight mb-2 md:mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2 md:mb-4">
           Mentor <span className="text-[#1E63FF]">Pilot</span>
         </h1>
         <p className="text-sm md:text-base text-[#F5B942] tracking-widest uppercase font-semibold">
@@ -204,12 +204,12 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
       {/* Progresso Apple Style */}
       <div className="z-10 w-full max-w-4xl text-center mb-8">
         <div className="flex justify-between items-end mb-3 px-2">
-          <span className="text-white/50 text-xs font-semibold uppercase tracking-widest">Progresso Mental</span>
-          <span className="text-[#FFFFFF] text-lg font-bold bg-white/10 px-4 py-1 rounded-full backdrop-blur-md border border-white/5">
+          <span className="text-slate-400 dark:text-white/50 text-xs font-semibold uppercase tracking-widest">Progresso Mental</span>
+          <span className="text-slate-900 dark:text-[#FFFFFF] text-lg font-bold bg-slate-100 dark:bg-white/10 px-4 py-1 rounded-full backdrop-blur-md border border-slate-200 dark:border-white/5">
             {progress}
           </span>
         </div>
-        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
+        <div className="w-full h-1.5 bg-slate-200 dark:bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
           <div
             className="h-full bg-gradient-to-r from-[#1E63FF] to-[#F5B942] shadow-[0_0_10px_rgba(30,99,255,0.8)] transition-all duration-700 ease-out"
             style={{ width: `${((currentIndex + 1) / shuffledCards.length) * 100}%` }}
@@ -310,7 +310,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
       </div>
 
       {/* Keyboard hints */}
-      <div className="z-10 text-center text-xs text-white/40 space-y-1 mb-8 opacity-50 hover:opacity-100 transition-opacity">
+      <div className="z-10 text-center text-xs text-slate-400 dark:text-white/40 space-y-1 mb-8 opacity-70 hover:opacity-100 transition-opacity">
         <p>→ / Espaço: Revelar • ↓ Próxima • ← Anterior</p>
       </div>
 

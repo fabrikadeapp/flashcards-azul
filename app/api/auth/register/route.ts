@@ -28,11 +28,16 @@ export async function POST(req: Request) {
             status: email === 'aero.gus@hotmail.com' ? 'active' : 'pending'
         };
 
-        const { error } = await supabase.from('users').insert([newUser]);
+        console.log('Attempting to register user:', { name, email, role: newUser.role });
+
+        const { data, error } = await supabase.from('users').insert([newUser]).select();
 
         if (error) {
+            console.error('Registration Error:', error);
             throw error;
         }
+
+        console.log('User registered successfully:', data);
 
         return NextResponse.json({ success: true, message: 'Cadastro realizado com sucesso!' });
     } catch (err) {

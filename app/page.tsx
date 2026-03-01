@@ -61,7 +61,7 @@ export default function LandingPage() {
     }
 
     return (
-        <div className="min-h-screen bg-[#0B1F3B] flex flex-col items-center justify-center font-sans overflow-hidden py-12 px-4 sm:px-6 lg:px-8 relative">
+        <div className="min-h-screen bg-slate-50 dark:bg-[#0B1F3B] flex flex-col items-center justify-center font-sans overflow-hidden py-12 px-4 sm:px-6 lg:px-8 relative transition-colors duration-500">
 
             {/* Background Orbs / Glows */}
             <div className="absolute top-0 -left-64 w-96 h-96 bg-[#1E63FF] rounded-full mix-blend-screen filter blur-[150px] opacity-30"></div>
@@ -72,7 +72,7 @@ export default function LandingPage() {
 
                 {/* Header Branding */}
                 <div className="text-center mb-10 group relative" onDoubleClick={() => router.push('/admin')}>
-                    <h1 className="text-4xl sm:text-5xl font-extrabold text-[#FFFFFF] tracking-tight hover:scale-105 transition-transform duration-500 cursor-default">
+                    <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-[#FFFFFF] tracking-tight hover:scale-105 transition-transform duration-500 cursor-default">
                         Mentor <span className="text-[#1E63FF]">Pilot</span>
                     </h1>
                     <p className="mt-3 text-[#F5B942] tracking-wide text-sm font-medium uppercase">
@@ -81,7 +81,7 @@ export default function LandingPage() {
                 </div>
 
                 {/* Auth Apple Glass Card */}
-                <div className="bg-white/5 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-white/10 relative overflow-hidden">
+                <div className="bg-white dark:bg-white/5 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-slate-200 dark:border-white/10 relative overflow-hidden">
 
                     {/* Subtle top edge glow */}
                     <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#1E63FF]/50 to-transparent"></div>
@@ -90,14 +90,14 @@ export default function LandingPage() {
                     <div className="flex bg-black/20 p-1.5 rounded-2xl mb-8 relative">
                         <button
                             onClick={() => { setIsLogin(true); setError(''); setMessage(''); }}
-                            className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300 z-10 ${isLogin ? 'text-[#0B1F3B] bg-[#FFFFFF] shadow-md' : 'text-white/60 hover:text-white'
+                            className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300 z-10 ${isLogin ? 'text-[#0B1F3B] bg-white shadow-md' : 'text-slate-500 dark:text-white/60 hover:text-slate-800 dark:hover:text-white'
                                 }`}
                         >
                             Entrar
                         </button>
                         <button
                             onClick={() => { setIsLogin(false); setError(''); setMessage(''); }}
-                            className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300 z-10 ${!isLogin ? 'text-[#0B1F3B] bg-[#FFFFFF] shadow-md' : 'text-white/60 hover:text-white'
+                            className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300 z-10 ${!isLogin ? 'text-[#0B1F3B] bg-white shadow-md' : 'text-slate-500 dark:text-white/60 hover:text-slate-800 dark:hover:text-white'
                                 }`}
                         >
                             Criar Conta
@@ -119,7 +119,7 @@ export default function LandingPage() {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                     placeholder="Nome do Tripulante"
-                                    className="w-full bg-white/5 border border-white/10 text-white placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
+                                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
                                 />
                             </div>
                         )}
@@ -131,7 +131,7 @@ export default function LandingPage() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="E-mail (Seu Usuário)"
-                                className="w-full bg-white/5 border border-white/10 text-white placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
+                                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
                             />
                         </div>
 
@@ -142,7 +142,7 @@ export default function LandingPage() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="Senha de Acesso"
-                                className="w-full bg-white/5 border border-white/10 text-white placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
+                                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
                             />
                         </div>
 
@@ -157,8 +157,8 @@ export default function LandingPage() {
                 </div>
 
                 {/* Footer */}
-                <div className="text-center mt-12 text-white/30 text-xs font-medium tracking-wide">
-                    <p>PRODUZIDO POR <span className="text-white/60">FABRIKA DE APP</span></p>
+                <div className="text-center mt-12 text-slate-400 dark:text-white/30 text-xs font-medium tracking-wide">
+                    <p>PRODUZIDO POR <span className="text-slate-600 dark:text-white/60">FABRIKA DE APP</span></p>
                     <p className="mt-1">© {new Date().getFullYear()} Todos os direitos reservados • v1.0.4</p>
                 </div>
 

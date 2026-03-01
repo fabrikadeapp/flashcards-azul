@@ -4,45 +4,46 @@
 
 @layer base {
   body {
-    @apply bg-azul-profundo text-branco-premium font-sans antialiased;
-    /* Adicionando Apple-like smooth scroll e selection color */
+    @apply bg-white dark:bg-azul-profundo text-slate-900 dark:text-branco-premium font-sans antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
   ::selection {
-    @apply bg-azul-vibrante/30 text-branco-premium;
+    @apply bg-azul-vibrante/30 text-azul-profundo dark:text-branco-premium;
   }
 }
 
 @layer components {
+
   /* Cards de fundo translúcido (Glassmorphism / Apple Style) */
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl;
+    @apply bg-slate-900/5 dark:bg-white/5 backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-2xl;
   }
 
   /* Flashcards maiores para caber o texto com conforto, proporções de device */
   .flashcard {
-    @apply glass-card rounded-3xl p-8 md:p-12 h-[32rem] min-h-[32rem] w-full max-w-4xl flex flex-col justify-center items-center cursor-pointer transition-all duration-500 ease-out hover:shadow-[0_20px_60px_-15px_rgba(30,99,255,0.3)] hover:-translate-y-1;
+    @apply glass-card rounded-3xl p-8 md:p-12 h-[32rem] min-h-[32rem] w-full max-w-4xl flex flex-col justify-center items-center cursor-pointer transition-all duration-500 ease-out hover:shadow-[0_20px_60px_-15px_rgba(30, 99, 255, 0.3)] hover:-translate-y-1;
   }
 
   .flashcard-front {
-    @apply text-center text-3xl md:text-5xl font-semibold tracking-tight text-branco-premium w-full;
+    @apply text-center text-3xl md:text-5xl font-semibold tracking-tight text-slate-800 dark:text-branco-premium w-full;
   }
 
   .flashcard-back {
-    @apply text-center text-xl md:text-3xl font-normal text-slate-200 leading-relaxed max-w-3xl w-full;
+    @apply text-center text-xl md:text-3xl font-normal text-slate-600 dark:text-slate-200 leading-relaxed max-w-3xl w-full;
   }
 
   /* Botão premium estilo Apple */
   .btn-apple {
     @apply px-8 py-4 rounded-full font-semibold transition-all duration-300 transform active:scale-95 flex items-center justify-center;
   }
-  
+
   .btn-primary {
     @apply btn-apple bg-azul-vibrante text-white shadow-lg shadow-azul-vibrante/30 hover:shadow-azul-vibrante/50 hover:bg-blue-500;
   }
 
   .btn-secondary {
-    @apply btn-apple bg-white/10 text-white backdrop-blur-md border border-white/10 hover:bg-white/20;
+    @apply btn-apple bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white backdrop-blur-md border border-slate-200 dark:border-white/10 hover:bg-slate-200 dark:hover:bg-white/20;
   }
 }

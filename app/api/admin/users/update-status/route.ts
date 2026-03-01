@@ -16,13 +16,24 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Status inválido' }, { status: 400 });
         }
 
-        const { error } = await supabase
+        console.log('Update Status Request:', { userId, newStatus });
+
+        const { data, error } = await supabase
             .from('users')
             .update({ status: newStatus })
-            .eq('id', userId);
+            .eq('id', userId)
+            .select();
+
+        console.log('Supabase Response Data:', data);
 
         if (error) {
+            console.error('Supabase Update Error:', error);
             throw error;
+        }
+
+        if (!data || data.length === 0) {
+            console.warn('No user found with ID:', userId);
+            return NextResponse.json({ error: 'Usuário não encontrado no banco' }, { status: 404 });
         }
 
         return NextResponse.json({ success: true, message: 'Status atualizado com sucesso' });
