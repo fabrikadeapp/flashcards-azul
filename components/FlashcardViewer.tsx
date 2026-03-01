@@ -15,23 +15,24 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
 
   const [isEditingMode, setIsEditingMode] = useState(false)
   const [editValue, setEditValue] = useState('')
-  const [allowEditing, setAllowEditing] = useState(false)
+  const [canUserEdit, setCanUserEdit] = useState(false)
   const [isSaving, setIsSaving] = useState(false)
 
   const [isAddingNew, setIsAddingNew] = useState(false)
   const [newPergunta, setNewPergunta] = useState('')
   const [newResposta, setNewResposta] = useState('')
 
-  // Obter configurações de permissão de edição
+  // Obter configurações de permissão de edição atreladas ao usuário logado
   useEffect(() => {
-    fetch('/api/admin/settings')
-      .then(res => res.json())
-      .then(data => {
-        if (data.success && data.settings) {
-          setAllowEditing(data.settings.allowFlashcardEditing)
-        }
-      })
-      .catch(console.error)
+    const checkUserRole = () => {
+      const storedUser = localStorage.getItem('currentUser')
+      if (storedUser) {
+        const user = JSON.parse(storedUser)
+        setCanUserEdit(user.role === 'admin' || user.canEdit === true)
+      }
+    }
+
+    checkUserRole()
   }, [])
 
   // Embaralhar cartas ao carregar
@@ -227,7 +228,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
           {/* subtle border top gradient inner */}
           <div className="absolute inset-0 rounded-3xl border border-white/20 pointer-events-none z-20"></div>
 
-          {allowEditing && !isEditingMode && (
+          {canUserEdit && !isEditingMode && (
             <button
               onClick={startEditing}
               className="absolute top-4 right-4 z-30 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white/50 hover:text-white transition backdrop-blur-md border border-white/5"
@@ -313,7 +314,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
         <p>→ / Espaço: Revelar • ↓ Próxima • ← Anterior</p>
       </div>
 
-      {allowEditing && (
+      {canUserEdit && (
         <div className="z-10 absolute top-6 right-6 flex gap-4">
           <button
             onClick={() => setIsAddingNew(true)}

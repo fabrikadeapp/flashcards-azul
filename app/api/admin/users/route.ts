@@ -12,9 +12,18 @@ export async function GET() {
             throw error;
         }
 
-        // Renomeando created_at para manter compatibilidade no front
+        // Pega lista de editores salvos no config
+        const { data: configData } = await supabase
+            .from('settings')
+            .select('value')
+            .eq('id', 'config')
+            .single();
+
+        const editorsList = configData?.value?.editors || [];
+
         const mappedUsers = users.map(u => ({
             ...u,
+            canEdit: editorsList.includes(u.email),
             createdAt: u.created_at
         }));
 

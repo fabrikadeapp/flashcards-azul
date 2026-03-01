@@ -35,12 +35,21 @@ export async function POST(req: Request) {
             }
         }
 
+        const { data: configData } = await supabase
+            .from('settings')
+            .select('value')
+            .eq('id', 'config')
+            .single();
+
+        const editorsList = configData?.value?.editors || [];
+
         const safeUser = {
             id: user.id,
             name: user.name,
             email: user.email,
             role: user.role,
-            status: user.status
+            status: user.status,
+            canEdit: editorsList.includes(user.email)
         };
 
         return NextResponse.json({ success: true, user: safeUser });

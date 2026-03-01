@@ -9,6 +9,7 @@ interface User {
     email: string
     role: string
     status?: 'active' | 'frozen' | 'banned' | 'pending'
+    canEdit?: boolean
     createdAt: string
 }
 
@@ -27,7 +28,6 @@ export default function AdminDashboard() {
     const [usersList, setUsersList] = useState<User[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
-    const [allowEditing, setAllowEditing] = useState(false)
     const [auditLogs, setAuditLogs] = useState<AuditLog[]>([])
 
     // Novo Estado para trocar senha
@@ -59,20 +59,14 @@ export default function AdminDashboard() {
 
         const fetchData = async () => {
             try {
-                const [usersRes, settingsRes, auditRes] = await Promise.all([
+                const [usersRes, auditRes] = await Promise.all([
                     fetch('/api/admin/users'),
-                    fetch('/api/admin/settings'),
                     fetch('/api/admin/audit')
                 ])
 
                 if (!usersRes.ok) throw new Error('Erro ao carregar usuários')
                 const usersData = await usersRes.json()
                 setUsersList(usersData.users)
-
-                if (settingsRes.ok) {
-                    const settingsData = await settingsRes.json()
-                    setAllowEditing(settingsData.settings.allowFlashcardEditing)
-                }
 
                 if (auditRes.ok) {
                     const auditData = await auditRes.json()
@@ -88,18 +82,22 @@ export default function AdminDashboard() {
         fetchData()
     }, [router])
 
-    const toggleEditing = async () => {
-        const newValue = !allowEditing
-        setAllowEditing(newValue)
+    const handleUpdateEditPermission = async (email: string, canEdit: boolean) => {
         try {
-            await fetch('/api/admin/settings', {
+            const res = await fetch('/api/admin/users/update-edit-permission', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ allowFlashcardEditing: newValue })
+                body: JSON.stringify({ email, canEdit })
             })
+            const data = await res.json()
+            if (res.ok) {
+                setUsersList(prev => prev.map(u => u.email === email ? { ...u, canEdit } : u))
+            } else {
+                alert(data.error)
+            }
         } catch (err) {
-            console.error('Failed to update editing setting')
-            setAllowEditing(!newValue) // rollback on error
+            console.error('Erro ao atualizar permissão:', err)
+            alert('Erro de conexão.')
         }
     }
 
@@ -245,17 +243,6 @@ export default function AdminDashboard() {
                                 <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                                     Usuários Cadastrados ({usersList.length})
                                 </h2>
-                                <div className="flex items-center gap-3 bg-white dark:bg-slate-950 p-2 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                                    <span className={`text-sm font-medium ${allowEditing ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500'}`}>
-                                        Edição de Flashcards
-                                    </span>
-                                    <button
-                                        onClick={toggleEditing}
-                                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${allowEditing ? 'bg-blue-600' : 'bg-slate-300 dark:bg-slate-700'}`}
-                                    >
-                                        <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${allowEditing ? 'translate-x-6' : 'translate-x-1'}`} />
-                                    </button>
-                                </div>
                             </div>
 
                             <div className="overflow-x-auto">
@@ -266,6 +253,7 @@ export default function AdminDashboard() {
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Usuário / Email</th>
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Cadastro</th>
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Status</th>
+                                            <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Edição de Cards</th>
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Perfil / Role</th>
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Ações</th>
                                         </tr>
@@ -302,6 +290,21 @@ export default function AdminDashboard() {
                                                             <option value="frozen" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Congelado</option>
                                                             <option value="banned" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Banido</option>
                                                         </select>
+                                                    )}
+                                                </td>
+                                                <td className="p-4">
+                                                    {user.role === 'admin' ? (
+                                                        <span className="text-slate-400 text-xs italic font-medium">Ilimitada</span>
+                                                    ) : (
+                                                        <label className="flex items-center space-x-2 cursor-pointer">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="form-checkbox h-4 w-4 text-emerald-500 dark:text-emerald-400 rounded border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 cursor-pointer"
+                                                                checked={user.canEdit || false}
+                                                                onChange={(e) => handleUpdateEditPermission(user.email, e.target.checked)}
+                                                            />
+                                                            <span className="text-slate-600 dark:text-slate-400 text-xs font-semibold select-none">Permitir Edição</span>
+                                                        </label>
                                                     )}
                                                 </td>
                                                 <td className="p-4">
