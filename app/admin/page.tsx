@@ -16,10 +16,10 @@ export default function AdminDashboard() {
     const [usersList, setUsersList] = useState<User[]>([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
+    const [allowEditing, setAllowEditing] = useState(false)
     const router = useRouter()
 
     useEffect(() => {
-        // Basic frontend auth check (to protect the route minimally)
         const stored = localStorage.getItem('currentUser')
         if (!stored) {
             router.push('/')
@@ -37,22 +37,45 @@ export default function AdminDashboard() {
             return
         }
 
-        // Fetch users if passed the auth check
-        const fetchUsers = async () => {
+        const fetchData = async () => {
             try {
-                const res = await fetch('/api/admin/users')
-                if (!res.ok) throw new Error('Erro ao carregar dados')
-                const data = await res.json()
-                setUsersList(data.users)
+                const [usersRes, settingsRes] = await Promise.all([
+                    fetch('/api/admin/users'),
+                    fetch('/api/admin/settings')
+                ])
+
+                if (!usersRes.ok) throw new Error('Erro ao carregar usuários')
+                const usersData = await usersRes.json()
+                setUsersList(usersData.users)
+
+                if (settingsRes.ok) {
+                    const settingsData = await settingsRes.json()
+                    setAllowEditing(settingsData.settings.allowFlashcardEditing)
+                }
             } catch (err) {
-                setError('Não foi possível carregar a lista de usuários.')
+                setError('Não foi possível carregar os dados.')
             } finally {
                 setLoading(false)
             }
         }
 
-        fetchUsers()
+        fetchData()
     }, [router])
+
+    const toggleEditing = async () => {
+        const newValue = !allowEditing
+        setAllowEditing(newValue)
+        try {
+            await fetch('/api/admin/settings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ allowFlashcardEditing: newValue })
+            })
+        } catch (err) {
+            console.error('Failed to update editing setting')
+            setAllowEditing(!newValue) // rollback on error
+        }
+    }
 
     if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">Carregando painel restrito...</div>
 
@@ -83,10 +106,21 @@ export default function AdminDashboard() {
                 ) : (
                     <div className="bg-white dark:bg-slate-950 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden">
 
-                        <div className="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex justify-between items-center">
+                        <div className="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                             <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                                 Usuários Cadastrados ({usersList.length})
                             </h2>
+                            <div className="flex items-center gap-3 bg-white dark:bg-slate-950 p-2 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                                <span className={`text-sm font-medium ${allowEditing ? 'text-blue-600 dark:text-blue-400' : 'text-slate-500'}`}>
+                                    Edição de Flashcards
+                                </span>
+                                <button
+                                    onClick={toggleEditing}
+                                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${allowEditing ? 'bg-blue-600' : 'bg-slate-300 dark:bg-slate-700'}`}
+                                >
+                                    <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${allowEditing ? 'translate-x-6' : 'translate-x-1'}`} />
+                                </button>
+                            </div>
                         </div>
 
                         <div className="overflow-x-auto">

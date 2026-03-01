@@ -13,6 +13,23 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
   const [isFlipped, setIsFlipped] = useState(false)
   const [shuffledCards, setShuffledCards] = useState<Flashcard[]>([])
 
+  const [isEditingMode, setIsEditingMode] = useState(false)
+  const [editValue, setEditValue] = useState('')
+  const [allowEditing, setAllowEditing] = useState(false)
+  const [isSaving, setIsSaving] = useState(false)
+
+  // Obter configurações de permissão de edição
+  useEffect(() => {
+    fetch('/api/admin/settings')
+      .then(res => res.json())
+      .then(data => {
+        if (data.success && data.settings) {
+          setAllowEditing(data.settings.allowFlashcardEditing)
+        }
+      })
+      .catch(console.error)
+  }, [])
+
   // Embaralhar cartas ao carregar
   useEffect(() => {
     const shuffled = [...flashcards].sort(() => Math.random() - 0.5)
@@ -41,21 +58,23 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
   // Navegação por teclado
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowRight') {
-        // Revela resposta
-        if (!isFlipped) {
-          setIsFlipped(true)
-        }
+      // Impede navegação se estiver editando
+      if (isEditingMode) return
+
+      if (e.key === 'ArrowRight' || e.key === ' ') {
+        if (!isFlipped) setIsFlipped(true)
       } else if (e.key === 'ArrowDown') {
-        // Próxima pergunta
         setCurrentIndex((prev) => (prev + 1) % shuffledCards.length)
+        setIsFlipped(false)
+      } else if (e.key === 'ArrowLeft') {
+        setCurrentIndex((prev) => (prev - 1 + shuffledCards.length) % shuffledCards.length)
         setIsFlipped(false)
       }
     }
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [isFlipped, shuffledCards.length])
+  }, [isFlipped, shuffledCards.length, isEditingMode])
 
   if (shuffledCards.length === 0) {
     return (
@@ -69,6 +88,51 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
 
   const currentCard = shuffledCards[currentIndex]
   const progress = `${currentIndex + 1} / ${shuffledCards.length}`
+
+  const startEditing = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setIsEditingMode(true)
+    setEditValue(isFlipped ? currentCard.resposta : currentCard.pergunta)
+  }
+
+  const cancelEditing = (e: React.MouseEvent) => {
+    e.stopPropagation()
+    setIsEditingMode(false)
+    setEditValue('')
+  }
+
+  const handleSaveEdit = async (e: React.MouseEvent) => {
+    e.stopPropagation()
+    if (!editValue.trim()) return
+
+    setIsSaving(true)
+    const payload = {
+      numero: currentCard.numero,
+      ...(isFlipped ? { newResposta: editValue } : { newPergunta: editValue })
+    }
+
+    try {
+      const res = await fetch('/api/flashcards/update', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+
+      if (res.ok) {
+        const newCards = [...shuffledCards]
+        if (isFlipped) newCards[currentIndex].resposta = editValue
+        else newCards[currentIndex].pergunta = editValue
+        setShuffledCards(newCards)
+        setIsEditingMode(false)
+      } else {
+        alert('Falha ao atualizar o card.')
+      }
+    } catch (err) {
+      alert('Erro de conexão ao salvar.')
+    } finally {
+      setIsSaving(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-[#0B1F3B] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 transition-colors duration-500 overflow-hidden relative">
@@ -108,13 +172,52 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
       {/* Flashcard Hero */}
       <div className="z-10 w-full flex justify-center mb-10 perspective-1000">
         <div
-          onClick={() => setIsFlipped(!isFlipped)}
-          className="flashcard relative w-full"
+          onClick={() => {
+            if (!isEditingMode) setIsFlipped(!isFlipped)
+          }}
+          className={`flashcard relative w-full ${isEditingMode ? 'cursor-default shadow-[0_0_30px_rgba(30,99,255,0.4)]' : ''}`}
         >
           {/* subtle border top gradient inner */}
           <div className="absolute inset-0 rounded-3xl border border-white/20 pointer-events-none z-20"></div>
 
-          {!isFlipped ? (
+          {allowEditing && !isEditingMode && (
+            <button
+              onClick={startEditing}
+              className="absolute top-4 right-4 z-30 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white/50 hover:text-white transition backdrop-blur-md border border-white/5"
+              title="Editar"
+            >
+              ✏️
+            </button>
+          )}
+
+          {isEditingMode ? (
+            <div className="w-full h-full flex flex-col items-center justify-center animate-fade-in p-4 z-30">
+              <textarea
+                autoFocus
+                value={editValue}
+                onChange={(e) => setEditValue(e.target.value)}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full h-3/4 p-6 bg-white/10 text-white rounded-2xl resize-none outline-none focus:ring-2 focus:ring-[#1E63FF]/50 border border-white/20 backdrop-blur-md 
+                           text-xl md:text-2xl text-center leading-relaxed font-light"
+              />
+              <div className="flex gap-4 mt-6">
+                <button
+                  onClick={cancelEditing}
+                  disabled={isSaving}
+                  className="px-6 py-2 rounded-full border border-white/20 text-white/70 hover:bg-white/10 hover:text-white transition"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleSaveEdit}
+                  disabled={isSaving}
+                  className="px-6 py-2 rounded-full bg-[#1E63FF] text-white hover:bg-blue-500 transition shadow-[0_0_15px_rgba(30,99,255,0.4)]"
+                >
+                  {isSaving ? 'Salvando...' : 'Salvar'}
+                </button>
+              </div>
+            </div>
+          ) : !isFlipped ? (
             <div className="flashcard-front animate-fade-in flex flex-col justify-center items-center h-full">
               <span className="absolute top-8 left-8 text-white/20 text-6xl font-serif">"</span>
               <p className="px-4 md:px-8">
