@@ -1,22 +1,24 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
     try {
-        const { userId, status } = await req.json();
+        const { userId, newStatus } = await req.json();
 
-        if (!userId || !status) {
+        if (!userId || !newStatus) {
             return NextResponse.json({ error: 'ID do usuário e novo status são obrigatórios' }, { status: 400 });
         }
 
         const validStatuses = ['active', 'frozen', 'banned', 'pending'];
-        if (!validStatuses.includes(status)) {
+        if (!validStatuses.includes(newStatus)) {
             return NextResponse.json({ error: 'Status inválido' }, { status: 400 });
         }
 
         const { error } = await supabase
             .from('users')
-            .update({ status })
+            .update({ status: newStatus })
             .eq('id', userId);
 
         if (error) {
