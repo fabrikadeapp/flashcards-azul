@@ -12,17 +12,14 @@ export default async function Home() {
             ✈️ Flashcards A320
           </h1>
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8">
-            Erro ao carregar flashcards
+            Nenhum Flashcard retornado pelo banco de dados.
           </p>
           <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-6 max-w-md">
             <p className="text-red-700 dark:text-red-400 mb-4">
-              ⚠️ Não foi possível carregar o arquivo public/flashcards.json
+              ⚠️ Não foi possível se conectar ao Supabase ou as tabelas não foram preenchidas.
             </p>
             <p className="text-sm text-red-600 dark:text-red-500">
-              Verifique se o arquivo existe em:
-            </p>
-            <p className="text-xs font-mono mt-2 text-red-600 dark:text-red-500">
-              public/flashcards.json
+              Verifique as permissões (RLS) da tabela "flashcards" no painel do Supabase.
             </p>
           </div>
         </div>

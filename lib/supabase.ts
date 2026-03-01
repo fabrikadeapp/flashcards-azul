@@ -1,8 +1,13 @@
-import fs from 'fs'
-import path from 'path'
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Interface para Flashcard
 export interface Flashcard {
+  id?: string
   numero: number
   pergunta: string
   resposta: string
@@ -10,13 +15,20 @@ export interface Flashcard {
   categoria: string
 }
 
-// Função para carregar flashcards do JSON
+// Função para buscar todos flashcards do Supabase
 export async function getFlashcards(): Promise<Flashcard[]> {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'flashcards.json')
-    const fileContent = fs.readFileSync(filePath, 'utf-8')
-    const data = JSON.parse(fileContent)
-    return data
+    const { data, error } = await supabase
+      .from('flashcards')
+      .select('*')
+      .order('numero', { ascending: true })
+
+    if (error) {
+      console.error('Erro no Supabase:', error)
+      return []
+    }
+
+    return data || []
   } catch (error) {
     console.error('Erro ao carregar flashcards:', error)
     return []

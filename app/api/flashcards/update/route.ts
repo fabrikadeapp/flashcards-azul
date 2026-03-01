@@ -1,58 +1,65 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import { getSettings } from '@/lib/settings';
-import { createAuditLog } from '@/lib/audit';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
     try {
-        const settings = getSettings();
-        if (!settings.allowFlashcardEditing) {
-            return NextResponse.json({ error: 'A edição está desabilitada pelo administrador.' }, { status: 403 });
+        const { id, numero, pergunta, resposta, modulo, categoria, userEmail } = await req.json();
+
+        if (numero === undefined) {
+            return NextResponse.json({ error: 'Número do flashcard é obrigatório' }, { status: 400 });
         }
 
-        const { numero, newPergunta, newResposta, userEmail } = await req.json();
+        // Buscar flashcard atual para log
+        const { data: currentCard, error: fetchError } = await supabase
+            .from('flashcards')
+            .select('*')
+            .eq('numero', numero)
+            .single();
 
-        if (!numero || (!newPergunta && !newResposta) || !userEmail) {
-            return NextResponse.json({ error: 'Dados insuficientes para atualização' }, { status: 400 });
-        }
-
-        const filePath = path.join(process.cwd(), 'public', 'flashcards.json');
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const flashcards = JSON.parse(fileContent);
-
-        const index = flashcards.findIndex((fc: any) => fc.numero === numero);
-        if (index === -1) {
+        if (fetchError || !currentCard) {
             return NextResponse.json({ error: 'Flashcard não encontrado' }, { status: 404 });
         }
 
-        if (newPergunta) {
-            createAuditLog({
-                userEmail,
-                flashcardNumero: numero,
+        // Registro de Auditoria no Supabase
+        const auditEntries = [];
+
+        if (currentCard.pergunta !== pergunta) {
+            auditEntries.push({
+                user_email: userEmail || 'Desconhecido',
+                flashcard_numero: numero,
                 field: 'pergunta',
-                oldValue: flashcards[index].pergunta,
-                newValue: newPergunta
+                old_value: currentCard.pergunta,
+                new_value: pergunta
             });
-            flashcards[index].pergunta = newPergunta;
         }
 
-        if (newResposta) {
-            createAuditLog({
-                userEmail,
-                flashcardNumero: numero,
+        if (currentCard.resposta !== resposta) {
+            auditEntries.push({
+                user_email: userEmail || 'Desconhecido',
+                flashcard_numero: numero,
                 field: 'resposta',
-                oldValue: flashcards[index].resposta,
-                newValue: newResposta
+                old_value: currentCard.resposta,
+                new_value: resposta
             });
-            flashcards[index].resposta = newResposta;
         }
 
-        fs.writeFileSync(filePath, JSON.stringify(flashcards, null, 2), 'utf-8');
+        if (auditEntries.length > 0) {
+            await supabase.from('audit_logs').insert(auditEntries);
+        }
 
-        return NextResponse.json({ success: true, message: 'Flashcard atualizado com sucesso' });
+        // Realiza o Update
+        const { error: updateError } = await supabase
+            .from('flashcards')
+            .update({ pergunta, resposta, modulo, categoria })
+            .eq('numero', numero);
+
+        if (updateError) {
+            throw updateError;
+        }
+
+        return NextResponse.json({ success: true });
     } catch (err) {
-        console.error('Erro ao atualizar flashcard', err);
+        console.error('Erro atualizar flashcard:', err);
         return NextResponse.json({ error: 'Erro no servidor' }, { status: 500 });
     }
 }

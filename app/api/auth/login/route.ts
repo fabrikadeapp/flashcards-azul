@@ -1,35 +1,41 @@
 import { NextResponse } from 'next/server';
-import { getUsers } from '@/lib/users';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
     try {
         const { email, password } = await req.json();
 
         if (!email || !password) {
-            return NextResponse.json({ error: 'E-mail e senha são obrigatórios' }, { status: 400 });
+            return NextResponse.json({ error: 'Todos os campos são obrigatórios' }, { status: 400 });
         }
 
-        const users = getUsers();
-        const user = users.find((u) => u.email === email && u.password === password);
+        const { data: user, error } = await supabase
+            .from('users')
+            .select('*')
+            .eq('email', email)
+            .single();
 
-        if (!user) {
+        if (error || !user) {
+            return NextResponse.json({ error: 'Usuário não encontrado' }, { status: 404 });
+        }
+
+        if (user.password !== password) {
             return NextResponse.json({ error: 'Credenciais inválidas' }, { status: 401 });
         }
 
         if (user.role !== 'admin') {
             if (user.status === 'pending') {
-                return NextResponse.json({ error: 'Seu cadastro está em análise. Aguarde a liberação do administrador.' }, { status: 403 });
+                return NextResponse.json({ error: 'Seu cadastro está em análise pela coordenação.' }, { status: 403 });
             }
             if (user.status === 'frozen') {
-                return NextResponse.json({ error: 'Sua conta foi temporariamente congelada pelo administrador.' }, { status: 403 });
+                return NextResponse.json({ error: 'Seu acesso está suspenso temporariamente.' }, { status: 403 });
             }
             if (user.status === 'banned') {
-                return NextResponse.json({ error: 'Sua conta foi banida do sistema.' }, { status: 403 });
+                return NextResponse.json({ error: 'Sua conta foi banida da plataforma.' }, { status: 403 });
             }
         }
 
-        // Retorna dados básicos sem senha
-        const returnUser = {
+        const safeUser = {
             id: user.id,
             name: user.name,
             email: user.email,
@@ -37,8 +43,9 @@ export async function POST(req: Request) {
             status: user.status
         };
 
-        return NextResponse.json({ success: true, user: returnUser });
+        return NextResponse.json({ success: true, user: safeUser });
     } catch (err) {
-        return NextResponse.json({ error: 'Erro no servidor' }, { status: 500 });
+        console.error('Erro de login:', err);
+        return NextResponse.json({ error: 'Erro interno' }, { status: 500 });
     }
 }

@@ -1,12 +1,23 @@
 import { NextResponse } from 'next/server';
-import { getSettings, saveSettings } from '@/lib/settings';
+import { supabase } from '@/lib/supabase';
 
 export async function GET() {
     try {
-        const settings = getSettings();
-        return NextResponse.json({ success: true, settings });
+        const { data, error } = await supabase
+            .from('settings')
+            .select('value')
+            .eq('id', 'config')
+            .single();
+
+        if (error || !data) {
+            // Default caso não exista
+            return NextResponse.json({ success: true, settings: { allowFlashcardEditing: false } });
+        }
+
+        return NextResponse.json({ success: true, settings: data.value });
     } catch (err) {
-        return NextResponse.json({ error: 'Erro ao obter configurações' }, { status: 500 });
+        console.error('Erro get settings:', err);
+        return NextResponse.json({ error: 'Erro ao carregar configurações' }, { status: 500 });
     }
 }
 
@@ -14,16 +25,20 @@ export async function POST(req: Request) {
     try {
         const { allowFlashcardEditing } = await req.json();
 
-        if (typeof allowFlashcardEditing !== 'boolean') {
-            return NextResponse.json({ error: 'Valor inválido' }, { status: 400 });
+        const { error } = await supabase
+            .from('settings')
+            .upsert({
+                id: 'config',
+                value: { allowFlashcardEditing }
+            }, { onConflict: 'id' });
+
+        if (error) {
+            throw error;
         }
 
-        const settings = getSettings();
-        settings.allowFlashcardEditing = allowFlashcardEditing;
-        saveSettings(settings);
-
-        return NextResponse.json({ success: true, settings });
+        return NextResponse.json({ success: true, settings: { allowFlashcardEditing } });
     } catch (err) {
-        return NextResponse.json({ error: 'Erro ao salvar configurações' }, { status: 500 });
+        console.error('Erro atualizar settings:', err);
+        return NextResponse.json({ error: 'Erro ao atualizar configurações' }, { status: 500 });
     }
 }

@@ -1,7 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import { getAuditLogs, createAuditLog } from '@/lib/audit';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
     try {
@@ -11,36 +9,52 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'ID do log é obrigatório' }, { status: 400 });
         }
 
-        const logs = getAuditLogs();
-        const logToRevert = logs.find((l) => l.id === logId);
+        // Buscar log
+        const { data: logToRevert, error: logError } = await supabase
+            .from('audit_logs')
+            .select('*')
+            .eq('id', logId)
+            .single();
 
-        if (!logToRevert) {
+        if (logError || !logToRevert) {
             return NextResponse.json({ error: 'Log de auditoria não encontrado' }, { status: 404 });
         }
 
-        const filePath = path.join(process.cwd(), 'public', 'flashcards.json');
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const flashcards = JSON.parse(fileContent);
+        // Buscar flashcard atual
+        const { data: currentCard, error: fcError } = await supabase
+            .from('flashcards')
+            .select('*')
+            .eq('numero', logToRevert.flashcard_numero)
+            .single();
 
-        const index = flashcards.findIndex((fc: any) => fc.numero === logToRevert.flashcardNumero);
-        if (index === -1) {
+        if (fcError || !currentCard) {
             return NextResponse.json({ error: 'Flashcard correspondente não encontrado' }, { status: 404 });
         }
 
-        const currentValue = flashcards[index][logToRevert.field];
+        const currentValue = currentCard[logToRevert.field];
 
         // Reverte para o 'oldValue' do log original
-        flashcards[index][logToRevert.field] = logToRevert.oldValue;
-        fs.writeFileSync(filePath, JSON.stringify(flashcards, null, 2), 'utf-8');
+        const { error: updateError } = await supabase
+            .from('flashcards')
+            .update({ [logToRevert.field]: logToRevert.old_value })
+            .eq('numero', logToRevert.flashcard_numero);
+
+        if (updateError) {
+            throw updateError;
+        }
 
         // Cria um novo log de auditoria registrando essa reversão
-        createAuditLog({
-            userEmail: 'SISTEMA (Administrador reverteu)',
-            flashcardNumero: logToRevert.flashcardNumero,
+        const { error: newLogError } = await supabase.from('audit_logs').insert([{
+            user_email: 'SISTEMA (Administrador reverteu)',
+            flashcard_numero: logToRevert.flashcard_numero,
             field: logToRevert.field,
-            oldValue: currentValue,
-            newValue: logToRevert.oldValue
-        });
+            old_value: currentValue,
+            new_value: logToRevert.old_value
+        }]);
+
+        if (newLogError) {
+            throw newLogError;
+        }
 
         return NextResponse.json({ success: true, message: 'Alteração revertida com sucesso!' });
     } catch (err) {

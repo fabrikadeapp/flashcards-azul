@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getUsers, saveUsers, User } from '@/lib/users';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
     try {
@@ -9,27 +9,34 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Todos os campos são obrigatórios' }, { status: 400 });
         }
 
-        const users = getUsers();
+        // Verifica se já existe
+        const { data: existingUser } = await supabase
+            .from('users')
+            .select('id')
+            .eq('email', email)
+            .single();
 
-        if (users.find((u) => u.email === email)) {
+        if (existingUser) {
             return NextResponse.json({ error: 'Este e-mail já está cadastrado' }, { status: 400 });
         }
 
-        const newUser: User = {
-            id: crypto.randomUUID(),
+        const newUser = {
             name,
             email,
             password, // Em um sistema real, faríamos um hash (bcrypt)
-            role: email === 'aero.gus@hotmail.com' ? 'admin' : 'user', // Acesso oculto de admin reservado a este email
-            status: email === 'aero.gus@hotmail.com' ? 'active' : 'pending', // Usuários normais entram como pendente
-            createdAt: new Date().toISOString()
+            role: email === 'aero.gus@hotmail.com' ? 'admin' : 'user',
+            status: email === 'aero.gus@hotmail.com' ? 'active' : 'pending'
         };
 
-        users.push(newUser);
-        saveUsers(users);
+        const { error } = await supabase.from('users').insert([newUser]);
+
+        if (error) {
+            throw error;
+        }
 
         return NextResponse.json({ success: true, message: 'Cadastro realizado com sucesso!' });
     } catch (err) {
+        console.error('Erro register:', err);
         return NextResponse.json({ error: 'Erro no servidor' }, { status: 500 });
     }
 }

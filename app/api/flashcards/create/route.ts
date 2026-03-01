@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
     try {
@@ -10,13 +9,18 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Pergunta e resposta são obrigatórias' }, { status: 400 });
         }
 
-        const filePath = path.join(process.cwd(), 'public', 'flashcards.json');
-        const fileContent = fs.readFileSync(filePath, 'utf-8');
-        const flashcards = JSON.parse(fileContent);
+        // Descobre o maior numero
+        const { data: maxCard, error: maxError } = await supabase
+            .from('flashcards')
+            .select('numero')
+            .order('numero', { ascending: false })
+            .limit(1)
+            .single();
 
-        // Find the highest numero to assign a new one
-        const highestNumero = flashcards.reduce((max: number, card: any) => Math.max(max, card.numero || 0), 0);
-        const newNumero = highestNumero + 1;
+        let newNumero = 1;
+        if (maxCard && maxCard.numero) {
+            newNumero = maxCard.numero + 1;
+        }
 
         const newFlashcard = {
             numero: newNumero,
@@ -26,9 +30,11 @@ export async function POST(req: Request) {
             categoria: 'Adicionados Manualmente'
         };
 
-        flashcards.push(newFlashcard);
+        const { error: insertError } = await supabase.from('flashcards').insert([newFlashcard]);
 
-        fs.writeFileSync(filePath, JSON.stringify(flashcards, null, 2), 'utf-8');
+        if (insertError) {
+            throw insertError;
+        }
 
         return NextResponse.json({ success: true, flashcard: newFlashcard });
     } catch (err) {
