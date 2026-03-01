@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import { getSettings } from '@/lib/settings';
+import { createAuditLog } from '@/lib/audit';
 
 export async function POST(req: Request) {
     try {
@@ -10,9 +11,9 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'A edição está desabilitada pelo administrador.' }, { status: 403 });
         }
 
-        const { numero, newPergunta, newResposta } = await req.json();
+        const { numero, newPergunta, newResposta, userEmail } = await req.json();
 
-        if (!numero || (!newPergunta && !newResposta)) {
+        if (!numero || (!newPergunta && !newResposta) || !userEmail) {
             return NextResponse.json({ error: 'Dados insuficientes para atualização' }, { status: 400 });
         }
 
@@ -25,8 +26,27 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Flashcard não encontrado' }, { status: 404 });
         }
 
-        if (newPergunta) flashcards[index].pergunta = newPergunta;
-        if (newResposta) flashcards[index].resposta = newResposta;
+        if (newPergunta) {
+            createAuditLog({
+                userEmail,
+                flashcardNumero: numero,
+                field: 'pergunta',
+                oldValue: flashcards[index].pergunta,
+                newValue: newPergunta
+            });
+            flashcards[index].pergunta = newPergunta;
+        }
+
+        if (newResposta) {
+            createAuditLog({
+                userEmail,
+                flashcardNumero: numero,
+                field: 'resposta',
+                oldValue: flashcards[index].resposta,
+                newValue: newResposta
+            });
+            flashcards[index].resposta = newResposta;
+        }
 
         fs.writeFileSync(filePath, JSON.stringify(flashcards, null, 2), 'utf-8');
 

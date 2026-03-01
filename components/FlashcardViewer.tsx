@@ -110,8 +110,19 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
     if (!editValue.trim()) return
 
     setIsSaving(true)
+
+    // Pegar o e-mail do currentUser do localStorage
+    let userEmail = 'desconhecido';
+    try {
+      const stored = localStorage.getItem('currentUser')
+      if (stored) {
+        userEmail = JSON.parse(stored).email;
+      }
+    } catch (e) { }
+
     const payload = {
       numero: currentCard.numero,
+      userEmail,
       ...(isFlipped ? { newResposta: editValue } : { newPergunta: editValue })
     }
 
@@ -318,7 +329,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
         <p className="text-[10px] uppercase tracking-widest text-[#F5B942]/60 mb-1">
           POWERED BY <span className="font-bold text-white/60">FABRIKA DE APP</span>
         </p>
-        <p className="text-[10px] text-white/30 font-medium">v1.0.2</p>
+        <p className="text-[10px] text-white/30 font-medium">v1.0.3</p>
       </div>
 
       {/* Modal para Adicionar Novo Flashcard */}
