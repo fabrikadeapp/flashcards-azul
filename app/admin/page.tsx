@@ -8,6 +8,7 @@ interface User {
     name: string
     email: string
     role: string
+    status?: 'active' | 'frozen' | 'banned' | 'pending'
     createdAt: string
 }
 
@@ -112,6 +113,39 @@ export default function AdminDashboard() {
         }
     }
 
+    const handleUpdateStatus = async (userId: string, newStatus: string) => {
+        try {
+            const res = await fetch('/api/admin/users/update-status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId, newStatus })
+            })
+            if (!res.ok) throw new Error()
+
+            // update local state
+            setUsersList(prev => prev.map(u => u.id === userId ? { ...u, status: newStatus as any } : u))
+        } catch (err) {
+            alert('Erro ao atualizar o status do usuário.')
+        }
+    }
+
+    const handleDeleteUser = async (userId: string) => {
+        if (!confirm('Tem certeza que deseja BANIR COMPLETAMENTE/EXCLUIR a conta deste usuário? Esta ação é irreversível.')) return
+
+        try {
+            const res = await fetch('/api/admin/users/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ userId })
+            })
+            if (!res.ok) throw new Error()
+
+            setUsersList(prev => prev.filter(u => u.id !== userId))
+        } catch (err) {
+            alert('Erro ao excluir o usuário.')
+        }
+    }
+
     if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-900">Carregando painel restrito...</div>
 
     return (
@@ -195,8 +229,10 @@ export default function AdminDashboard() {
                                         <tr className="bg-slate-50 dark:bg-slate-900/80 text-slate-500 text-xs uppercase tracking-wider">
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Tripulante</th>
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Usuário / Email</th>
-                                            <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Data de Cadastro</th>
+                                            <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Cadastro</th>
+                                            <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Status</th>
                                             <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Perfil / Role</th>
+                                            <th className="p-4 font-semibold border-b border-slate-100 dark:border-slate-800">Ações</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
@@ -209,15 +245,48 @@ export default function AdminDashboard() {
                                                     {user.email}
                                                 </td>
                                                 <td className="p-4 text-slate-600 dark:text-slate-400 text-sm">
-                                                    {new Date(user.createdAt).toLocaleDateString('pt-BR', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })}
+                                                    {new Date(user.createdAt).toLocaleDateString('pt-BR', { year: 'numeric', month: '2-digit', day: '2-digit' })}
+                                                </td>
+                                                <td className="p-4">
+                                                    {user.role === 'admin' ? (
+                                                        <span className="px-3 py-1 text-xs font-semibold rounded-full bg-green-50 text-green-600 border border-green-100 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800">
+                                                            Aprovado
+                                                        </span>
+                                                    ) : (
+                                                        <select
+                                                            value={user.status || 'pending'}
+                                                            onChange={(e) => handleUpdateStatus(user.id, e.target.value)}
+                                                            className={`text-xs font-bold rounded-full px-3 py-1 outline-none cursor-pointer border ${user.status === 'active' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800' :
+                                                                    user.status === 'frozen' ? 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-400 dark:border-orange-800' :
+                                                                        user.status === 'banned' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/40 dark:text-red-400 dark:border-red-800' :
+                                                                            'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
+                                                                }`}
+                                                        >
+                                                            <option value="pending" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Pendente</option>
+                                                            <option value="active" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Liberado</option>
+                                                            <option value="frozen" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Congelado</option>
+                                                            <option value="banned" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Banido</option>
+                                                        </select>
+                                                    )}
                                                 </td>
                                                 <td className="p-4">
                                                     <span className={`px-3 py-1 text-xs font-semibold rounded-full border ${user.role === 'admin'
-                                                        ? 'bg-red-50 text-red-600 border-red-100'
-                                                        : 'bg-blue-50 text-blue-600 border-blue-100'
+                                                        ? 'bg-purple-50 text-purple-600 border-purple-100 dark:bg-purple-900/40 dark:text-purple-400 dark:border-purple-800'
+                                                        : 'bg-blue-50 text-blue-600 border-blue-100 dark:bg-blue-900/40 dark:text-blue-400 dark:border-blue-800'
                                                         }`}>
-                                                        {user.role === 'admin' ? 'Administrador' : 'Comum'}
+                                                        {user.role === 'admin' ? 'Administrador' : 'Aluno'}
                                                     </span>
+                                                </td>
+                                                <td className="p-4">
+                                                    {user.role !== 'admin' && (
+                                                        <button
+                                                            onClick={() => handleDeleteUser(user.id)}
+                                                            className="text-red-500 hover:text-red-700 dark:hover:text-red-400 font-bold p-2 transition-colors"
+                                                            title="Excluir Usuário"
+                                                        >
+                                                            ✕
+                                                        </button>
+                                                    )}
                                                 </td>
                                             </tr>
                                         ))}

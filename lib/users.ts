@@ -9,6 +9,7 @@ export interface User {
     email: string;
     password?: string;
     role: 'user' | 'admin';
+    status?: 'active' | 'frozen' | 'banned' | 'pending';
     createdAt: string;
 }
 

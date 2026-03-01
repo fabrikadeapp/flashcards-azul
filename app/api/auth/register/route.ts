@@ -21,6 +21,7 @@ export async function POST(req: Request) {
             email,
             password, // Em um sistema real, faríamos um hash (bcrypt)
             role: email === 'aero.gus@hotmail.com' ? 'admin' : 'user', // Acesso oculto de admin reservado a este email
+            status: email === 'aero.gus@hotmail.com' ? 'active' : 'pending', // Usuários normais entram como pendente
             createdAt: new Date().toISOString()
         };
 
