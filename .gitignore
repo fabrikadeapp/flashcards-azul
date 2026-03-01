@@ -38,3 +38,5 @@ yarn-error.log*
 # Misc
 .cache/
 dist/
+.vercel
+.env*.local

@@ -159,7 +159,7 @@ export default function LandingPage() {
                 {/* Footer */}
                 <div className="text-center mt-12 text-white/30 text-xs font-medium tracking-wide">
                     <p>PRODUZIDO POR <span className="text-white/60">FABRIKA DE APP</span></p>
-                    <p className="mt-1">© {new Date().getFullYear()} Todos os direitos reservados • v1.0.3</p>
+                    <p className="mt-1">© {new Date().getFullYear()} Todos os direitos reservados • v1.0.4</p>
                 </div>
 
             </div>

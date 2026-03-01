@@ -414,7 +414,7 @@ export default function AdminDashboard() {
                 )}
             </div>
             <div className="text-center mt-12 text-slate-400 dark:text-slate-600 text-xs font-medium tracking-wide">
-                <p>v1.0.3</p>
+                <p>v1.0.4</p>
             </div>
         </div>
     )

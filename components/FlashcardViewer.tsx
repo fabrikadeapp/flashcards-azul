@@ -329,7 +329,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
         <p className="text-[10px] uppercase tracking-widest text-[#F5B942]/60 mb-1">
           POWERED BY <span className="font-bold text-white/60">FABRIKA DE APP</span>
         </p>
-        <p className="text-[10px] text-white/30 font-medium">v1.0.3</p>
+        <p className="text-[10px] text-white/30 font-medium">v1.0.4</p>
       </div>
 
       {/* Modal para Adicionar Novo Flashcard */}
