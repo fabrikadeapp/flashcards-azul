@@ -1,0 +1,404 @@
+Pergunta 462 - PA de crise/atraso: quem faz?
+Resposta: Responsabilidade do comandante; só delega se carga de trabalho extrema no assento esquerdo.
+
+Pergunta 463 - “Maior desafio como comandante”: como responder?
+Resposta: Liderança na adversidade, responsabilidade final e CRM/gestão do risco acima de técnica isolada.
+
+Pergunta 464 - Comissária em pânico recusa fechar portas: ação?
+Resposta: Retirar do estresse, validar dados (loadsheet/carga) e acalmar com CRM para operar seguro.
+
+Pergunta 465 - Comissária perdeu óculos reserva: decisão?
+Resposta: Se correção visual é mandatória e não há reserva: NO GO para ela.
+
+Pergunta 466 - MEL sem A/C e cabine superaquecendo no táxi: conduta?
+Resposta: Mitigar (APU/LPU/retornar gate) e não expor passageiros a risco/insalubridade.
+
+Pergunta 467 - Cão-guia SVAN: o que confere/autoriza?
+Resposta: Documentação/laudos e acomodação segura sem obstruir evacuação (não em saídas).
+
+Pergunta 468 - RT-OPS do MGO: onde checar?
+Resposta: No ADDOCS do EFB no pré-voo.
+
+Pergunta 469 - PCR substitui o quê?
+Resposta: PCN.
+
+Pergunta 470 - “Ice and Rain” no SCAP: para quê?
+Resposta: Ajustar performances (V-speeds/distâncias) por chuva/gelo/anti-ice.
+
+Pergunta 471 - Decolagens paralelas dependentes: o que exige?
+Resposta: Divergência mínima de 15° após rotação.
+
+Pergunta 472 - Troca de EFB: como evitar curto?
+Resposta: Desconectar USB antes de mover/trocar o iPad.
+
+Pergunta 473 - PM sem EFB: como gerencia carta?
+Resposta: Crosscheck via PFD/MCDU/ND e coordenação com PF que está com o EFB operacional.
+
+Pergunta 474 - MVD: luzes “must be ON”?
+Resposta: Todas as landing lights/nose lights conforme requerido.
+
+Pergunta 475 - Rota RWY 15 VCP→GIG e engine fail: cuidado?
+Resposta: Cumprir EO-SID e limitações de terreno/vento (não improvisar).
+
+Pergunta 476 - Política de frenagem (RT): como atuar?
+Resposta: Gerenciar autobrake/reverso/spoilers e monitorar temperatura na WHEEL/ECAM.
+
+Pergunta 477 - Despressurização em A321 cargueiro: muda algo?
+Resposta: Não; procedimento padrão com O2 masks/descida de emergência.
+
+Pergunta 478 - Siglas WCHR/WCHS/WCHC: traduza.
+Resposta: R: Ramps (distância); S: Steps (escadas); C: Cabin (imobilizado, precisa ser carregado).
+
+Pergunta 479 - Comissário líder adoeceu e tripulação reduzida: quem assume portas?
+Resposta: O comissário sênior remanescente assume e redistribui funções/saídas.
+
+Pergunta 480 - Unreliable Speed com CONF FULL: por que pior e qual ação?
+Resposta: Muito arrasto; aplicar “CONF 3 and maintain” e L/G UP conforme FCTM.
+
+Pergunta 481 - TAWS warning em VMC diurno com terreno claro: aplica memory “cego” ou ajusta?
+Resposta: Ajustar o flight path visualmente conforme apropriado (não necessariamente a manobra “cega” do IMC).
+
+Pergunta 482 - Código DRILL na NOTOC: o que indica?
+Resposta: Referência ao ERG (Emergency Response Guidance) com ações específicas para o DGR.
+
+Pergunta 483 - Alerta “GLIDESLOPE” abaixo de 1000 ft: pode desligar G/S e pousar?
+Resposta: Sim, se a operação exigir descida deliberada abaixo do glideslope e houver referência adequada, conforme orientação.
+
+Pergunta 484 - Quantos FA seats em pictogramas A330 (descrição geral)?
+Resposta: Distribuídos nas estações FWD e AFT junto às portas principais e equipamentos (varia por layout, mas ficam nas estações de comissários).
+
+Pergunta 485 - Crash Axe: como deve estar disposto/onde checar?
+Resposta: Fixado/acoplado no suporte dedicado no cockpit (compartimento/suporte metálico).
+
+Pergunta 486 - Por que AMBU pediátrica separada da adulta?
+Resposta: Para evitar insuflação excessiva e dano em pulmões infantis.
+
+Pergunta 487 - Botão EXPE/EXPEDITE: o que faz?
+Resposta: Comanda subida/descida acelerada (perfil “expedite”) para cumprir restrição ATC.
+
+Pergunta 488 - “LOC blue / G/S blue”: o que significa?
+Resposta: Modos armados (armed) aguardando captura.
+
+Pergunta 489 - Em cruzeiro FL350: pode ler RT-OPS/relatórios longos?
+Resposta: Sim, fora da fase estéril (acima do FL100).
+
+Pergunta 490 - Em descida abaixo de 10.000 ft: pode revisar coisas de hotel/relatório?
+Resposta: Não; sterile cockpit total abaixo do FL100.
+
+Pergunta 491 - Pode abrir a porta do cockpit em táxi para resolver demanda da cabine?
+Resposta: Não; porta só abre no gate/parado conforme regras de security.
+
+Pergunta 492 - Simulador: atitude vital no Loss of Braking com saída de pista?
+Resposta: Manter frieza, executar memory, parar/gerenciar, comunicar, cortar motores se necessário e evacuar quando apropriado.
+
+Pergunta 493 - Como calcular ZFW?
+Resposta: DOW/Basic Empty Weight + Payload.
+
+Pergunta 494 - Extensores de cinto: para que servem?
+Resposta: Para acomodar passageiros que necessitam extensão (PNAE/obesos/necessidades especiais) dentro das regras.
+
+Pergunta 495 - “Comply with visual prescribed track”: o que fazer?
+Resposta: Selecionar e brifar carta IFR e a carta visual em paralelo (Chart Clip) em ambos EFBs.
+
+Pergunta 496 - Wipers falham em tempestade na final: cautela com qual fator?
+Resposta: Rain vision/repelente do para-brisa e aumento de distância de parada; considerar arremetida se perder referência.
+
+Pergunta 497 - Qual é a limitação de inclinação (Runway Slope) da pista para decolagem e pouso?
+Resposta: A inclinação média máxima permitida é de ±2%.
+
+Pergunta 498 - Qual a altitude máxima de pista (Runway Altitude) padrão para pouso e decolagem no A320?
+Resposta: 9.200 ft (sendo 14.100 ft a restrição específica para as matrículas YYs).
+
+Pergunta 499 - Qual a altitude máxima de pista permitida para pouso em pistas ranhuradas (PFC/Grooved Wet Runways) visando crédito de performance?
+Resposta: O crédito só se aplica se a altitude de pressão da pista for inferior a 4.000 ft.
+
+Pergunta 500 - Qual a largura nominal de pista exigida e a largura mínima certificada para operação?
+Resposta: Nominal 45 m; mínima absoluta 30 m.
+
+Pergunta 501 - Qual o limite máximo de vento de través (Crosswind) para decolagem e pouso no A320?
+Resposta: 25 kt (incluindo rajadas).
+
+Pergunta 502 - Qual o limite máximo de vento de cauda (Tailwind) para decolagem?
+Resposta: 15 kt.
+
+Pergunta 503 - Qual o limite máximo de vento de cauda (Tailwind) para pouso?
+Resposta: 10 kt.
+
+Pergunta 504 - Qual a limitação máxima de vento para operar as portas de passageiros (Passenger Door)?
+Resposta: 65 kt.
+
+Pergunta 505 - Qual o limite de vento para abertura das portas de porão (FWD e AFT Cargo Doors)?
+Resposta: 40 kt (ou até 50 kt se nariz contra o vento ou porta no lado protegido/leeward).
+
+Pergunta 506 - Com qual velocidade de vento as portas do porão devem obrigatoriamente estar fechadas?
+Resposta: Devem estar fechadas antes do vento exceder 65 kt.
+
+Pergunta 507 - Na frota cargueira (A321 P2F), qual o limite de vento para operar a Main Deck Cargo Door (MDCD)?
+Resposta: Operar até 40 kt; deve estar trancada antes do vento exceder 60 kt.
+
+Pergunta 508 - Qual a velocidade máxima com a janela do cockpit aberta (Cockpit Window Open)?
+Resposta: 200 kt.
+
+Pergunta 509 - Qual a VMO e a MMO do A320?
+Resposta: VMO 350 kt; MMO M 0.82.
+
+Pergunta 510 - Qual a velocidade limite dos limpadores de para-brisa (Wipers Maximum Operating Speed)?
+Resposta: 230 kt.
+
+Pergunta 511 - Qual a velocidade máxima com o trem estendido/baixado e travado (VLE)?
+Resposta: 280 kt ou M 0.67.
+
+Pergunta 512 - Qual a velocidade máxima para comandar extensão do trem (VLO Extension)?
+Resposta: 250 kt ou M 0.60.
+
+Pergunta 513 - Qual a velocidade máxima para comandar recolhimento do trem (VLO Retraction)?
+Resposta: 220 kt ou M 0.54.
+
+Pergunta 514 - Qual a velocidade máxima de rolagem dos pneus (Maximum Tire Speed) no solo?
+Resposta: 195 kt de GS.
+
+Pergunta 515 - Qual é a VMCL (Minimum Control Speed for Landing) tabelada no A320?
+Resposta: 116 kt.
+
+Pergunta 516 - Se despachado para voar com trem estendido (Flight with Landing Gear Down), qual penalidade em VMO/MMO?
+Resposta: VMO/MMO reduz para 235 kt / M 0.60.
+
+Pergunta 517 - Qual a velocidade máxima em Flaps 1?
+Resposta: 230 kt.
+
+Pergunta 518 - Qual a velocidade máxima em 1+F?
+Resposta: 215 kt.
+
+Pergunta 519 - Qual a velocidade máxima em Flaps 2?
+Resposta: 200 kt.
+
+Pergunta 520 - Qual a velocidade máxima em Flaps 3?
+Resposta: 185 kt.
+
+Pergunta 521 - Qual a velocidade máxima em Flaps FULL?
+Resposta: 177 kt.
+
+Pergunta 522 - No A320 padrão, qual o Maximum Taxi Weight?
+Resposta: 77.400 kg (170.637 lb).
+
+Pergunta 523 - No A320 padrão, qual o Maximum Takeoff Weight (Brake Release)?
+Resposta: 77.000 kg (169.755 lb).
+
+Pergunta 524 - No A320 padrão, qual o Maximum Landing Weight?
+Resposta: 67.400 kg (148.591 lb).
+
+Pergunta 525 - No A320 padrão, qual o Maximum Zero Fuel Weight (MZFW)?
+Resposta: 64.300 kg (141.757 lb).
+
+Pergunta 526 - Qual é o Minimum Weight garantido para as estruturas do A320?
+Resposta: 40.600 kg (89.508 lb).
+
+Pergunta 527 - O que define a margem de segurança da VLS (Lowest Selectable Speed)?
+Resposta: Garante margem de 23% em relação a VS1-G (stall).
+
+Pergunta 528 - Quais são os limites de fator de carga (Load Acceleration) em configuração limpa (Clean)?
+Resposta: De -1 G até +2.5 G.
+
+Pergunta 529 - Quais são os limites de fator de carga com slats/flaps estendidos?
+Resposta: De 0 G até +2 G.
+
+Pergunta 530 - Qual o ângulo extremo de arfagem (Tail Strike Pitch Limit Indicator) no EIS?
+Resposta: 10°.
+
+Pergunta 531 - Qual a restrição base se a aeronave for despachada com trem travado estendido na rota?
+Resposta: Proibido operar em “Forecasted Icing Conditions” e ditching não demonstrado.
+
+Pergunta 532 - Qual o limite máximo de LMC (Last Minute Change) no A320 sem recalcular o despacho?
+Resposta: 335 kg.
+
+Pergunta 533 - Qual o limite máximo de LMC no A321?
+Resposta: 390 kg.
+
+Pergunta 534 - Qual a altura mínima AGL para engajar o Autopilot na decolagem com SRS?
+Resposta: 100 ft AGL e mínimo de 5 s após o liftoff.
+
+Pergunta 535 - Qual a altura limite do AP em aproximação FINAL APP, V/S ou FPA?
+Resposta: Desconectar até 250 ft AGL.
+
+Pergunta 536 - Qual a altura limite do AP em LPV (SLS + APPR1)?
+Resposta: 160 ft AGL.
+
+Pergunta 537 - No circling approach, em que altura o AP deve ser desligado?
+Resposta: 500 ft AGL (cat C).
+
+Pergunta 538 - No ILS CAT 1, qual o limite de altura para desconexão do AP?
+Resposta: 160 ft AGL.
+
+Pergunta 539 - Em enroute normal, qual a altura mínima para uso do AP?
+Resposta: 500 ft AGL.
+
+Pergunta 540 - Após um go-around manual, qual a altura mínima para reengajar AP?
+Resposta: 100 ft AGL.
+
+Pergunta 541 - GA SOFT pode ser usado com um motor falhado?
+Resposta: Não, é proibido com um motor inoperante.
+
+Pergunta 542 - Qual a altitude limite para usar slats e/ou flaps estendidos?
+Resposta: 20.000 ft.
+
+Pergunta 543 - Qual o tempo limite em TOGA com todos os motores normais?
+Resposta: 5 minutos.
+
+Pergunta 544 - Com um motor falhado, por quanto tempo o motor remanescente pode ficar em TOGA?
+Resposta: 10 minutos.
+
+Pergunta 545 - Qual o limite de tempo do MCT (Maximum Continuous Thrust)?
+Resposta: Sem limite (contínuo).
+
+Pergunta 546 - Qual a EGT limite para TOGA/Takeoff no CFM padrão?
+Resposta: 1060 °C.
+
+Pergunta 547 - Qual a EGT máxima para partida (Starting) em solo e em voo?
+Resposta: 750 °C em solo; 875 °C em voo.
+
+Pergunta 548 - Qual a rotação máxima certificada N1 e N2 (CFM/LEAP)?
+Resposta: N1 101%; N2 116.5%.
+
+Pergunta 549 - Pode selecionar reverso ainda no ar?
+Resposta: Não, é totalmente proibido reverso em voo.
+
+Pergunta 550 - Pode dar ré no pátio usando reverso?
+Resposta: Não, backing com reverso é proibido.
+
+Pergunta 551 - Abaixo de qual velocidade deve-se reduzir reverso máximo para idle?
+Resposta: Abaixo de 70 kt (manter idle reverse até parar).
+
+Pergunta 552 - O limite de crosswind para decolagem muda por limitação do motor?
+Resposta: Sim: há limite isolado do motor permitindo decolagem com crosswind até 35 kt (com rajada) conforme você anotou.
+
+Pergunta 553 - Qual a regra de ciclos do starter (Automatic Start)?
+Resposta: Um start automático com até 3 tentativas conta como 1 ciclo de starter.
+
+Pergunta 554 - Qual a pausa exigida entre ciclos de starter?
+Resposta: 60 s entre ciclos (solo, auto ou manual).
+
+Pergunta 555 - Após 3 tentativas falhas, qual o tempo de esfriamento obrigatório?
+Resposta: 15 minutos.
+
+Pergunta 556 - Acima de qual % de N2 é proibido acionar starter?
+Resposta: Acima de 63% N2.
+
+Pergunta 557 - Qual a fórmula para mínimo de óleo antes da partida?
+Resposta: Maior valor entre 10.6 qt OU (8.9 qt + consumo estimado), com consumo estimado = 0.45 qt/h.
+
+Pergunta 558 - Qual a temperatura máxima de óleo contínua e a transitória (15 min)?
+Resposta: Contínua 140 °C; transitória 155 °C.
+
+Pergunta 559 - Abaixo de qual temperatura é proibido ligar partida (min starting temp)?
+Resposta: -40 °C (ou -29 °C conforme versão).
+
+Pergunta 560 - Antes de decolar, qual temperatura mínima de óleo no display?
+Resposta: 19 °C.
+
+Pergunta 561 - Quando aparece Fuel LO LVL (advisory)?
+Resposta: Quando um tanque interno fica abaixo de 750 kg.
+
+Pergunta 562 - No A321 P2F, qual a assimetria máxima permitida no takeoff por fuel imbalance?
+Resposta: 300 kg (661 lb).
+
+Pergunta 563 - Qual o diferencial máximo de pressurização (positivo e negativo)?
+Resposta: +9.0 PSI / -1.0 PSI.
+
+Pergunta 564 - Em qual diferencial a Safety Relief Valve abre?
+Resposta: 8.6 PSI.
+
+Pergunta 565 - Quanto tempo a cabine pode ficar com pax em solo sem ar condicionado (general limitation)?
+Resposta: Não recomendado exceder 20 minutos.
+
+Pergunta 566 - Pode usar APU bleed simultâneo com HP Air Start Unit?
+Resposta: Não, nunca usar ambos ao mesmo tempo.
+
+Pergunta 567 - Em OAT 58 °C (entre >55 e 60), qual limite de tempo energizado por ventilação de aviônicos?
+Resposta: 1 hora.
+
+Pergunta 568 - Em OAT 63 °C (entre 60 e 64), qual limite?
+Resposta: 30 minutos.
+
+Pergunta 569 - APU AutoShutdown 3 vezes: quanto aguardar para o 4º acionamento?
+Resposta: 60 minutos.
+
+Pergunta 570 - Qual o limite de overspeed da APU (rotor speed)?
+Resposta: 107%.
+
+Pergunta 571 - Qual o EGT máximo de partida da APU abaixo/acima de FL250?
+Resposta: Abaixo 25.000 ft: 900 °C; acima FL250: 982 °C.
+
+Pergunta 572 - APU Running: qual o limite de EGT (proteção)?
+Resposta: 682 °C.
+
+Pergunta 573 - Pode dar start/shutdown da APU durante reabastecimento?
+Resposta: Sim, com restrições: sem tentar restart se falhar durante refuel; com spill/derrame, parar a APU imediatamente.
+
+Pergunta 574 - Qual a altitude máxima para APU bleed assistindo engine start?
+Resposta: 20.000 ft.
+
+Pergunta 575 - Pode usar APU bleed para wing anti-ice?
+Resposta: Não, é proibido.
+
+Pergunta 576 - Quanto cada IDG suporta (carga contínua máxima por gerador)?
+Resposta: 90 kVA.
+
+Pergunta 577 - Quanto cada TRU suporta (carga contínua máxima)?
+Resposta: 200 A.
+
+Pergunta 578 - As tomadas ISPSS (in-seat power) podem ficar ligadas em T/O e LDG?
+Resposta: Não: devem estar OFF em decolagem e pouso.
+
+Pergunta 579 - É permitido operar com EFB fora do suporte?
+Resposta: Os suportes instalados exigem justificativa/airworthiness (AMC 20-25 / FAA AC120-76 conforme você anotou), devido ao risco de interferir/obstruir comandos.
+
+Pergunta 580 - Qual a restrição de velocidade em espaço aéreo Classe G abaixo de 10.000 ft (MGO)?
+Resposta: Máximo 250 kt indicada.
+
+Pergunta 581 - Quantos alternados IFR são exigidos no plano quando o destino não tem met oficial (TAF/METAR)?
+Resposta: Mínimo de 2 alternados IFR.
+
+Pergunta 582 - Qual a limitação de “madrugadas” na semana (fadiga) em rota Red Eye?
+Resposta: 4 madrugadas dentro da janela de 168 h (Lei 13.475).
+
+Pergunta 583 - Após Line Check, qual a margem de horas para liberar a marca “N” (Consolidation of Knowledge)?
+Resposta: 100 h ativas na linha + margem secundária de 200 h globais pós-simulador (como você definiu).
+
+Pergunta 584 - Em turbulência severa (severe turbulence), qual velocidade limitante (MGO/FCOM)?
+Resposta: 170 kt.
+
+Pergunta 585 - Holding abaixo de FL140: qual tempo padrão de perna outbound no MGO?
+Resposta: 1 minuto.
+
+Pergunta 586 - Ausência de FWD Cargo Door Access Cover: pode despachar via CDL com penalidade de massa?
+Resposta: Sim, via CDL 52-22 com penalidades/limitações aplicáveis.
+
+Pergunta 587 - Após mergulho autônomo, qual tempo mínimo de proibição (no-fly) para tripulante?
+Resposta: 24 horas.
+
+Pergunta 588 - Política/limite de jornada (tripulação simples vs composta) e folga mínima: qual referência você colocou?
+Resposta: Limite de 90 h em 28 dias e folga mínima de 24 h ininterruptas (Lei 13.475, conforme seu texto).
+
+Pergunta 589 - Em RNP, qual limite estrito citado para abortar/arremeter por precisão?
+Resposta: RAIM/precisão: 0.3 NM lateral e erro limite citado de “75 ft vertical” (conforme seu card).
+
+Pergunta 590 - Qual o limite de reserva final no despacho (fuel management) citado?
+Resposta: 30 minutos em holding speed a 1.500 ft AGL (como descrito no seu flashcard).
+
+Pergunta 591 - Qual o tempo mínimo tolerado de turn around no A330 (MGO)?
+Resposta: 1h30.
+
+Pergunta 592 - Em decolagem/pouso com chuva e rain repellent/wipers, qual cautela limitante citada?
+Resposta: “Rain Vision” e atenção aos limites/performance (FlySmart) para não comprometer touchdown/stop distance.
+
+Pergunta 593 - Ao selecionar flaps, o load factor limite cai de 2.5 g para quanto?
+Resposta: +2 g.
+
+Pergunta 594 - Quais mínimos VMC (MGO) citados que impedem pouso VFR?
+Resposta: Teto < 1.500 ft e/ou visibilidade < 5.000 m.
+
+Pergunta 595 - Circuit Breakers: há limitação para reset em voo? Qual?
+Resposta: Sim: só resetar em voo se explicitamente previsto/ordenado pelo checklist (ECAM/QRH); reset “por intuição” é proibido.
+
+Pergunta 596 - Qual limite/autoridade final no despacho e segurança a bordo o MGO/CBA baseiam?
+Resposta: A autoridade máxima e a responsabilidade final e indelegável pela segurança do voo é do Comandante.

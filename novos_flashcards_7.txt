@@ -1,0 +1,182 @@
+Pergunta 401 - O que significam os códigos SSR: FQTV, FQTR e AWUP na lista de passageiros?
+Resposta: Identificam os clientes FREQUENT FLYER da empresa.
+
+Pergunta 402 - Passageira Gestante com 6 meses de gravidez (PRG6). Qual a exigência da Azul para o embarque?
+Resposta: Preenchimento exclusivo do Formulário “Termo de Responsabilidade de Gestantes”.
+
+Pergunta 403 - Passageira Gestante com 7 ou 8 meses (PRG7). Qual a exigência para o embarque?
+Resposta: Preenchimento do Formulário + Apresentação de Atestado Médico válido.
+
+Pergunta 404 - Passageira Gestante no 9º mês de gestação (PRG9). Pode voar? Como?
+Resposta: Pode voar se preencher formulário, apresentar atestado médico e estiver acompanhada obrigatoriamente do médico obstetra.
+
+Pergunta 405 - Qual a restrição base de assentos para Idosos (Elderly), Grávidas e Clientes VIP?
+Resposta: Devem sentar próximos aos lavatórios, porém é proibido ocupar saídas de emergência (overwing exits).
+
+Pergunta 406 - O que indicam as siglas de SSR: DEPU e DEPA?
+Resposta: DEPU: Deportados Desacompanhados; DEPA: Deportados Acompanhados de escolta.
+
+Pergunta 407 - Se a Inspeção de Segurança de Rampa (Varredura) não foi efetuada após 6h de solo, qual a ação do Cmdt?
+Resposta: NO GO; bloquear embarque e solicitar imediatamente varredura física e checagem de selos.
+
+Pergunta 408 - Formulário de Transporte de Armas (F-SEC-063). Onde vai a 3ª via se a arma for despachada?
+Resposta: Fica anexada à arma/munição trancada no porão da aeronave.
+
+Pergunta 409 - Ao preencher um Relatório de Ameaça (Cabin Safety Report / Indisciplina), quais as opções de “Humor do Cliente”?
+Resposta: Zangado, Calmo, Racional, Incoerente, Irracional, Embriagado, Animado ou Obsceno.
+
+Pergunta 410 - Restos Mortais Humanos: Onde isso deve constar no papel de Despacho?
+Resposta: No campo “Outras Cargas Especiais” da NOTOC (com número do ULD/Posição e peso).
+
+Pergunta 411 - Policial Federal exige embarcar armado para ir para casa de férias. O MGO autoriza?
+Resposta: Não; porte armado a bordo é estrito para escoltas, vigilância em voo ou missão em que despachar a arma prejudique a operação do agente.
+
+Pergunta 412 - Quantos Extintores de Halon ficam alocados dentro do Cockpit (Flight Deck) nos Airbus A320/A330?
+Resposta: 1 extintor de Halon (geralmente atrás do assento do copiloto).
+
+Pergunta 413 - Em caso de abandono e evacuação na selva, quais dois itens físicos o Comandante leva?
+Resposta: Extintor de Halon do cockpit e Crash Axe (machado).
+
+Pergunta 414 - O que é o EEMK e quem tem autoridade para romper seu lacre?
+Resposta: Kit médico com medicamentos; só médicos ou enfermeiros identificados (CRM/COREN).
+
+Pergunta 415 - O que o First Aid Kit (kit verde) possui no A320?
+Resposta: Fita adesiva, compressas, ataduras, AMBU adulto/pediátrico, luvas, tesoura e lenços de álcool.
+
+Pergunta 416 - Quem pode utilizar o DEA de bordo num passageiro em parada?
+Resposta: Qualquer comissário treinado; não exige presença médica.
+
+Pergunta 417 - Para que serve a MRT (Manual Release Tool) no mapa da cabine?
+Resposta: Alavanca/haste para liberar painéis de oxigênio que não caíram.
+
+Pergunta 418 - O que é o Bio-Hazard Kit (Cleanup Kit) vermelho?
+Resposta: Kit de proteção e pó neutralizante para fluidos biológicos (vômito/sangue).
+
+Pergunta 419 - Quantas escorregadeiras (Slide Rafts) possui o Airbus A330?
+Resposta: 8 escorregadeiras.
+
+Pergunta 420 - O que compõe um Jungle Kit (JK) listado nos aviões?
+Resposta: Kit de sobrevivência na selva (mantimentos, lonas, iscas e sinalizadores).
+
+Pergunta 421 - Como se divide a “Arquitetura e Sequência” do Briefing da Azul?
+Resposta: Por fase do voo: Pré-voo, Táxi/Decolagem, Aproximação/Pouso e Pós-voo, em sequência temporal.
+
+Pergunta 422 - Como se confirma a legalidade física do Livro de Bordo (TLB)?
+Resposta: Termo de abertura + 40 páginas numeradas, data, nome do responsável, CANAC e assinatura do comandante.
+
+Pergunta 423 - Quais tarefas de Pós-Voo no painel de áudio?
+Resposta: Zerar volumes e deixar knobs “pushed in”.
+
+Pergunta 424 - Regra do Pós-Voo para telas?
+Resposta: Reduzir totalmente o brilho dos displays para evitar burn-in.
+
+Pergunta 425 - Regra de zelo com o pedestal central?
+Resposta: Não apoiar objetos (malas/EFB/pranchetas) para evitar acionamentos acidentais.
+
+Pergunta 426 - Falhou o EFB do PF em voo. Como proceder?
+Resposta: Desligar o EFB inoperante e trocar pelo EFB operacional do PM.
+
+Pergunta 427 - Ao cruzar o FL250, qual a regra de O2?
+Resposta: Verificar máscara Quick Donning pronta para uso.
+
+Pergunta 428 - Curva base IFR (sem FAF): onde a final inicia?
+Resposta: No ponto em que a curva base termina e a aeronave estabiliza na reta final alinhada.
+
+Pergunta 429 - Soft Go-Around: quando “pula” para TOGA?
+Resposta: Se não atingir razão de subida de 2300 ft/min.
+
+Pergunta 430 - CPDLC: em qual patamar vertical iniciar uso?
+Resposta: Acima do FL100.
+
+Pergunta 431 - CPDLC: rota impossível por clima/FMS. O PM seleciona o que?
+Resposta: “UNABLE” e reporta na frequência.
+
+Pergunta 432 - Interceptação: o que significa “DESCEND” visual?
+Resposta: Desça para pousar no aeródromo indicado (seguir a aeronave interceptadora).
+
+Pergunta 433 - Desvio meteorológico sem contato ATC >10 NM: como alertar tráfego?
+Resposta: Luzes externas ON, afastar da aerovia e variar 300 ft, transmitir em 121.5 com identificação/nível/intenção.
+
+Pergunta 434 - Desvio 5 NM à esquerda com proa leste (000–179): o que fazer na altitude?
+Resposta: Descer 300 ft.
+
+Pergunta 435 - Desvio 5 NM à esquerda com proa oeste (180–359): o que fazer na altitude?
+Resposta: Subir 300 ft.
+
+Pergunta 436 - HF oceânico: palavras usadas para chamar base da Azul?
+Resposta: “AZULVILLE” + sua identificação/matrícula.
+
+Pergunta 437 - EMER DESCENT: por que fazer Oxygen Control Slide Reset?
+Resposta: Para interromper o fluxo de O2 de emergência após retirar as máscaras no FL100.
+
+Pergunta 438 - EMER DESCENT (PF): quais passos?
+Resposta: ALT: Turn and Pull; HDG: Turn and Pull; SPD: Pull; PA; se A/THR off: Thrust IDLE e Speedbrake FULL.
+
+Pergunta 439 - EMER DESCENT (PM): quais passos?
+Resposta: O2 masks USE; Signs/LDG lights ON; Check FMA; XPDR 7700; Notify ATC Mayday; PA cabine “Usem as máscaras”.
+
+Pergunta 440 - TAWS “PULL UP”: memory actions?
+Resposta: AP OFF; PITCH PULL UP; THRUST TOGA; Speedbrakes retract; Wings level; não mudar configuração até livrar obstáculo.
+
+Pergunta 441 - TAWS “SINK RATE” (IMC <1000 ft / VMC <500 ft): ação?
+Resposta: GO-AROUND CONSIDER.
+
+Pergunta 442 - TAWS “TOO LOW GEAR/FLAPS”: ação?
+Resposta: GO-AROUND PERFORM.
+
+Pergunta 443 - UNRELIABLE SPEED: ação inicial?
+Resposta: AP OFF, A/THR OFF, FD OFF.
+
+Pergunta 444 - UNRELIABLE SPEED: ângulos fixos?
+Resposta: < Thrust Red Alt: 15°/TOGA; > Thrust Red Alt e < FL100: 10°/CLB; > FL100: 5°/CLB.
+
+Pergunta 445 - STALL RECOVERY: callout?
+Resposta: “Stall, I have controls”.
+
+Pergunta 446 - STALL RECOVERY: o que fazer com o pitch?
+Resposta: NOSE DOWN PITCH CONTROL.
+
+Pergunta 447 - WINDSHEAR (antes de V1): quando abortar?
+Resposta: Se variações/tendências significativas abaixo da V1 indicada.
+
+Pergunta 448 - WINDSHEAR (após V1): conduta?
+Resposta: TOGA e seguir SRS; não recolher flap/trem até sair do windshear.
+
+Pergunta 449 - LOSS OF BRAKING: flow?
+Resposta: Callout; REV MAX; pedais RELEASE; A/SKID OFF; pedais até 1000 PSI; se necessário PARK BRK.
+
+Pergunta 450 - TCAS “CLIMB RA” em CONF 3/FULL: o que fazer?
+Resposta: Executar GO-AROUND (SRS GA) e monitorar VS.
+
+Pergunta 451 - TCAS RA em geral: como voar?
+Resposta: Seguir o guidance/FD mantendo VSI na faixa verde e reportar “TCAS RA”.
+
+Pergunta 452 - Quantas etapas/sorteios compõem o Mosaico?
+Resposta: 5 sorteios (MEL/CDL, Reset no ponto de espera, Pane etapa 1, Navegação, ATA 70).
+
+Pergunta 453 - No briefing MEL/CDL há “decoreba punitiva”?
+Resposta: Não; foco é interpretação correta (categoria, validade, penalidades).
+
+Pergunta 454 - Qual o papel mental no System Reset no ponto de espera?
+Resposta: Priorizar segurança vs pressão externa: parar/segurar, consultar QRH, executar reset corretamente e só decolar se liberado.
+
+Pergunta 455 - Por que “velocidade mental alinhada” é importante?
+Resposta: Para manter CRM sincronizado e evitar ações sem crosscheck.
+
+Pergunta 456 - Engine Fire Unextinguishable: atitude?
+Resposta: Executar memory (master cut/agents), declarar emergência e pousar no mais próximo adequado.
+
+Pergunta 457 - Pouso com fogo e evacuação: callout final?
+Resposta: “ECHO VICTOR, ECHO VICTOR”.
+
+Pergunta 458 - Pane dupla hidráulica G+Y: liderança do comandante?
+Resposta: PF voa; comandante coordena QRH/ATC, desvio e performance (Vapp), dando suporte ao PF.
+
+Pergunta 459 - Copiloto discorda por segurança (tempo ruim): decisão?
+Resposta: Adotar a opção mais conservadora; vetar aproximação, holding/desvio e alinhar CRM.
+
+Pergunta 460 - Comissário febril quer seguir: conduta?
+Resposta: Não prossegue; acionar escala e substituir (inaptidão).
+
+Pergunta 461 - Evento no pushback/taxi com derrapagem: qual relatório?
+Resposta: RELPREV.

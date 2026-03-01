@@ -71,100 +71,105 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
   const progress = `${currentIndex + 1} / ${shuffledCards.length}`
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 flex flex-col items-center justify-center p-4 transition-colors duration-300">
+    <div className="min-h-screen bg-[#0B1F3B] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 transition-colors duration-500 overflow-hidden relative">
+
+      {/* Background glow para ambiente Premium */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1E63FF] rounded-full mix-blend-screen filter blur-[200px] opacity-20 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#F5B942] rounded-full mix-blend-screen filter blur-[200px] opacity-10 pointer-events-none"></div>
+
       <ThemeToggle />
 
       {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-azul dark:text-blue-400 mb-2">
-          ✈️ Flashcards A320
+      <div className="text-center z-10 mb-8 sm:mb-12 mt-12 sm:mt-0">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#FFFFFF] tracking-tight mb-2 md:mb-4">
+          Mentor <span className="text-[#1E63FF]">Pilot</span>
         </h1>
-        <p className="text-slate-600 dark:text-slate-400">
-          Treinamento para Elevação de Comandante - Azul Airlines
+        <p className="text-sm md:text-base text-[#F5B942] tracking-widest uppercase font-semibold">
+          Treinamento Operacional A320
         </p>
       </div>
 
-      {/* Progresso */}
-      <div className="mb-6 text-center">
-        <p className="text-lg font-semibold text-slate-700 dark:text-slate-300">
-          {progress}
-        </p>
-        <div className="w-64 h-2 bg-slate-200 dark:bg-slate-700 rounded-full mt-2 overflow-hidden">
+      {/* Progresso Apple Style */}
+      <div className="z-10 w-full max-w-4xl text-center mb-8">
+        <div className="flex justify-between items-end mb-3 px-2">
+          <span className="text-white/50 text-xs font-semibold uppercase tracking-widest">Progresso Mental</span>
+          <span className="text-[#FFFFFF] text-lg font-bold bg-white/10 px-4 py-1 rounded-full backdrop-blur-md border border-white/5">
+            {progress}
+          </span>
+        </div>
+        <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden backdrop-blur-sm">
           <div
-            className="h-full bg-azul dark:bg-blue-500 transition-all duration-300"
+            className="h-full bg-gradient-to-r from-[#1E63FF] to-[#F5B942] shadow-[0_0_10px_rgba(30,99,255,0.8)] transition-all duration-700 ease-out"
             style={{ width: `${((currentIndex + 1) / shuffledCards.length) * 100}%` }}
           ></div>
         </div>
       </div>
 
-      {/* Flashcard */}
-      <div
-        onClick={() => setIsFlipped(!isFlipped)}
-        className="flashcard w-full max-w-2xl h-96 mb-8 cursor-pointer"
-      >
-        {!isFlipped ? (
-          <div className="flashcard-front">
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">
-              Pergunta #{currentCard.numero}
-            </p>
-            <p className="text-lg mt-8 text-slate-800 dark:text-slate-200 leading-relaxed">
-              {currentCard.pergunta}
-            </p>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-8">
-              → Pressione SETA DIREITA ou clique para revelar resposta
-            </p>
-          </div>
-        ) : (
-          <div className="flashcard-back">
-            <p className="text-sm text-slate-500 dark:text-slate-400 mb-4 font-semibold">
-              RESPOSTA
-            </p>
-            <p className="text-base text-slate-700 dark:text-slate-300 leading-relaxed">
-              {currentCard.resposta}
-            </p>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-8">
-              {currentCard.modulo} • {currentCard.categoria}
-            </p>
-          </div>
-        )}
+      {/* Flashcard Hero */}
+      <div className="z-10 w-full flex justify-center mb-10 perspective-1000">
+        <div
+          onClick={() => setIsFlipped(!isFlipped)}
+          className="flashcard relative w-full"
+        >
+          {/* subtle border top gradient inner */}
+          <div className="absolute inset-0 rounded-3xl border border-white/20 pointer-events-none z-20"></div>
+
+          {!isFlipped ? (
+            <div className="flashcard-front animate-fade-in flex flex-col justify-center items-center h-full">
+              <span className="absolute top-8 left-8 text-white/20 text-6xl font-serif">"</span>
+              <p className="px-4 md:px-8">
+                {currentCard.pergunta}
+              </p>
+              <span className="absolute bottom-8 right-8 text-white/20 text-6xl font-serif leading-none">"</span>
+              <p className="absolute bottom-8 left-0 right-0 text-center text-xs md:text-sm text-[#1E63FF] font-medium tracking-wide animate-pulse">
+                Clique para Revelar a Resposta
+              </p>
+            </div>
+          ) : (
+            <div className="flashcard-back animate-fade-in flex flex-col justify-center items-center h-full">
+              <div className="absolute top-8 w-12 h-1 bg-[#F5B942] rounded-full mx-auto mb-8"></div>
+              <p className="px-4 md:px-8 font-light text-xl md:text-3xl text-white">
+                {currentCard.resposta}
+              </p>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Controles */}
-      <div className="flex gap-4 mb-12">
+      {/* Controles Glassmorphism */}
+      <div className="z-10 flex gap-4 md:gap-6 mb-12">
         <button
           onClick={() => {
             setCurrentIndex((prev) => (prev - 1 + shuffledCards.length) % shuffledCards.length)
             setIsFlipped(false)
           }}
-          className="px-6 py-3 bg-slate-300 dark:bg-slate-700 text-slate-900 dark:text-white rounded-lg font-semibold hover:bg-slate-400 dark:hover:bg-slate-600 transition-colors"
+          className="btn-secondary w-36 md:w-48 group"
         >
-          ← Anterior
+          <span className="group-hover:-translate-x-1 transition-transform mr-2">←</span> Anterior
         </button>
         <button
           onClick={() => {
             setCurrentIndex((prev) => (prev + 1) % shuffledCards.length)
             setIsFlipped(false)
           }}
-          className="px-6 py-3 bg-azul dark:bg-blue-600 text-white rounded-lg font-semibold hover:bg-azul-dark dark:hover:bg-blue-700 transition-colors"
+          className="btn-primary w-36 md:w-48 group"
         >
-          Próxima ↓
+          Próxima <span className="group-hover:translate-x-1 transition-transform ml-2">→</span>
         </button>
       </div>
 
       {/* Keyboard hints */}
-      <div className="text-center text-sm text-slate-500 dark:text-slate-400 space-y-1">
-        <p>→ Direita: Revelar resposta</p>
-        <p>↓ Baixo: Próxima pergunta</p>
-        <p>← Esquerda: Pergunta anterior</p>
+      <div className="z-10 text-center text-xs text-white/40 space-y-1 mb-8 opacity-50 hover:opacity-100 transition-opacity">
+        <p>→ / Espaço: Revelar • ↓ Próxima • ← Anterior</p>
       </div>
 
-      {/* Info módulo */}
-      <div className="mt-12 text-center">
-        <p className="text-xs text-slate-500 dark:text-slate-500">
-          Módulo: <span className="font-semibold">{currentCard.modulo}</span> •
-          Categoria: <span className="font-semibold">{currentCard.categoria}</span>
+      {/* Info módulo (se aplicável / mantido para compatibilidade base de dados futura) */}
+      <div className="z-10 mt-auto text-center hidden md:block">
+        <p className="text-[10px] uppercase tracking-widest text-[#F5B942]/60">
+          POWERED BY <span className="font-bold text-white/60">FABRIKA DE APP</span>
         </p>
       </div>
+
     </div>
   )
 }

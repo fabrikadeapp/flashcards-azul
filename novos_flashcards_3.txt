@@ -1,0 +1,392 @@
+Pergunta 001 - Descreva o sistema Hidráulico?
+Resposta: 3 sistemas independentes (Verde, Azul, Amarelo) a 3000 PSI. A PTU liga com diferencial de 500 PSI entre verde e amarelo. Não há transferência de fluido.
+
+Pergunta 002 - Superfície atuada pelos 3 sistemas hidráulicos? 
+Resposta: Leme de direção.
+
+Pergunta 003 - Perda do sistema azul afeta o gerador de emergência?
+Resposta: Sim, o Emergency Gen fica inoperante.
+
+Pergunta 004 - Objetivo das Priority Valves? 
+Resposta: Cortar demanda dos altos consumidores se a pressão da linha hidráulica cair.
+
+Pergunta 005 - Prioridade de fontes elétricas AC 1 e 2?
+Resposta: GEN on side, Ext Power, APU, GEN off side.
+
+Pergunta 006 - Circuit Breakers (CB) verdes x pretos?
+Resposta: Verdes são monitorados pelo ECAM (alerta em 1 min); pretos não.
+
+Pergunta 007 - Quando abortar partida auto pelo FADEC?
+Resposta: Na perda de energia para as telas do ECAM.
+
+Pergunta 008 - O Autobrake entra em quantos segundos após ground spoilers?
+Resposta: LO = 4s; MED = 2s; MAX = imediatamente (>72kt).
+
+Pergunta 009 - Gelo no intradorso (embaixo) da asa impede voo?
+Resposta: Até 3mm é aceitável, não impacta performance.
+
+Pergunta 010 - Autorizado alinhar e tráfego à frente reporta Windshear?
+Resposta: Ponto de espera = aguarda. Alinhado = livra a pista.
+
+Pergunta 011 - Despacho de combustível sem METAR/TAF?
+Resposta: Exige 2 alternados. Planeja A+B+C + navegação direta para D + 30 min a 1500ft em D.
+
+Pergunta 012 - Incremento MGO para alternado sem meteorologia?
+Resposta: Adiciona 200ft no teto e 900m na visibilidade.
+
+Pergunta 013 - Quais SLATS são aquecidos pelo Anti-Ice?
+Resposta: Os 3 externos (3, 4 e 5).
+
+Pergunta 014 - Método para definir mínimos de decolagem?
+Resposta: 1. Mínimos da SID; 2. NOTAM; 3. Tabela DECEA (QRH).
+
+Pergunta 015 - Avaliar Fuel Leak em voo?
+Resposta: FOB+FU menor que FOB inicial, desbalanceamento, FF excessivo, cheiro forte, visual.
+
+Pergunta 016 - Pista contaminada?
+Resposta: Camada > 3mm cobrindo > 25% da pista.
+
+Pergunta 017 - Turbulência severa em cruzeiro?
+Resposta: Cintos/ombros ON, descer 4000ft, ajustar IAS QRH, manter AP. Se OFF, manter pitch/thrust constantes.
+
+Pergunta 018 - Proteções Normal Law?
+Resposta: Pitch (30°up/15°down), Load Factor, High Speed, High AOA e Bank de 67°.
+
+Pergunta 019 - Quando a barra do FD some?
+Resposta: Acima 25º UP ou 13º DOWN (retorna baixando de 22º UP / 10º DOWN).
+
+Pergunta 020 - Wing Anti-Ice em solo?
+Resposta: Pneumático. Ligado após APU off, faz self-test de 30s e fecha válvulas auto.
+
+Pergunta 021 - Aquecimento de Probes/TAT?
+Resposta: Pitot em low na 1ª partida. TAT e pitot full apenas após lift-off.
+
+Pergunta 022 - Falha de 1 SFCC?
+Resposta: Flaps/Slats a meia velocidade, mas todas posições ficam disponíveis.
+
+Pergunta 023 - Funções do FWC?
+Resposta: Alertas visuais/sonoros e callouts de rádio altímetro/velocidade.
+
+Pergunta 024 - Detents do FADEC?
+Resposta: MAX REV, REV IDLE, IDLE, CLB, FLX/MCT, TOGA.
+
+Pergunta 025 - Subida gerenciada Neo?
+Resposta: 250kt abaixo FL100; 300kt/M 0.78 acima FL100.
+
+Pergunta 026 - O que é Approach Idle?
+Resposta: Motor acelera de idle pra GA mais rápido (ativo em CONF 3, FULL ou trem baixado).
+
+Pergunta 027 - Pitch inicial arremetida mono sem SRS?
+Resposta: 12.5°.
+
+Pergunta 028 - IRS Full Align obrigatório?
+Resposta: 1º voo do dia, troca de tripulação ou latitude entre 2º S e 2º N.
+
+Pergunta 029 - FMGC Master?
+Resposta: Vinculado ao AP on (AP1=FMGC1). Sem AP/FD, o FMGC1 controla ATHR.
+
+Pergunta 030 - Níveis FMGC alternado (CI=0)?
+Resposta: <100nm=FL100; 100-200nm=FL220; >200nm=FL310.
+
+Pergunta 031 - Velocidade Cost Index 999?
+Resposta: VMO - 10kt.
+
+Pergunta 032 - Esvaziamento tanques?
+Resposta: Central esvazia nos Inners (consumo 500kg). Inner a 750kg abre transferência dos Outers.
+
+Pergunta 033 - Fuel Tank Inerting System?
+Resposta: No tanque central; diminui flamabilidade dos gases.
+
+Pergunta 034 - Funções FAC?
+Resposta: Yaw damp, turn coord, calcula VLS/Green Dot, Alpha-Floor, Windshear.
+
+Pergunta 035 - Partida Auto x Manual?
+Resposta: Auto: FADEC controla, aborta e faz dry crank. Manual: Tripulação monitora e aborta.
+
+Pergunta 036 - Cenários callout "Engine Secured”?
+Resposta: Sem dano (Master OFF), Com dano (AGENT 1), Fogo (Fogo apagar ou AGENT 2).
+
+Pergunta 037 - Confirmar MGO botões críticos?
+Resposta: PF: "Confirm number one?" / PM: "Number one confirmed!".
+
+Pergunta 038 - 4 takes Tóquio (desembarque pax sem culpa)?
+Resposta: Segurança da acft, ordem, entrega à polícia, desembarque do infrator.
+
+Pergunta 039 - Emergência Artigos Perigosos?
+Resposta: Usar ERG CODE (Drill code) da NOTOC. Notificar ATC: UN, qty e local.
+
+Pergunta 040 - Evacuação por evidência?
+Resposta: Fogo incontrolável, ruptura fuselagem, pouso na água.
+
+Pergunta 041 - TAA vs MSA?
+Resposta: MSA=25nm do auxílio/1000ft. TAA=Transição RNAV do IAF (substitui MSA).
+
+Pergunta 042 - Tripulação revezamento voo dom?
+Resposta: Não, só internacional.
+
+Pergunta 043 - Extensão jornada simples?
+Resposta: 1h de jornada, 30 min de voo.
+
+Pergunta 044 - Limite madrugadas?
+Resposta: 2 consecutivas, 3ª extra, limite de 4 em 7 dias.
+
+Pergunta 045 - Tempo máximo solo mesma jornada?
+Resposta: Diurno 180 min, noturno 120 min.
+
+Pergunta 046 - Validade MEL?
+Resposta: A(específico), B(3 dias), C(10 dias), D(120 dias). A e D não estendem.
+
+Pergunta 047 - Daylight ops (MEL)?
+Resposta: Operação exclusiva entre nascer e pôr do sol.
+
+Pergunta 048 - Not related to MEL?
+Resposta: Não é NO-GO. Ação corretiva necessária, sem MEL.
+
+Pergunta 049 - NEF x CDL?
+Resposta: NEF: itens secundários cabine. CDL: partes externas ausentes com penalidade performance.
+
+Pergunta 050 - Validade vistoria Azultech?
+Resposta: Aeronave >6h no solo exige nova inspeção.
+
+Pergunta 051 - MFR (Minimum Fuel)?
+Resposta: Trip Fuel + Cont (5% ou 5m) + Alt + Reserva Final (30m a 1500ft).
+
+Pergunta 052 - Cat Incêndio A320?
+Resposta: Cat 6 (comprimento/largura).
+
+Pergunta 053 - CG favorável cruzeiro?
+Resposta: Traseiro (maior margem stall, menor compensação, menos arrasto).
+
+Pergunta 054 - Limite Redução Flex?
+Resposta: Máximo 25% da potência TOGA.
+
+Pergunta 055 - Strobe AUTO?
+Resposta: ON no lift-off, OFF ao tocar o solo.
+
+Pergunta 056 - Luz DECEL autobrake?
+Resposta: Atingiu 80% da frenagem desejada.
+
+Pergunta 057 - Máscara O2 se piloto sair?
+Resposta: Acima do FL350.
+
+Pergunta 058 - PACK Flow LOW?
+Resposta: Abaixo de 141 ocupantes a bordo.
+
+Pergunta 059 - Approach Climb?
+Resposta: Subida mono, gear up, flap app, garantindo 2.1%.
+
+Pergunta 060 - Cmp Voo A320?
+Resposta: 2 ELAC, 3 SEC, 2 FAC. VLS calculada pelo FAC.
+
+Pergunta 061 - Arremetida Circling?
+Resposta: Curva ascendente para pista de pouso interceptando Missed Approach.
+
+Pergunta 062 - Tolerância EZFW x AZFW?
+Resposta: 1300kg para não refazer o loadsheet.
+
+Pergunta 063 - Bomba das Cargo Doors?
+Resposta: Bomba Amarela elétrica.
+
+Pergunta 064 - Red Disk APU externo?
+Resposta: Extintor de fogo do APU não descarregou por sobrepressão térmica.
+
+Pergunta 065 - Teste Fogo APU em solo ligado?
+Resposta: Máx 3 segundos para evitar auto shutdown.
+
+Pergunta 066 - Consumo APU solo e restrição Low Oil?
+Resposta: 2.2 kg/min. Voa 10h sem vazamento com aviso Low Oil.
+
+Pergunta 067 - Válvulas do DITCHING PB?
+Resposta: Outflow valve, ram air inlet, avionic inlet/extract, pack flow.
+
+Pergunta 068 - Extintor cockpit?
+Resposta: Atrás do copiloto, sob as máscaras.
+
+Pergunta 069 - Vantagem flap menor decolagem?
+Resposta: Performance 2º segmento e economia de fuel.
+
+Pergunta 070 - Varredura Security obrigatória?
+Resposta: >6h no solo, ou suspeita de lacre violado.
+
+Pergunta 071 - Potência Pista Contaminada?
+Resposta: TOGA (melhora distância de parada).
+
+Pergunta 072 - Parking Brake Acumulador?
+Resposta: Mantém por 12 horas.
+
+Pergunta 073 - MAP x MGO (Artigos Perigosos)?
+Resposta: O MAP sempre prevalece.
+
+Pergunta 074 - High Speed Prot?
+Resposta: 6kt (2 riscos verdes).
+
+Pergunta 075 - BUSS ativado?
+Resposta: PFD exibe escala de vel em cores e altitude GPS (só < FL250).
+
+Pergunta 076 - PWS inibido decolagem?
+Resposta: Entre 100kt e 50ft.
+
+Pergunta 077 - Escorregadeira porta x asa?
+Resposta: Porta desconecta (simples), asa fixa (dupla).
+
+Pergunta 078 - Unreliable Speed (>FL250)?
+Resposta: Manter 1 ADR ligado para evitar dupla falha de flight controls.
+
+Pergunta 079 - Passageiros sob custódia?
+Resposta: Máx 2 pax, com min 2 policiais para cada.
+
+Pergunta 080 - Spoilers curva?
+Resposta: Abrem os 4 externos.
+
+Pergunta 081 - Avionic smoke resfriamento?
+Resposta: Pelo Ar condicionado. Desce FL100 para abrir ram air e despressurizar.
+
+Pergunta 082 - Detectores fumaça Cargo?
+Resposta: 2 dianteiro, 4 traseiro.
+
+Pergunta 083 - Limite vertical RNP-AR?
+Resposta: 75ft. (1 dot = 0.1nm).
+
+Pergunta 084 - V2?
+Resposta: Takeoff safety speed a 35ft (seca) ou 15ft (molhada) mono.
+
+Pergunta 085 - OPTIMUM x REC MAX?
+Resposta: Optimum foca consumo/tempo. REC MAX foca margem buffet (0.3g) e subida 300fpm.
+
+Pergunta 086 - NADP 1 x NADP 2?
+Resposta: 1 (corta empuxo 800ft) reduz ruído perto. 2 (acelera 800ft e recolhe flap) reduz ruído longe.
+
+Pergunta 087 - RTO < 72kt e autobrake?
+Resposta: Ground spoilers não abrem, exige freio manual.
+
+Pergunta 088 - Limite peso LMC (Last Minute)?
+Resposta: 0.5% PMP (335kg A320 / 390kg A321).
+
+Pergunta 089 - Tripulação Reduzida (doença)?
+Resposta: Pode faltar 1 Comissário. Max 150 pax no A320.
+
+Pergunta 090 - Pressurização controle manual table?
+Resposta: Localizada no FCOM Abnormal.
+
+Pergunta 091 - CED?
+Resposta: Crew Entry Door.
+
+Pergunta 092 - CG favorável cruzeiro?
+Resposta: Traseiro.
+
+Pergunta 093 - PMD YRA/YRD?
+Resposta: 67.400 kg.
+
+Pergunta 094 - Desbalanceamento Inner Tank pesado 2250kg?
+Resposta: Limite exato é 2250 kg.
+
+Pergunta 095 - TCAS em descida de emergência?
+Resposta: Manter TA/RA (evitar colisão é prioridade).
+
+Pergunta 096 - ROPS dividido em?
+Resposta: ROW e ROP.
+
+Pergunta 097 - Primeiro item EMER EVAC?
+Resposta: AIRCRAFT / PARKING BRK... STOP / ON.
+
+Pergunta 098 - Falha 1 RMP?
+Resposta: O outro comanda todos os VHF/HF.
+
+Pergunta 099 - CVR auto ON?
+Resposta: Solo por 5 min após AC, com 1 motor rodando, ou em voo.
+
+Pergunta 100 - Máscaras com mic cockpit?
+Resposta: 3.
+
+Pergunta 101 - Tolerância Uplift x FOB?
+Resposta: 400 kg.
+
+Pergunta 102 - Ignitores em Chuva Severa Neo?
+Resposta: FADEC liga automático se detectar flameout.
+
+Pergunta 103 - Diferencial pressão PTU?
+Resposta: 500 PSI.
+
+Pergunta 104 - Perda total sist Amarelo?
+Resposta: Ficará inoperante (reverso 2 inop).
+
+Pergunta 105 - Quando comanda Pull ALT em mono (OP CLB)?
+Resposta: Na Speed Trend = Green Dot.
+
+Pergunta 106 - Procedimento RNP-AR base?
+Resposta: GNSS como meio primário obrigatório.
+
+Pergunta 107 - Falha BMC1 perde alerta de?
+Resposta: APU BLEED LEAK.
+
+Pergunta 108 - PACK Flow proporções?
+Resposta: LO 80%, NORM 100%, HI 120%.
+
+Pergunta 109 - ECAM 1 (superior) apagou?
+Resposta: Segurar botão da pag do sistema por max 3 min na tela 2.
+
+Pergunta 110 - TORA?
+Resposta: Takeoff Run Available (pista para corrida).
+
+Pergunta 111 - GALLEY SHED em solo?
+Resposta: Aeronave alimentada por apenas 1 gerador de motor.
+
+Pergunta 112 - Inspeção asa gelo/Holdover?
+Resposta: Pelo PM ou Jump Seat.
+
+Pergunta 113 - Autotrim limite bank?
+Resposta: 33º.
+
+Pergunta 114 - Sumiço barras FD no bank?
+Resposta: >45°, volta aos 40°.
+
+Pergunta 115 - NAV ACCURACY LOW?
+Resposta: EPU excedeu RNP.
+
+Pergunta 116 - Cinzas vulcânicas motor falha?
+Resposta: Tentar reacionar repetidamente. PANE UNRELIABLE (bloqueia pitot).
+
+Pergunta 117 - Soft Go Around?
+Resposta: Vai pro TOGA se a razão de 2300ft/min não for atingida.
+
+Pergunta 118 - ALL button do ECAM?
+Resposta: Passa sistemas a cada 3s.
+
+Pergunta 119 - Pouso A321 pitch call?
+Resposta: PM: "PITCH PITCH" a +7.5°.
+
+Pergunta 120 - Yellow ELEC Pump auto em solo?
+Resposta: Ao operar portas de carga.
+
+Pergunta 121 - Vazamento sistema azul slats?
+Resposta: Operam a meia velocidade.
+
+Pergunta 122 - Uso Radar cinzas vulcânicas?
+Resposta: Radar não detecta cinzas.
+
+Pergunta 123 - Pane dupla Azul+Amarelo baixar trem?
+Resposta: Por gravidade, poupando Sist Verde para freio/controles.
+
+Pergunta 124 - ATC pede proa cruzando RF Leg?
+Resposta: Negar (não cumpre perfil curvo RNP).
+
+Pergunta 125 - VLS margem de stall?
+Resposta: 23% acima do VS1-G.
+
+Pergunta 126 - Unreliable Speed approach fctm?
+Resposta: Early Stabilized Approach.
+
+Pergunta 127 - PULL UP, TOGA (TAWS):
+Resposta: AP OFF, PITCH PULL UP, Manetes TOGA, Speedbrakes retract, wings level. Não mudar conf até livrar obstáculo.
+
+Pergunta 128 - Unreliable Speed:
+Resposta: AP OFF, A/THR OFF, FD OFF. Pitch: < thrust red alt (15/TOGA). > thrust red alt e < FL100 (10/CLB). > FL100 (5/CLB).
+
+Pergunta 129 - Emergency Descent:
+Resposta: Crew Oxy Masks USE, Signs ON, iniciar descida. Se A/THR off (IDLE / SPD BRK FULL). Transponder 7700. PA do PF: "Atenção descida rápida...". PA do PM: "Usem as máscaras".
+
+Pergunta 130 - Loss of Braking:
+Resposta: REV MAX, Brake pedals RELEASE, A/SKID OFF, Pedais limitados a 1000 PSI. Se nada funcionar: PARK BRAKE.
+
+Pergunta 131 - Stall Recovery:
+Resposta: Callout "Stall, I have controls". NOSE DOWN PITCH CONTROL, Wings level. Fora do stall: acelerar suavemente, recolher spd brk.

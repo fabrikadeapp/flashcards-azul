@@ -1,0 +1,389 @@
+Pergunta 221 - O que é “Shed” em perda de AC BUS 1?
+Resposta: Corte automático de cargas não essenciais (galleys/IFE) para poupar gerador.
+
+Pergunta 222 - Limite de tailwind em pista com gelo? 
+Resposta: Conforme FCOM; MGO exige extremo cuidado e restrições em contaminada.
+
+Pergunta 223 - Temperatura do combustível muito baixa gera alerta?
+Resposta: Advisory aprox. -40°C no A320.
+
+Pergunta 224 - Pista fechada >60 dias altera mínimos de alternativa?
+Resposta: NOTAM/reforma afeta validação de mínimos, exigindo regras de planejamento.
+
+Pergunta 225 - Penalidade de consumo a 6000 ft abaixo do nível ótimo?
+Resposta: +12% consumo.
+
+Pergunta 226 - Critérios de Aproximação Estabilizada na Azul?
+Resposta: Trajetória/atitude/empuxo corretos, trem/ flap final, checklist completa e speed target a 1000ft IMC/500ft VMC.
+
+Pergunta 227 - Early Stabilized Approach por pitot congelado: onde configura?
+Resposta: Em altitude superior, ajustando atitude com gear e flap para estabilizar.
+
+Pergunta 228 - In Range Call: onde é feito o comando inicial?
+Resposta: PM liga LDG lights e anuncia transição/esterilidade para cabine.
+
+Pergunta 229 - Descanso fora de base Tripulação Simples: mínimo?
+Resposta: Conforme RBAC 117 integrado ao MGO.
+
+Pergunta 230 - VMC em B/C/D em cruzeiro: restrição?
+Resposta: 1500m horizontal, 300m vertical; vis 8 km se > FL100.
+
+Pergunta 231 - VMC abaixo FL100: vis mínima?
+Resposta: 5 km.
+
+Pergunta 232 - PM pode conduzir manobras se Cmte instruir?
+Resposta: Pode auxiliar, mas “My Controls” exige repasse formal.
+
+Pergunta 233 - Por que checar ADDOCS antes do ISA Briefing?
+Resposta: Garantir boletins/NOTAM/RT-OPS lidos.
+
+Pergunta 234 - Inicialização eletrônica de performance de pista?
+Resposta: Via FlySmart+ T.O APP (EFB).
+
+Pergunta 235 - Quais cartas devem ser preparadas para emergência?
+Resposta: Cartas IFR do trajeto e procedimentos, Chart Clip acessível em ambos EFBs.
+
+Pergunta 236 - Oxygen Control Slide Reset pós Emergency Descent: para que?
+Resposta: Interromper fluxo emergencial e restaurar sistema após hipóxia.
+
+Pergunta 237 - Uso do “MAYDAY”: efeito?
+Resposta: Impõe silêncio na frequência, usado em perigo iminente.
+
+Pergunta 238 - Passageiro não obedece cinto no táxi: ação?
+Resposta: Não decola; para táxi, informa, retorna gate e desembarca infrator se persistir.
+
+Pergunta 239 - Bird Strike + High Engine Vibration: ação principal?
+Resposta: Avaliar; se dano, master OFF/Agent 1 e desviar ao mais adequado.
+
+Pergunta 240 - Falha flap/slat e retorno CGH: como age?
+Resposta: Consultar limitações; se performance No-Go, desviar (VCP/GRU).
+
+Pergunta 241 - Reset de system no ponto sob pressão: como?
+Resposta: Pedir espera/livrar pista; executar reset com tempo e retomar checklists.
+
+Pergunta 242 - Quem checa “Tripulação OK” e por quê?
+Resposta: Cmte (docs, álcool, mergulho/24h, estado físico/mental).
+
+Pergunta 243 - Violência em cabine traseira: abrir porta cockpit pro FO ajudar?
+Resposta: Nunca; porta não abre em nível 3/4.
+
+Pergunta 244 - Freios a 1000 graus: usar água?
+Resposta: Não; risco explosão. Deixar sem parking brake e acionar bombeiros.
+
+Pergunta 245 - Odor ácido do ar condicionado: ação?
+Resposta: Tratar como smoke; máscaras, emergência, QRH e desvio.
+
+Pergunta 246 - Perda total ADR: altitude backup no BUSS é qual?
+Resposta: Altitude GPS (escala auxiliar).
+
+Pergunta 247 - Como calcula Contingency Fuel?
+Resposta: Maior entre 5 min ou 5% do Trip Fuel.
+
+Pergunta 248 - OFP com destino sem meteo: composição?
+Resposta: A+B (destino) + destino→C + navegação→D + 30 min em D a 1500ft.
+
+Pergunta 249 - ECAM “Cabin Door Open”: ação?
+Resposta: ECAM actions; evitar pressurizar; avaliar retorno.
+
+Pergunta 250 - Tempo mínimo Turn Around A320?
+Resposta: Normalmente 40 min.
+
+Pergunta 251 - FWD Cargo Smoke em voo: ação?
+Resposta: Discharge halon, alertar ATC, desvio mandatório.
+
+Pergunta 252 - Sterile cockpit: pode revisar escala no EFB?
+Resposta: Não abaixo FL100 (violação).
+
+Pergunta 253 - Orientação sobre pedestal?
+Resposta: Não apoiar malas no pedestal para evitar inputs acidentais.
+
+Pergunta 254 - Ao sair: o que fazer com brilho dos displays?
+Resposta: Reduzir/zerar brilho.
+
+Pergunta 255 - Regra das lixeiras pré/pós voo?
+Resposta: Remover lixo/itens e entregar à limpeza.
+
+Pergunta 256 - Ponte desengatada com pax atrasado: reengatar?
+Resposta: Não. Segurança/slot; seguir.
+
+Pergunta 257 - Consolidation of Knowledge: não pode voar com quem?
+Resposta: Outro piloto na mesma fase.
+
+Pergunta 258 - Verificação extintor Halon cockpit: o que olhar?
+Resposta: Agulha na faixa verde.
+
+Pergunta 259 - RTO V1 com pneu estourado sem fogo: evacua?
+Resposta: Não; “situação controlada”, aciona bombeiros e avalia.
+
+Pergunta 260 - Onde fica “Manual Release Tool” no cockpit?
+Resposta: Ferramenta extra de alavancagem no overhead (conforme pictograma citado).
+
+Pergunta 261 - EEMK: nome e conteúdo alvo?
+Resposta: Emergency Medical Kit; uso por médico/enfermeiro; difere do First Aid Kit.
+
+Pergunta 262 - DEA a bordo é obrigatório?
+Resposta: Sim.
+
+Pergunta 263 - Life Vests em aproximações sobre água?
+Resposta: Verificados no briefing; inflar somente após sair na água.
+
+Pergunta 264 - Passageiro com cão de serviço e incapacidade mental: orientação?
+Resposta: Transporte assegurado (SVAN), alocação segura sem bloquear escape.
+
+Pergunta 265 - Reabastecer no táxi/pista com motor girando?
+Resposta: Não; restrições, fazer no gate/área homologada.
+
+Pergunta 266 - Tripulante supernumerário sem jumpseat extra: o que não faz?
+Resposta: Não entra/atrapalha cockpit durante fases estéreis/IFR.
+
+Pergunta 267 - Níveis de “ENG FAIL WITH DAMAGE”?
+Resposta: Master vermelho; Master OFF; Agent 1 e se necessário 2.
+
+Pergunta 268 - Incapacitação suave do Cmte: callout e procedimento?
+Resposta: FO takeover “My Controls”, liga AP e declara emergência/coordena cabine.
+
+Pergunta 269 - FD pode ficar ON com A/THR OFF e AP OFF em Unreliable Speed?
+Resposta: Não.
+
+Pergunta 270 - Por que recolher speedbrakes no TAWS PULL UP?
+Resposta: Reduz arrasto e melhora performance de subida.
+
+Pergunta 271 - Em PULL UP pode recolher CONF 3?
+Resposta: Não; não mudar configuração até clear of obstacle.
+
+Pergunta 272 - “Stall, I have controls”: como executar?
+Resposta: Nose Down Pitch Control, wings level.
+
+Pergunta 273 - Circling: onde PM olha?
+Resposta: Divide visual externo (pista) e instrumentos/checks.
+
+Pergunta 274 - Altitude base visual em encurtamento radar: qual?
+Resposta: 500 ft AGL estabilizado.
+
+Pergunta 275 - APU Low Oil Level em voo: o que acontece?
+Resposta: Ainda pode voar ~10h sem vazamento (conforme seu texto).
+
+Pergunta 276 - Passageiro armado indo ao lavatório: MGO orienta o quê?
+Resposta: Manter o passageiro o máximo possível assentado/gerenciado para evitar riscos.
+
+Pergunta 277 - Indisciplina nível 2 (assédio): ação?
+Resposta: Avisar comando, isolar vítima, notificação e polícia no desembarque.
+
+Pergunta 278 - Por que PTU existe?
+Resposta: Transferir potência hidráulica sem misturar fluido (amarelo↔verde).
+
+Pergunta 279 - Emergency descent: por que ALT Turn and Pull primeiro? 
+Resposta: Comandar open descent ao nível selecionado.
+
+Pergunta 280 - Por que HDG Turn and Pull na emergência?
+Resposta: Sair lateralmente da rota para evitar conflitos RVSM.
+
+Pergunta 281 - Speedbrakes FULL e thrust IDLE: o que checar no A/THR?
+Resposta: Garantir A/THR desconectado/inativo.
+
+Pergunta 282 - Como ver que High Speed Protection entrou?
+Resposta: Indicações no PFD e tendência de nariz UP/proteção.
+
+Pergunta 283 - Tempo limite para girar APU em solo (turn around)?
+Resposta: Conforme seu texto (APU puxa 3.5m da bateria etc.).
+
+Pergunta 284 - Diferença TAA vs MSA?
+Resposta: TAA ligada a fixos RNAV; MSA é círculo fixo (ex: 25nm do VOR).
+
+Pergunta 285 - Rotas sorteadas no Mosaico (Nav): quais exemplos?
+Resposta: GIG-VCP, CWB-VCP, GRU-GIG etc.
+
+Pergunta 286 - Retorno pós-pane no Sim: em que meteo?
+Resposta: Icing Conditions.
+
+Pergunta 287 - ELAC 1 e 2 Fault: como liderar?
+Resposta: PF foca pilotagem degradada; PM checklists/penalidades.
+
+Pergunta 288 - WHEEL NW STEER FAULT: quem toma o leme?
+Resposta: Comandante no tiller; pode exigir freio diferencial/rudder.
+
+Pergunta 289 - FWC 2 FAULT: por que afeta callouts?
+Resposta: Perda de parte dos avisos/callouts; tripulação faz backup verbal.
+
+Pergunta 290 - AUTO FLT FCU 1 FAULT: pode resetar?
+Resposta: Fazer reset conforme QRH; só “GO” se normalizar.
+
+Pergunta 291 - ONE MCDU FAULT no táxi: como navegar?
+Resposta: Usar a MCDU remanescente e rádio-ajudas/backup.
+
+Pergunta 292 - Segregação técnica (embarque parcial): é legal?
+Resposta: Sim, conforme seu texto do MGO.
+
+Pergunta 293 - Tailwind máximo padrão: qual?
+Resposta: T/O 15 kt (observando restrições locais).
+
+Pergunta 294 - “Aeronave OK” da comissária: impacto?
+Resposta: Confirma cabine segura/travas/portas e libera pushback.
+
+Pergunta 295 - Brifar documentos pessoais em “sterile”?
+Resposta: Não abaixo FL100/sterile line.
+
+Pergunta 296 - LMC: o que pode sem refazer loadsheet?
+Resposta: Até 335 kg (A320).
+
+Pergunta 297 - Flex Takeoff em Heavy Rain/Standing Water: permitido?
+Resposta: Não; usar TOGA.
+
+Pergunta 298 - Notebook pegando fogo (bateria lítio): ação?
+Resposta: Gestão DGR/segurança conforme seu texto (extintor, resfriamento, isolamento e pouso).
+
+Pergunta 299 - “Not related to MEL”: o que exige?
+Resposta: Sem MEL não despacha; “fix it or grounded”, acionar MCC.
+
+Pergunta 300 - Garantia final (Cultura Justa): qual?
+Resposta: “Eles querem ver gerenciamento, não heroísmo…”.
+
+Pergunta 301 - Antecedência mínima para avisar escala por saúde?
+Resposta: 8h antes; em até 48h formalizar atestado.
+
+Pergunta 302 - Piloto <100h pode voar com outro <100h?
+Resposta: Não.
+
+Pergunta 303 - Punições da “Advertência Escrita”?
+Resposta: Inelegível a promoções por 6 meses e suspensão de concessão de passagens por 3 meses.
+
+Pergunta 304 - Jumpseat em cargueiros: política?
+Resposta: Todo assento é saída de emergência; tripulante extra deve cumprir requisitos fisiológicos.
+
+Pergunta 305 - Sem oferta de standby: como emitir passe livre?
+Resposta: Solicita autorização diretamente ao comandante do voo.
+
+Pergunta 306 - Extra pode conversar no cockpit no pré-voo?
+Resposta: Não; não deve quebrar sterile/briefings.
+
+Pergunta 307 - Regra de segregação para ganhar tempo:
+Resposta: Embarque com mínimo 1 piloto e metade dos comissários requeridos.
+
+Pergunta 308 - Tempos mínimos de solo padrão:
+Resposta: ATR 30; E1/E2 35-40; A320/A321 40-50; A330 1h15 dom/1h30 int.
+
+Pergunta 309 - Categoria de incêndio aeródromo A320:
+Resposta: Cat 6 (tolerável Cat 5 em casos específicos citados).
+
+Pergunta 310 - Contingency Fuel no Brasil:
+Resposta: Maior entre 5 min ou 5% do Trip Fuel.
+
+Pergunta 311 - MFR no táxi:
+Resposta: Trip + Contingência + Alternado + Reserva (30 min).
+
+Pergunta 312 - Incrementos alternado CAT I:
+Resposta: +200 ft teto e +800 m vis.
+
+Pergunta 313 - Alternado não-precisão/circling:
+Resposta: +400 ft teto e +1500 m vis.
+
+Pergunta 314 - Close-in Alternate:
+Resposta: Alternado até 100 NM; usado raramente e com condições (teto/vis) citadas.
+
+Pergunta 315 - PCR (novo padrão):
+Resposta: Classificação sem letras; comparar PCR com ACR em tabelas.
+
+Pergunta 316 - Decolagem paralela dependente:
+Resposta: Pistas <760 m; divergência ≥15° pós rotação.
+
+Pergunta 317 - Conferência FOB em voo >90 min:
+Resposta: TOC, a cada hora cheia e TOD.
+
+Pergunta 318 - Captain fuel/extra sem recálculo:
+Resposta: Dentro do LMC (335 A320 / 390 A321).
+
+Pergunta 319 - Vel IFR máxima abaixo FL140 em espera:
+Resposta: 230 kt normal; 170 kt com turbulência severa.
+
+Pergunta 320 - Tempo outbound holding:
+Resposta: 1 min até FL140; 1 min 30 acima FL140.
+
+Pergunta 321 - Interceptação “DESCEND”:
+Resposta: Desça para pousar neste aeródromo; seguir (FOLLOW).
+
+Pergunta 322 - Desvio 5 NM esquerda em rota leste sem ATC:
+Resposta: Transmitir 121.5 e descer 300 ft.
+
+Pergunta 323 - Desvio 5 NM direita em rota oeste:
+Resposta: Descer 300 ft.
+
+Pergunta 324 - RAIM RNP APCH:
+Resposta: Terminal 1.0 NM; Final 0.3 NM.
+
+Pergunta 325 - ILS “OFFSET LOC”:
+Resposta: LOC não alinhado com pista; desvio até 3° (TERPS) ou 5° (ICAO).
+
+Pergunta 326 - Circling CAT C (A320): área máxima:
+Resposta: Até 4.2 NM.
+
+Pergunta 327 - Estabilizada a 500 ft (visual): critérios:
+Resposta: Trem down, flap final, potência > idle, vel -5/+10, VS ≤1000, checklist completa.
+
+Pergunta 328 - Falha gate IFR 1000 ft: callout:
+Resposta: “NOT STABLE, GO AROUND!”.
+
+Pergunta 329 - Curva base encurtamento radar: mínimo:
+Resposta: 500 ft AGL estabilizado.
+
+Pergunta 330 - Sterile cockpit: intervalo:
+Resposta: Fechamento portas→FL100 (subida) e FL100→parada total/desarmamento (descida).
+
+Pergunta 331 - Falha CPDLC: reply:
+Resposta: “UNABLE” e buscar fonia.
+
+Pergunta 332 - Callout “IN RANGE”: quando ocorre:
+Resposta: Ao selecionar FLAP 1, anuncia para cabine “TRIPULAÇÃO, PREPARAR PARA O POUSO”.
+
+Pergunta 333 - ADDOCS no primeiro voo: o que validar:
+Resposta: Avisos urgentes, RT-OPS e NOTAMs essenciais.
+
+Pergunta 334 - DEPU/DEPA/PRG podem sentar em saída?
+Resposta: Não.
+
+Pergunta 335 - Nº policiais por custodiado:
+Resposta: Mínimo 2 por 1; máximo 2 custodiados no avião.
+
+Pergunta 336 - 3 vias formulário arma: destino:
+Resposta: 1ª passageiro, 2ª origem, 3ª junto à bagagem/arma no porão.
+
+Pergunta 337 - Cão de serviço psiquiátrico/cão-guia: restrição/cobrança:
+Resposta: Não; SVAN, embarque em cabine com regras de segurança.
+
+Pergunta 338 - Passageiro mentalmente incapacitado severo: mandatório:
+Resposta: Acompanhante.
+
+Pergunta 339 - Crash Axe: onde fica e quem leva:
+Resposta: Cockpit; comandante leva no abandono.
+
+Pergunta 340 - Passageiro acende cigarro (nível 1): ação:
+Resposta: Mandar apagar, avisar comandante, termo; se acatar, reporta no destino.
+
+Pergunta 341 - Ameaça de bomba: mindset inicial:
+Resposta: Evitar descidas violentas; pousar no nearest suitable.
+
+Pergunta 342 - Parada cardiorrespiratória: pode usar DEA?
+Resposta: Sim.
+
+Pergunta 343 - EEMK pode ser aberto em asma/ataque?
+Resposta: Somente por médico/enfermeiro identificado.
+
+Pergunta 344 - Fases de alerta ICAO:
+Resposta: INCERFA, ALERFA, DETRESFA.
+
+Pergunta 345 - Pouso forçado sem evacuação: PA:
+Resposta: “ATENÇÃO, AGUARDEM INSTRUÇÕES”.
+
+Pergunta 346 - Reset “AUTO FLT FCU 1 FAULT” no ponto:
+Resposta: Pedir espera, não decolar com falha, fazer reset via QRH.
+
+Pergunta 347 - Smoke FWD Cargo: ação e tempo:
+Resposta: Mayday, discharge agent, desvio; halon protege ~60 min.
+
+Pergunta 348 - ENG FAIL WITH DAMAGE após V1:
+Resposta: EO-SID, pitch 12.5, Engine Master OFF (crosscheck) e Agents.
+
+Pergunta 349 - Cálculo VDP (não-precisão):
+Resposta: HAT/300 (regra 3:1).
+
+Pergunta 350 - Frase base aprovação simulador:
+Resposta: “Eles querem ver gerenciamento, não heroísmo.”
