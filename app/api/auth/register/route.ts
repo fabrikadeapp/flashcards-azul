@@ -3,7 +3,8 @@ import { supabase } from '@/lib/supabase';
 
 export async function POST(req: Request) {
     try {
-        const { name, email, password } = await req.json();
+        const { name, email: rawEmail, password } = await req.json();
+        const email = rawEmail?.trim().toLowerCase();
 
         if (!name || !email || !password) {
             return NextResponse.json({ error: 'Todos os campos são obrigatórios' }, { status: 400 });

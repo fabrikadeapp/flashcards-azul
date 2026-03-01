@@ -11,6 +11,10 @@ export async function GET() {
             .order('created_at', { ascending: false });
 
         if (error) {
+            console.error('Database Error:', error);
+            if (error.code === '401' || error.message?.includes('Invalid key')) {
+                return NextResponse.json({ error: 'Erro de conexão: Chave Admin inválida no Vercel.' }, { status: 500 });
+            }
             throw error;
         }
 

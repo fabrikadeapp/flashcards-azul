@@ -64,16 +64,23 @@ export default function AdminDashboard() {
                     fetch('/api/admin/audit')
                 ])
 
-                if (!usersRes.ok) throw new Error('Erro ao carregar usuários')
-                const usersData = await usersRes.json()
-                setUsersList(usersData.users)
-
-                if (auditRes.ok) {
-                    const auditData = await auditRes.json()
-                    setAuditLogs(auditData.logs)
+                if (!usersRes.ok) {
+                    const data = await usersRes.json();
+                    throw new Error(data.error || 'Erro ao carregar usuários');
                 }
-            } catch (err) {
-                setError('Não foi possível carregar os dados.')
+                if (!auditRes.ok) {
+                    const data = await auditRes.json();
+                    throw new Error(data.error || 'Erro ao carregar auditoria');
+                }
+
+                const usersData = await usersRes.json();
+                const auditData = await auditRes.json();
+
+                setUsersList(usersData.users || [])
+                setAuditLogs(auditData.logs || [])
+            } catch (err: any) {
+                console.error('Fetch error:', err);
+                setError(err.message || 'Não foi possível carregar os dados.')
             } finally {
                 setLoading(false)
             }

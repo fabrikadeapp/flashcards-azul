@@ -6,27 +6,39 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
     try {
         const { email, password } = await req.json();
+        const cleanEmail = email?.trim().toLowerCase();
 
-        if (!email || !password) {
+        if (!cleanEmail || !password) {
             return NextResponse.json({ error: 'E-mail e senha são obrigatórios' }, { status: 400 });
         }
 
-        console.log('Login attempt:', email);
+        console.log('Login attempt:', cleanEmail);
 
         const { data: user, error } = await supabase
             .from('users')
             .select('*')
-            .eq('email', email)
+            .eq('email', cleanEmail)
             .single();
 
-        if (error || !user) {
-            console.error('Login user check error:', error);
-            return NextResponse.json({ error: 'Credenciais inválidas' }, { status: 401 });
+        if (error) {
+            console.error('Database Error:', error);
+            // Se for erro de auth no Supabase (pode ser chave inválida)
+            if (error.code === '401' || error.message?.includes('Invalid key')) {
+                return NextResponse.json({ error: 'Erro de conexão com o banco (Chave Admin inválida)' }, { status: 500 });
+            }
+            if (error.code === 'PGRST116') { // Código para '0 rows found'
+                return NextResponse.json({ error: 'Conta não encontrada com este e-mail' }, { status: 401 });
+            }
+            return NextResponse.json({ error: 'Erro ao consultar banco de dados: ' + error.message }, { status: 500 });
+        }
+
+        if (!user) {
+            return NextResponse.json({ error: 'Credenciais inválidas (usuário não existe)' }, { status: 401 });
         }
 
         if (user.password !== password) {
-            console.warn('Wrong password for:', email);
-            return NextResponse.json({ error: 'Credenciais inválidas' }, { status: 401 });
+            console.warn('Wrong password for:', cleanEmail);
+            return NextResponse.json({ error: 'Senha incorreta' }, { status: 401 });
         }
 
         // Verifica status para não-admins

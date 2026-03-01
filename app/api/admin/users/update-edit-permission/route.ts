@@ -6,8 +6,9 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
     try {
         const { email, canEdit } = await req.json();
+        const cleanEmail = email?.trim().toLowerCase();
 
-        if (!email || canEdit === undefined) {
+        if (!cleanEmail || canEdit === undefined) {
             return NextResponse.json({ error: 'Email e permissão são obrigatórios' }, { status: 400 });
         }
 
@@ -27,11 +28,11 @@ export async function POST(req: Request) {
 
         // 2. Adiciona ou remove o email da lista de editores
         if (canEdit) {
-            if (!currentConfig.editors.includes(email)) {
-                currentConfig.editors.push(email);
+            if (!currentConfig.editors.includes(cleanEmail)) {
+                currentConfig.editors.push(cleanEmail);
             }
         } else {
-            currentConfig.editors = currentConfig.editors.filter((e: string) => e !== email);
+            currentConfig.editors = currentConfig.editors.filter((e: string) => e !== cleanEmail);
         }
 
         console.log('Updating edit permission for:', email, 'to:', canEdit);
@@ -47,7 +48,10 @@ export async function POST(req: Request) {
             .select();
 
         if (upsertError) {
-            console.error('Upsert Error:', upsertError);
+            console.error('Database Error:', upsertError);
+            if (upsertError.code === '401' || upsertError.message?.includes('Invalid key')) {
+                return NextResponse.json({ error: 'Erro de conexão: Chave Admin inválida no Vercel.' }, { status: 500 });
+            }
             throw upsertError;
         }
 
