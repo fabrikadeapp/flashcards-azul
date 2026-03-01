@@ -40,3 +40,15 @@ yarn-error.log*
 dist/
 .vercel
 .env*.local
+
+# Environment & Secrets (AIOS)
+*.key
+*.pem
+
+# Dependencies (AIOS)
+node_modules
+
+# AIOS Local (AIOS)
+.aios-core/local/
+.claude/settings.local.json
+.aios/install-log.txt
