@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { supabaseAdmin as supabase } from '@/lib/supabaseAdmin';
+import { supabaseAdmin as supabase, isSupabaseAdminConfigured } from '@/lib/supabaseAdmin';
 
 export const dynamic = 'force-dynamic';
 
@@ -10,6 +10,12 @@ export async function POST(req: Request) {
 
         if (!cleanEmail || !password) {
             return NextResponse.json({ error: 'E-mail e senha são obrigatórios' }, { status: 400 });
+        }
+
+        if (!isSupabaseAdminConfigured) {
+            return NextResponse.json({
+                error: 'Configuração Pendente: Adicione a SUPABASE_SERVICE_ROLE_KEY nas variáveis de ambiente da Vercel e faça um novo Deploy.'
+            }, { status: 500 });
         }
 
         console.log('Login attempt:', cleanEmail);
