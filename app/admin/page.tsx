@@ -135,12 +135,13 @@ export default function AdminDashboard() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId, newStatus })
             })
-            if (!res.ok) throw new Error()
+            const data = await res.json()
+            if (!res.ok) throw new Error(data.error || 'Erro desconhecido')
 
             // update local state
             setUsersList(prev => prev.map(u => u.id === userId ? { ...u, status: newStatus as any } : u))
-        } catch (err) {
-            alert('Erro ao atualizar o status do usuário.')
+        } catch (err: any) {
+            alert('Erro: ' + (err.message || 'Erro ao atualizar o status do usuário.'))
         }
     }
 
