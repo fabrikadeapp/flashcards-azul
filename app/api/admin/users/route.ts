@@ -33,7 +33,11 @@ export async function GET() {
             createdAt: u.created_at
         }));
 
-        return NextResponse.json({ success: true, users: mappedUsers });
+        return NextResponse.json({ success: true, users: mappedUsers }, {
+            headers: {
+                'Cache-Control': 'no-store, max-age=0'
+            }
+        });
     } catch (err) {
         console.error('Erro users:', err);
         return NextResponse.json({ error: 'Erro ao obter usuários' }, { status: 500 });

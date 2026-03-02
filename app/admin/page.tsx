@@ -60,8 +60,8 @@ export default function AdminDashboard() {
         const fetchData = async () => {
             try {
                 const [usersRes, auditRes] = await Promise.all([
-                    fetch('/api/admin/users'),
-                    fetch('/api/admin/audit')
+                    fetch('/api/admin/users?t=' + Date.now()),
+                    fetch('/api/admin/audit?t=' + Date.now())
                 ])
 
                 if (!usersRes.ok) {
@@ -135,8 +135,12 @@ export default function AdminDashboard() {
         }
     }
 
+    const [updatingStatus, setUpdatingStatus] = useState<string | null>(null)
+
     const handleUpdateStatus = async (userId: string, newStatus: string) => {
+        setUpdatingStatus(userId)
         try {
+            console.log(`Updating status for ${userId} to ${newStatus}`)
             const res = await fetch('/api/admin/users/update-status', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -147,8 +151,12 @@ export default function AdminDashboard() {
 
             // update local state
             setUsersList(prev => prev.map(u => u.id === userId ? { ...u, status: newStatus as any } : u))
+            console.log(`Status updated successfully for ${userId}`)
         } catch (err: any) {
+            console.error('Update status error:', err)
             alert('Erro: ' + (err.message || 'Erro ao atualizar o status do usuário.'))
+        } finally {
+            setUpdatingStatus(null)
         }
     }
 
@@ -284,20 +292,32 @@ export default function AdminDashboard() {
                                                             Aprovado
                                                         </span>
                                                     ) : (
-                                                        <select
-                                                            value={user.status || 'pending'}
-                                                            onChange={(e) => handleUpdateStatus(user.id, e.target.value)}
-                                                            className={`text-xs font-bold rounded-full px-3 py-1 outline-none cursor-pointer border ${user.status === 'active' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800' :
-                                                                user.status === 'frozen' ? 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-400 dark:border-orange-800' :
-                                                                    user.status === 'banned' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/40 dark:text-red-400 dark:border-red-800' :
-                                                                        'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
-                                                                }`}
-                                                        >
-                                                            <option value="pending" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Pendente</option>
-                                                            <option value="active" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Liberado</option>
-                                                            <option value="frozen" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Congelado</option>
-                                                            <option value="banned" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Banido</option>
-                                                        </select>
+                                                        <div className="relative">
+                                                            <select
+                                                                value={user.status || 'pending'}
+                                                                disabled={updatingStatus === user.id}
+                                                                onChange={(e) => handleUpdateStatus(user.id, e.target.value)}
+                                                                className={`text-xs font-bold rounded-full px-3 py-1 outline-none cursor-pointer border pr-8 transition-all appearance-none ${user.status === 'active' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800' :
+                                                                    user.status === 'frozen' ? 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-400 dark:border-orange-800' :
+                                                                        user.status === 'banned' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/40 dark:text-red-400 dark:border-red-800' :
+                                                                            'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
+                                                                    } ${updatingStatus === user.id ? 'opacity-50 grayscale' : ''}`}
+                                                            >
+                                                                <option value="pending" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Pendente</option>
+                                                                <option value="active" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Liberado</option>
+                                                                <option value="frozen" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Congelado</option>
+                                                                <option value="banned" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Banido</option>
+                                                            </select>
+                                                            {updatingStatus === user.id ? (
+                                                                <div className="absolute right-2 top-1/2 -translate-y-1/2">
+                                                                    <div className="animate-spin h-3 w-3 border-2 border-slate-400 border-t-transparent rounded-full"></div>
+                                                                </div>
+                                                            ) : (
+                                                                <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
+                                                                    <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
+                                                                </div>
+                                                            )}
+                                                        </div>
                                                     )}
                                                 </td>
                                                 <td className="p-4">
