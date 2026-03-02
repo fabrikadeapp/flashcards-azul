@@ -10,9 +10,16 @@ import LegacyLanding from '@/components/LandingPage/LegacyLanding';
 export default function RootPage() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState<any>(null);
     const router = useRouter();
 
     useEffect(() => {
+        // Handle Auth State
+        const stored = localStorage.getItem('currentUser');
+        if (stored) {
+            setUser(JSON.parse(stored));
+        }
+
         if (!FLAGS.ENABLE_PRODUCT_STORE) {
             setLoading(false);
             return;
@@ -57,13 +64,37 @@ export default function RootPage() {
                     <h1 className="text-2xl font-bold text-white tracking-tighter">
                         Mentor<span className="text-blue-500">Pilot</span>
                     </h1>
-                    <div className="flex gap-4">
-                        <button
-                            onClick={() => router.push('/dashboard')}
-                            className="text-white/70 hover:text-white transition-colors"
-                        >
-                            Meu Painel
-                        </button>
+                    <div className="flex gap-4 items-center">
+                        {user ? (
+                            <>
+                                {user.role === 'admin' && (
+                                    <button
+                                        onClick={() => router.push('/admin')}
+                                        className="text-blue-400 hover:text-blue-300 transition-colors font-medium border border-blue-400/20 px-4 py-1.5 rounded-lg"
+                                    >
+                                        ⚙️ Admin
+                                    </button>
+                                )}
+                                <button
+                                    onClick={() => router.push('/dashboard')}
+                                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-bold transition-all"
+                                >
+                                    Meu Painel
+                                </button>
+                            </>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    // When they want to login, we temporarily disable the flag for them 
+                                    // or redirect to a specific login route.
+                                    // Let's create a /login route that forcedly shows LegacyLanding
+                                    router.push('/login');
+                                }}
+                                className="text-white/70 hover:text-white transition-colors font-medium"
+                            >
+                                Entrar
+                            </button>
+                        )}
                     </div>
                 </div>
             </nav>

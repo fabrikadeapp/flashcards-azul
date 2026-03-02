@@ -20,7 +20,7 @@ export default function LegacyLanding() {
         setLoading(true)
 
         try {
-            const cleanEmail = email.trim().toLowerCase()
+            const cleanEmail = email.trim().toLowerCase().replace(/[\u200B-\u200D\uFEFF\u00A0]/g, '');
             if (isLogin) {
                 // Fluxo de Login
                 const res = await fetch('/api/auth/login', {

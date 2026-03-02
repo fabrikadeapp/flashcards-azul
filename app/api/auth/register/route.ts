@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin as supabase, isSupabaseAdminConfigured } from '@/lib/supabaseAdmin';
 
+import { normalizeEmail } from '@/lib/auth';
+
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
         const { name, email: rawEmail, password } = await req.json();
-        const email = rawEmail?.trim().toLowerCase();
+        const email = normalizeEmail(rawEmail);
 
         if (!name || !email || !password) {
             return NextResponse.json({ error: 'Todos os campos são obrigatórios' }, { status: 400 });

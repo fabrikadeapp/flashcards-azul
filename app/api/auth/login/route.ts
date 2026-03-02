@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server';
 import { supabaseAdmin as supabase, isSupabaseAdminConfigured } from '@/lib/supabaseAdmin';
 
+import { normalizeEmail } from '@/lib/auth';
+
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
         const { email, password } = await req.json();
-        const cleanEmail = email?.trim().toLowerCase();
+        const cleanEmail = normalizeEmail(email);
 
         if (!cleanEmail || !password) {
             return NextResponse.json({ error: 'E-mail e senha são obrigatórios' }, { status: 400 });
