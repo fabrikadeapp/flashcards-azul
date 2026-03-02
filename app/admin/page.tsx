@@ -60,7 +60,7 @@ export default function AdminDashboard() {
         const fetchData = async () => {
             try {
                 const [usersRes, auditRes] = await Promise.all([
-                    fetch('/api/admin/users?t=' + Date.now()),
+                    fetch('/api/admin/users?t=' + Date.now(), { method: 'POST' }),
                     fetch('/api/admin/audit?t=' + Date.now())
                 ])
 
@@ -86,7 +86,14 @@ export default function AdminDashboard() {
             }
         }
 
+        const fetchManually = async () => {
+            setLoading(true)
+            await fetchData()
+        }
+
         fetchData()
+        const interval = setInterval(fetchData, 30000) // Auto refresh every 30s
+        return () => clearInterval(interval)
     }, [router])
 
     const handleUpdateEditPermission = async (email: string, canEdit: boolean) => {
@@ -136,11 +143,15 @@ export default function AdminDashboard() {
     }
 
     const [updatingStatus, setUpdatingStatus] = useState<string | null>(null)
+    const [pendingStatus, setPendingStatus] = useState<Record<string, string>>({})
 
-    const handleUpdateStatus = async (userId: string, newStatus: string) => {
+    const handleUpdateStatus = async (userId: string) => {
+        const newStatus = pendingStatus[userId]
+        if (!newStatus) return
+
         setUpdatingStatus(userId)
         try {
-            console.log(`Updating status for ${userId} to ${newStatus}`)
+            console.log(`Saving status for ${userId}: ${newStatus}`)
             const res = await fetch('/api/admin/users/update-status', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -151,10 +162,18 @@ export default function AdminDashboard() {
 
             // update local state
             setUsersList(prev => prev.map(u => u.id === userId ? { ...u, status: newStatus as any } : u))
-            console.log(`Status updated successfully for ${userId}`)
+
+            // Clear pending
+            setPendingStatus(prev => {
+                const updated = { ...prev }
+                delete updated[userId]
+                return updated
+            })
+
+            console.log(`Persistent status change for ${userId} committed.`)
         } catch (err: any) {
-            console.error('Update status error:', err)
-            alert('Erro: ' + (err.message || 'Erro ao atualizar o status do usuário.'))
+            console.error('Persistence error:', err)
+            alert('Falha crítica ao salvar: ' + (err.message || 'Tente novamente.'))
         } finally {
             setUpdatingStatus(null)
         }
@@ -259,6 +278,13 @@ export default function AdminDashboard() {
                                 <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                                     Usuários Cadastrados ({usersList.length})
                                 </h2>
+                                <button
+                                    onClick={() => window.location.reload()}
+                                    className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-sm font-bold rounded-xl border border-blue-100 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all"
+                                >
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
+                                    Sincronizar Dados
+                                </button>
                             </div>
 
                             <div className="overflow-x-auto">
@@ -292,30 +318,44 @@ export default function AdminDashboard() {
                                                             Aprovado
                                                         </span>
                                                     ) : (
-                                                        <div className="relative">
-                                                            <select
-                                                                value={user.status || 'pending'}
-                                                                disabled={updatingStatus === user.id}
-                                                                onChange={(e) => handleUpdateStatus(user.id, e.target.value)}
-                                                                className={`text-xs font-bold rounded-full px-3 py-1 outline-none cursor-pointer border pr-8 transition-all appearance-none ${user.status === 'active' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800' :
-                                                                    user.status === 'frozen' ? 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-400 dark:border-orange-800' :
-                                                                        user.status === 'banned' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/40 dark:text-red-400 dark:border-red-800' :
-                                                                            'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
-                                                                    } ${updatingStatus === user.id ? 'opacity-50 grayscale' : ''}`}
-                                                            >
-                                                                <option value="pending" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Pendente</option>
-                                                                <option value="active" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Liberado</option>
-                                                                <option value="frozen" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Congelado</option>
-                                                                <option value="banned" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Banido</option>
-                                                            </select>
-                                                            {updatingStatus === user.id ? (
-                                                                <div className="absolute right-2 top-1/2 -translate-y-1/2">
-                                                                    <div className="animate-spin h-3 w-3 border-2 border-slate-400 border-t-transparent rounded-full"></div>
-                                                                </div>
-                                                            ) : (
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="relative">
+                                                                <select
+                                                                    value={pendingStatus[user.id] || user.status || 'pending'}
+                                                                    disabled={updatingStatus === user.id}
+                                                                    onChange={(e) => setPendingStatus(prev => ({ ...prev, [user.id]: e.target.value }))}
+                                                                    className={`text-xs font-bold rounded-full px-3 py-1 outline-none cursor-pointer border pr-8 transition-all appearance-none ${(pendingStatus[user.id] || user.status) === 'active' ? 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/40 dark:text-green-400 dark:border-green-800' :
+                                                                            (pendingStatus[user.id] || user.status) === 'frozen' ? 'bg-orange-50 text-orange-700 border-orange-200 dark:bg-orange-900/40 dark:text-orange-400 dark:border-orange-800' :
+                                                                                (pendingStatus[user.id] || user.status) === 'banned' ? 'bg-red-50 text-red-700 border-red-200 dark:bg-red-900/40 dark:text-red-400 dark:border-red-800' :
+                                                                                    'bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700'
+                                                                        } ${pendingStatus[user.id] ? 'ring-2 ring-blue-500/50' : ''}`}
+                                                                >
+                                                                    <option value="pending" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Pendente</option>
+                                                                    <option value="active" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Liberado</option>
+                                                                    <option value="frozen" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Congelado</option>
+                                                                    <option value="banned" className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white">Banido</option>
+                                                                </select>
                                                                 <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
                                                                     <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
                                                                 </div>
+                                                            </div>
+
+                                                            {pendingStatus[user.id] && (
+                                                                <button
+                                                                    onClick={() => handleUpdateStatus(user.id)}
+                                                                    disabled={updatingStatus === user.id}
+                                                                    className="flex items-center justify-center h-7 px-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-[10px] font-bold shadow-lg transition-all animate-pulse"
+                                                                >
+                                                                    {updatingStatus === user.id ? (
+                                                                        <div className="animate-spin h-3 w-3 border-2 border-white border-t-transparent rounded-full"></div>
+                                                                    ) : (
+                                                                        'SALVAR'
+                                                                    )}
+                                                                </button>
+                                                            )}
+
+                                                            {updatingStatus === user.id && (
+                                                                <span className="text-[10px] font-bold text-blue-500 animate-pulse">Gravando...</span>
                                                             )}
                                                         </div>
                                                     )}

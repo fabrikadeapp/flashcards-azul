@@ -3,7 +3,8 @@ import { supabaseAdmin as supabase } from '@/lib/supabaseAdmin';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function POST() {
+    console.log('Fetching users list (POST) - Cache avoided');
     try {
         const { data: users, error } = await supabase
             .from('users')
@@ -35,7 +36,8 @@ export async function GET() {
 
         return NextResponse.json({ success: true, users: mappedUsers }, {
             headers: {
-                'Cache-Control': 'no-store, max-age=0'
+                'Cache-Control': 'no-store, max-age=0, must-revalidate',
+                'Pragma': 'no-cache'
             }
         });
     } catch (err) {
