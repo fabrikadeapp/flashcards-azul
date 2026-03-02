@@ -151,18 +151,21 @@ export default function AdminDashboard() {
 
         setUpdatingStatus(userId)
         try {
-            console.log(`Saving status for ${userId}: ${newStatus}`)
+            console.log(`[Diagnostic] Attempting status update for ${userId} to ${newStatus}`)
             const res = await fetch('/api/admin/users/update-status', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ userId, newStatus })
+                body: JSON.stringify({ userId, newStatus, timestamp: new Date().toISOString() })
             })
 
             const data = await res.json()
 
             if (!res.ok) {
+                console.error('[Diagnostic] Update status failed:', data)
                 throw new Error(data.error || 'Erro ao comunicar com o servidor')
             }
+
+            console.log(`[Diagnostic] Update status success for ${userId}:`, data)
 
             // update local state
             setUsersList(prev => prev.map(u => u.id === userId ? { ...u, status: newStatus as any } : u))
@@ -174,11 +177,10 @@ export default function AdminDashboard() {
                 return updated
             })
 
-            alert(`Status do usuário atualizado para "${newStatus}" com sucesso!`)
-            console.log(`Persistent status change for ${userId} committed.`)
+            alert(`✅ Status atualizado com sucesso para: ${newStatus}\n\nO sistema confirmou a gravação no banco de dados.`)
         } catch (err: any) {
-            console.error('Persistence error:', err)
-            alert('Falha ao salvar: ' + (err.message || 'Tente novamente.'))
+            console.error('[Diagnostic] Persistence error:', err)
+            alert('❌ FALHA CRÍTICA AO SALVAR:\n' + (err.message || 'Erro desconhecido. Verifique a conexão com o banco.'))
         } finally {
             setUpdatingStatus(null)
         }
@@ -421,6 +423,20 @@ export default function AdminDashboard() {
                             </div>
 
                         </div>
+
+                        {/* Resgate Card */}
+                        <a href="/admin/direct-fix" className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-100 dark:border-zinc-800 shadow-sm relative overflow-hidden group hover:border-blue-500 transition-all">
+                            <div className="flex items-start justify-between relative z-10">
+                                <div>
+                                    <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400 mb-1">Utilidade</p>
+                                    <h3 className="text-2xl font-bold text-zinc-900 dark:text-white mb-2">Resgate Crítico</h3>
+                                    <p className="text-xs text-zinc-400">Ative usuários por e-mail manualmente em segundos.</p>
+                                </div>
+                                <div className="p-3 bg-blue-50 dark:bg-blue-900/10 rounded-2xl">
+                                    <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path></svg>
+                                </div>
+                            </div>
+                        </a>
 
                         {/* Seção de Auditoria */}
                         <div className="bg-white dark:bg-slate-950 shadow-sm border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden mt-8">
