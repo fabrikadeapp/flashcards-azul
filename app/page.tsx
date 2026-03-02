@@ -1,169 +1,119 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
+import { Product } from '@/lib/types/commerce';
+import { FLAGS } from '@/lib/flags';
+import LegacyLanding from '@/components/LandingPage/LegacyLanding';
 
-export default function LandingPage() {
-    const [isLogin, setIsLogin] = useState(true)
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState('')
-    const [message, setMessage] = useState('')
-    const [loading, setLoading] = useState(false)
-    const router = useRouter()
+export default function RootPage() {
+    const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+    const router = useRouter();
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault()
-        setError('')
-        setMessage('')
-        setLoading(true)
-
-        try {
-            const cleanEmail = email.trim().toLowerCase()
-            if (isLogin) {
-                // Fluxo de Login
-                const res = await fetch('/api/auth/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: cleanEmail, password }),
-                })
-                const data = await res.json()
-
-                if (!res.ok) throw new Error(data.error)
-
-                localStorage.setItem('currentUser', JSON.stringify(data.user))
-
-                if (data.user.role === 'admin') {
-                    router.push('/admin')
-                } else {
-                    router.push('/dashboard')
-                }
-            } else {
-                // Fluxo de Cadastro
-                const res = await fetch('/api/auth/register', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email: cleanEmail, password }),
-                })
-                const data = await res.json()
-
-                if (!res.ok) throw new Error(data.error)
-
-                setMessage('Cadastro realizado com sucesso! Faça seu login.')
-                setIsLogin(true)
-                setPassword('')
-            }
-        } catch (err: any) {
-            setError(err.message || 'Erro ao processar sua requisição.')
-        } finally {
-            setLoading(false)
+    useEffect(() => {
+        if (!FLAGS.ENABLE_PRODUCT_STORE) {
+            setLoading(false);
+            return;
         }
+
+        async function fetchProducts() {
+            try {
+                const { data } = await supabase
+                    .from('products')
+                    .select('*')
+                    .eq('is_active', true)
+                    .order('created_at', { ascending: true });
+
+                setProducts(data || []);
+            } catch (err) {
+                console.error('Error fetching products:', err);
+            } finally {
+                setLoading(false);
+            }
+        }
+        fetchProducts();
+    }, []);
+
+    // If flag is OFF, show legacy landing (Login)
+    if (!FLAGS.ENABLE_PRODUCT_STORE) {
+        return <LegacyLanding />;
+    }
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-[#0B1F3B] flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+        );
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 dark:bg-[#0B1F3B] flex flex-col items-center justify-center font-sans overflow-hidden py-12 px-4 sm:px-6 lg:px-8 relative transition-colors duration-500">
-
-            {/* Background Orbs / Glows */}
-            <div className="absolute top-0 -left-64 w-96 h-96 bg-[#1E63FF] rounded-full mix-blend-screen filter blur-[150px] opacity-30"></div>
-            <div className="absolute bottom-0 -right-64 w-96 h-96 bg-[#F5B942] rounded-full mix-blend-screen filter blur-[150px] opacity-20"></div>
-
-            {/* Main Container */}
-            <div className="z-10 w-full max-w-md">
-
-                {/* Header Branding */}
-                <div className="text-center mb-10 group relative" onDoubleClick={() => router.push('/admin')}>
-                    <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-[#FFFFFF] tracking-tight hover:scale-105 transition-transform duration-500 cursor-default">
-                        Mentor <span className="text-[#1E63FF]">Pilot</span>
+        <div className="min-h-screen bg-slate-50 dark:bg-[#0B1F3B] font-sans">
+            {/* Navbar */}
+            <nav className="fixed top-0 inset-x-0 z-50 bg-white/5 backdrop-blur-md border-b border-white/10 px-6 py-4">
+                <div className="max-w-7xl mx-auto flex justify-between items-center">
+                    <h1 className="text-2xl font-bold text-white tracking-tighter">
+                        Mentor<span className="text-blue-500">Pilot</span>
                     </h1>
-                    <p className="mt-3 text-[#F5B942] tracking-wide text-sm font-medium uppercase">
-                        Treinamento Operacional A320
-                    </p>
+                    <div className="flex gap-4">
+                        <button
+                            onClick={() => router.push('/dashboard')}
+                            className="text-white/70 hover:text-white transition-colors"
+                        >
+                            Meu Painel
+                        </button>
+                    </div>
                 </div>
+            </nav>
 
-                {/* Auth Apple Glass Card */}
-                <div className="bg-white dark:bg-white/5 backdrop-blur-2xl rounded-3xl p-8 shadow-2xl border border-slate-200 dark:border-white/10 relative overflow-hidden">
+            {/* Hero */}
+            <header className="pt-32 pb-20 px-6 text-center">
+                <h1 className="text-4xl md:text-6xl font-black text-white mb-6">
+                    Eleve seu <span className="text-blue-500">Conhecimento</span> Aeronáutico
+                </h1>
+                <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+                    Treinamentos baseados em flashcards inteligentes para pilotos de alta performance.
+                    Escolha sua aeronave e comece agora.
+                </p>
+            </header>
 
-                    {/* Subtle top edge glow */}
-                    <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#1E63FF]/50 to-transparent"></div>
-
-                    {/* Toggle Tabs */}
-                    <div className="flex bg-black/20 p-1.5 rounded-2xl mb-8 relative">
-                        <button
-                            onClick={() => { setIsLogin(true); setError(''); setMessage(''); }}
-                            className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300 z-10 ${isLogin ? 'text-[#0B1F3B] bg-white shadow-md' : 'text-slate-500 dark:text-white/60 hover:text-slate-800 dark:hover:text-white'
-                                }`}
+            {/* Product Grid */}
+            <main className="max-w-7xl mx-auto px-6 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {products.map((product) => (
+                        <div
+                            key={product.id}
+                            onClick={() => router.push(`/p/${product.slug}`)}
+                            className="group relative bg-white dark:bg-white/5 rounded-3xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-blue-500/50 transition-all cursor-pointer hover:shadow-[0_0_30px_rgba(59,130,246,0.1)]"
                         >
-                            Entrar
-                        </button>
-                        <button
-                            onClick={() => { setIsLogin(false); setError(''); setMessage(''); }}
-                            className={`flex-1 py-3 text-sm font-semibold rounded-xl transition-all duration-300 z-10 ${!isLogin ? 'text-[#0B1F3B] bg-white shadow-md' : 'text-slate-500 dark:text-white/60 hover:text-slate-800 dark:hover:text-white'
-                                }`}
-                        >
-                            Criar Conta
-                        </button>
-                    </div>
-
-                    {/* Feedback Messages */}
-                    <div className="h-6 mb-4 flex items-center justify-center">
-                        {error && <p className="text-red-400 text-sm font-medium">{error}</p>}
-                        {message && isLogin && <p className="text-[#F5B942] text-sm font-medium">{message}</p>}
-                    </div>
-
-                    <form onSubmit={handleSubmit} className="space-y-5">
-                        {!isLogin && (
-                            <div className="group">
-                                <input
-                                    type="text"
-                                    required
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    placeholder="Nome do Tripulante"
-                                    className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
+                            <div className="aspect-[4/3] overflow-hidden">
+                                <img
+                                    src={product.image_url || 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800'}
+                                    alt={product.name}
+                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                                 />
                             </div>
-                        )}
-
-                        <div className="group">
-                            <input
-                                type="email"
-                                required
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="E-mail (Seu Usuário)"
-                                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
-                            />
+                            <div className="p-6">
+                                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
+                                    {product.name}
+                                </h3>
+                                <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+                                    {product.description || 'Flashcards especializados para treinamento.'}
+                                </p>
+                            </div>
                         </div>
-
-                        <div className="group">
-                            <input
-                                type="password"
-                                required
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                placeholder="Senha de Acesso"
-                                className="w-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-white/40 rounded-2xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-[#1E63FF]/50 focus:border-transparent transition-all backdrop-blur-sm"
-                            />
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={loading}
-                            className="w-full bg-[#1E63FF] hover:bg-[#1E63FF]/90 text-white font-bold rounded-2xl py-4 mt-6 shadow-[0_0_20px_rgba(30,99,255,0.3)] hover:shadow-[0_0_30px_rgba(30,99,255,0.5)] transition-all transform active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
-                        >
-                            {loading ? 'Autenticando...' : isLogin ? 'Acessar Treinamento' : 'Finalizar Inscrição'}
-                        </button>
-                    </form>
+                    ))}
                 </div>
+            </main>
 
-                {/* Footer */}
-                <div className="text-center mt-12 text-slate-400 dark:text-white/30 text-xs font-medium tracking-wide">
-                    <p>PRODUZIDO POR <span className="text-slate-600 dark:text-white/60">FABRIKA DE APP</span></p>
-                    <p className="mt-1">© {new Date().getFullYear()} Todos os direitos reservados • v1.0.4</p>
+            {/* Footer */}
+            <footer className="py-12 border-t border-white/5 text-center mt-20">
+                <div className="text-slate-500 text-sm">
+                    © {new Date().getFullYear()} Mentor Pilot • Produzido por Fabrika de App
                 </div>
-
-            </div>
+            </footer>
         </div>
-    )
+    );
 }

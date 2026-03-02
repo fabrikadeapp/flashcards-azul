@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 import { Flashcard } from '@/lib/supabase'
 import ThemeToggle from './ThemeToggle'
 
@@ -9,6 +10,7 @@ interface FlashcardViewerProps {
 }
 
 export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
+  const router = useRouter()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isFlipped, setIsFlipped] = useState(false)
   const [shuffledCards, setShuffledCards] = useState<Flashcard[]>([])
@@ -156,12 +158,21 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
       return
     }
 
+    // Pegar o e-mail do currentUser do localStorage
+    let userEmail = 'desconhecido';
+    try {
+      const stored = localStorage.getItem('currentUser')
+      if (stored) {
+        userEmail = JSON.parse(stored).email;
+      }
+    } catch (e) { }
+
     setIsSaving(true)
     try {
       const res = await fetch('/api/flashcards/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ pergunta: newPergunta, resposta: newResposta })
+        body: JSON.stringify({ pergunta: newPergunta, resposta: newResposta, userEmail })
       })
 
       const data = await res.json()
@@ -183,20 +194,20 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
   }
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#0B1F3B] flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 transition-colors duration-500 overflow-hidden relative">
+    <div className="min-h-screen bg-slate-50 dark:bg-azul-profundo flex flex-col items-center justify-center p-4 sm:p-6 lg:p-8 transition-colors duration-500 overflow-hidden relative">
 
-      {/* Background glow para ambiente Premium */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#1E63FF] rounded-full mix-blend-screen filter blur-[200px] opacity-20 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#F5B942] rounded-full mix-blend-screen filter blur-[200px] opacity-10 pointer-events-none"></div>
+      {/* Background glow para ambiente Premium - Adaptativo */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-azul-vibrante rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[200px] opacity-10 dark:opacity-20 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-dourado-suave rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-[200px] opacity-5 dark:opacity-10 pointer-events-none"></div>
 
       <ThemeToggle />
 
       {/* Header */}
       <div className="text-center z-10 mb-8 sm:mb-12 mt-12 sm:mt-0">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2 md:mb-4">
-          Mentor <span className="text-[#1E63FF]">Pilot</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-branco-premium tracking-tight mb-2 md:mb-4">
+          Mentor <span className="text-azul-vibrante">Pilot</span>
         </h1>
-        <p className="text-sm md:text-base text-[#F5B942] tracking-widest uppercase font-semibold">
+        <p className="text-sm md:text-base text-dourado-suave tracking-widest uppercase font-semibold">
           Treinamento Operacional A320
         </p>
       </div>
@@ -314,16 +325,24 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
         <p>→ / Espaço: Revelar • ↓ Próxima • ← Anterior</p>
       </div>
 
-      {canUserEdit && (
-        <div className="z-10 absolute top-6 right-6 flex gap-4">
-          <button
-            onClick={() => setIsAddingNew(true)}
-            className="flex items-center gap-2 bg-[#1E63FF]/30 hover:bg-[#1E63FF]/50 text-white/90 px-4 py-2 rounded-full backdrop-blur-md border border-[#1E63FF]/30 transition shadow-lg text-sm font-medium"
-          >
-            <span>+</span> Novo Flashcard
-          </button>
-        </div>
-      )}
+      {
+        canUserEdit && (
+          <div className="z-10 absolute top-6 right-6 flex gap-4">
+            <button
+              onClick={() => router.push('/app')}
+              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white/90 px-4 py-2 rounded-full backdrop-blur-md border border-white/10 transition shadow-lg text-sm font-medium"
+            >
+              🚀 Meus Treinamentos
+            </button>
+            <button
+              onClick={() => setIsAddingNew(true)}
+              className="flex items-center gap-2 bg-[#1E63FF]/30 hover:bg-[#1E63FF]/50 text-white/90 px-4 py-2 rounded-full backdrop-blur-md border border-[#1E63FF]/30 transition shadow-lg text-sm font-medium"
+            >
+              <span>+</span> Novo Flashcard
+            </button>
+          </div>
+        )
+      }
 
       {/* Info módulo (se aplicável / mantido para compatibilidade base de dados futura) */}
       <div className="z-10 mt-auto text-center hidden md:block">
@@ -334,52 +353,54 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
       </div>
 
       {/* Modal para Adicionar Novo Flashcard */}
-      {isAddingNew && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#0B1F3B] border border-white/10 rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl flex flex-col gap-6">
-            <h2 className="text-2xl font-bold text-white mb-2">Criar Novo Flashcard</h2>
+      {
+        isAddingNew && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+            <div className="bg-[#0B1F3B] border border-white/10 rounded-3xl p-6 md:p-8 w-full max-w-2xl shadow-2xl flex flex-col gap-6">
+              <h2 className="text-2xl font-bold text-white mb-2">Criar Novo Flashcard</h2>
 
-            <div className="flex flex-col gap-2">
-              <label className="text-sm text-white/60 font-medium">Pergunta</label>
-              <textarea
-                value={newPergunta}
-                onChange={(e) => setNewPergunta(e.target.value)}
-                autoFocus
-                className="w-full h-32 p-4 bg-white/5 text-white rounded-xl resize-none outline-none focus:ring-2 focus:ring-[#1E63FF]/50 border border-white/20 text-lg leading-relaxed placeholder-white/20"
-                placeholder="Insira o texto da pergunta..."
-              />
-            </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-white/60 font-medium">Pergunta</label>
+                <textarea
+                  value={newPergunta}
+                  onChange={(e) => setNewPergunta(e.target.value)}
+                  autoFocus
+                  className="w-full h-32 p-4 bg-white/5 text-white rounded-xl resize-none outline-none focus:ring-2 focus:ring-[#1E63FF]/50 border border-white/20 text-lg leading-relaxed placeholder-white/20"
+                  placeholder="Insira o texto da pergunta..."
+                />
+              </div>
 
-            <div className="flex flex-col gap-2">
-              <label className="text-sm text-white/60 font-medium">Resposta</label>
-              <textarea
-                value={newResposta}
-                onChange={(e) => setNewResposta(e.target.value)}
-                className="w-full h-32 p-4 bg-white/5 text-white rounded-xl resize-none outline-none focus:ring-2 focus:ring-[#1E63FF]/50 border border-white/20 text-lg leading-relaxed placeholder-white/20"
-                placeholder="Insira o texto da resposta..."
-              />
-            </div>
+              <div className="flex flex-col gap-2">
+                <label className="text-sm text-white/60 font-medium">Resposta</label>
+                <textarea
+                  value={newResposta}
+                  onChange={(e) => setNewResposta(e.target.value)}
+                  className="w-full h-32 p-4 bg-white/5 text-white rounded-xl resize-none outline-none focus:ring-2 focus:ring-[#1E63FF]/50 border border-white/20 text-lg leading-relaxed placeholder-white/20"
+                  placeholder="Insira o texto da resposta..."
+                />
+              </div>
 
-            <div className="flex justify-end gap-4 mt-4">
-              <button
-                onClick={() => setIsAddingNew(false)}
-                disabled={isSaving}
-                className="px-6 py-2.5 rounded-full border border-white/20 text-white/70 hover:bg-white/10 hover:text-white transition font-medium"
-              >
-                Cancelar
-              </button>
-              <button
-                onClick={handleAddNew}
-                disabled={isSaving}
-                className="px-6 py-2.5 rounded-full bg-[#1E63FF] text-white hover:bg-blue-500 transition shadow-[0_0_15px_rgba(30,99,255,0.4)] font-medium"
-              >
-                {isSaving ? 'Criando...' : 'Adicionar Flashcard'}
-              </button>
+              <div className="flex justify-end gap-4 mt-4">
+                <button
+                  onClick={() => setIsAddingNew(false)}
+                  disabled={isSaving}
+                  className="px-6 py-2.5 rounded-full border border-white/20 text-white/70 hover:bg-white/10 hover:text-white transition font-medium"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleAddNew}
+                  disabled={isSaving}
+                  className="px-6 py-2.5 rounded-full bg-[#1E63FF] text-white hover:bg-blue-500 transition shadow-[0_0_15px_rgba(30,99,255,0.4)] font-medium"
+                >
+                  {isSaving ? 'Criando...' : 'Adicionar Flashcard'}
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        )
+      }
 
-    </div>
+    </div >
   )
 }

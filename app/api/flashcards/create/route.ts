@@ -1,15 +1,46 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin as supabase } from '@/lib/supabaseAdmin';
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
-        const { pergunta, resposta } = await req.json();
+        const { pergunta, resposta, userEmail } = await req.json();
 
         if (!pergunta || !resposta) {
             return NextResponse.json({ error: 'Pergunta e resposta são obrigatórias' }, { status: 400 });
         }
 
-        // Descobre o maior numero
+        if (!userEmail) {
+            return NextResponse.json({ error: 'Usuário não identificado' }, { status: 401 });
+        }
+
+        // 1. VERIFICAR PERMISSÃO NO LADO DO SERVIDOR
+        const { data: user, error: userError } = await supabase
+            .from('users')
+            .select('role, status')
+            .eq('email', userEmail.trim().toLowerCase())
+            .single();
+
+        if (userError || !user || user.status !== 'active') {
+            return NextResponse.json({ error: 'Acesso negado: Usuário não autorizado' }, { status: 403 });
+        }
+
+        // Verifica se é admin ou se tem permissão explícita no settings
+        const { data: configData } = await supabase
+            .from('settings')
+            .select('value')
+            .eq('id', 'config')
+            .single();
+
+        const editorsList = configData?.value?.editors || [];
+        const isEditor = user.role === 'admin' || editorsList.includes(userEmail.trim().toLowerCase());
+
+        if (!isEditor) {
+            return NextResponse.json({ error: 'Sem permissão para criar cards' }, { status: 403 });
+        }
+
+        // 2. DESCOBRE O MAIOR NÚMERO
         const { data: maxCard, error: maxError } = await supabase
             .from('flashcards')
             .select('numero')
