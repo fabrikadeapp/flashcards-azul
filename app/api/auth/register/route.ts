@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { supabaseAdmin as supabase, isSupabaseAdminConfigured } from '@/lib/supabaseAdmin';
+
+export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
@@ -10,39 +12,44 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Todos os campos são obrigatórios' }, { status: 400 });
         }
 
-        // Verifica se já existe
-        const { data: existingUser } = await supabase
+        if (!isSupabaseAdminConfigured) {
+            return NextResponse.json({ error: 'Erro central: Supabase Admin não configurado.' }, { status: 500 });
+        }
+
+        console.log('Attempting to register user:', { name, email });
+
+        // Verifica se já existe - Usando Admin para ver todos sem restrição de RLS
+        const { data: existingUser, error: checkError } = await supabase
             .from('users')
-            .select('id')
-            .eq('email', email)
+            .select('id, email')
+            .ilike('email', email) // Busca insensível a maiúsculas
             .single();
 
         if (existingUser) {
+            console.log('User already exists:', existingUser.email);
             return NextResponse.json({ error: 'Este e-mail já está cadastrado' }, { status: 400 });
         }
 
         const newUser = {
             name,
             email,
-            password, // Em um sistema real, faríamos um hash (bcrypt)
+            password,
             role: email === 'aero.gus@hotmail.com' ? 'admin' : 'user',
             status: email === 'aero.gus@hotmail.com' ? 'active' : 'pending'
         };
-
-        console.log('Attempting to register user:', { name, email, role: newUser.role });
 
         const { data, error } = await supabase.from('users').insert([newUser]).select();
 
         if (error) {
             console.error('Registration Error:', error);
-            throw error;
+            return NextResponse.json({ error: 'Erro ao salvar no banco: ' + error.message }, { status: 500 });
         }
 
-        console.log('User registered successfully:', data);
+        console.log('User registered successfully:', data?.[0]?.email);
 
         return NextResponse.json({ success: true, message: 'Cadastro realizado com sucesso!' });
     } catch (err) {
         console.error('Erro register:', err);
-        return NextResponse.json({ error: 'Erro no servidor' }, { status: 500 });
+        return NextResponse.json({ error: 'Erro interno no servidor de registro' }, { status: 500 });
     }
 }

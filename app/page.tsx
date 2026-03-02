@@ -20,12 +20,13 @@ export default function LandingPage() {
         setLoading(true)
 
         try {
+            const cleanEmail = email.trim().toLowerCase()
             if (isLogin) {
                 // Fluxo de Login
                 const res = await fetch('/api/auth/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email, password }),
+                    body: JSON.stringify({ email: cleanEmail, password }),
                 })
                 const data = await res.json()
 
@@ -43,7 +44,7 @@ export default function LandingPage() {
                 const res = await fetch('/api/auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, password }),
+                    body: JSON.stringify({ name, email: cleanEmail, password }),
                 })
                 const data = await res.json()
 

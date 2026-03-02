@@ -19,27 +19,28 @@ export async function POST(req: Request) {
         }
 
         console.log('Login attempt:', cleanEmail);
+        const charCodes = cleanEmail.split('').map((c: string) => c.charCodeAt(0));
+        console.log('Email char codes:', charCodes);
 
         const { data: user, error } = await supabase
             .from('users')
             .select('*')
-            .eq('email', cleanEmail)
+            .ilike('email', cleanEmail) // Muito mais robusto que .eq()
             .single();
 
         if (error) {
-            console.error('Database Error:', error);
-            // Se for erro de auth no Supabase (pode ser chave inválida)
+            console.error('Database Login Query Error:', error);
             if (error.code === '401' || error.message?.includes('Invalid key')) {
-                return NextResponse.json({ error: 'Erro de conexão com o banco (Chave Admin inválida)' }, { status: 500 });
+                return NextResponse.json({ error: 'Erro de conexão: Chave Admin inválida ou expirada.' }, { status: 500 });
             }
-            if (error.code === 'PGRST116') { // Código para '0 rows found'
-                return NextResponse.json({ error: 'Conta não encontrada com este e-mail' }, { status: 401 });
+            if (error.code === 'PGRST116') { // 0 rows
+                return NextResponse.json({ error: 'Conta não encontrada com este e-mail - verifique se o e-mail está correto no Admin.' }, { status: 401 });
             }
-            return NextResponse.json({ error: 'Erro ao consultar banco de dados: ' + error.message }, { status: 500 });
+            return NextResponse.json({ error: 'Erro ao consultar banco: ' + error.message }, { status: 500 });
         }
 
         if (!user) {
-            return NextResponse.json({ error: 'Credenciais inválidas (usuário não existe)' }, { status: 401 });
+            return NextResponse.json({ error: 'Sistema não encontrou o usuário após a consulta.' }, { status: 401 });
         }
 
         if (user.password !== password) {
