@@ -5,6 +5,11 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
+        if (!process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY === 'placeholder') {
+            console.error('SUPABASE_SERVICE_ROLE_KEY is not configured');
+            return NextResponse.json({ error: 'Configuração do Servidor Pendente (Service Role Key)' }, { status: 500 });
+        }
+
         const { userId, newStatus } = await req.json();
 
         if (!userId || !newStatus) {
@@ -16,15 +21,15 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Status inválido' }, { status: 400 });
         }
 
-        console.log('Update Status Request:', { userId, newStatus });
+        console.log(`Executing Supabase UPDATE users SET status = ${newStatus} WHERE id = ${userId}`);
 
-        const { data, error } = await supabase
+        const { data, error, count } = await supabase
             .from('users')
             .update({ status: newStatus })
             .eq('id', userId)
             .select();
 
-        console.log('Supabase Response Data:', data);
+        console.log('Supabase Result:', { data, count, error });
 
         if (error) {
             console.error('Supabase Update Error:', error);

@@ -157,8 +157,12 @@ export default function AdminDashboard() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId, newStatus })
             })
+
             const data = await res.json()
-            if (!res.ok) throw new Error(data.error || 'Erro desconhecido')
+
+            if (!res.ok) {
+                throw new Error(data.error || 'Erro ao comunicar com o servidor')
+            }
 
             // update local state
             setUsersList(prev => prev.map(u => u.id === userId ? { ...u, status: newStatus as any } : u))
@@ -170,10 +174,11 @@ export default function AdminDashboard() {
                 return updated
             })
 
+            alert(`Status do usuário atualizado para "${newStatus}" com sucesso!`)
             console.log(`Persistent status change for ${userId} committed.`)
         } catch (err: any) {
             console.error('Persistence error:', err)
-            alert('Falha crítica ao salvar: ' + (err.message || 'Tente novamente.'))
+            alert('Falha ao salvar: ' + (err.message || 'Tente novamente.'))
         } finally {
             setUpdatingStatus(null)
         }
