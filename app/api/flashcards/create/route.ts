@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         const { data: user, error: userError } = await supabase
             .from('users')
             .select('role, status')
-            .eq('email', userEmail.trim().toLowerCase())
+            .ilike('email', userEmail.trim())
             .single();
 
         if (userError || !user || user.status !== 'active') {

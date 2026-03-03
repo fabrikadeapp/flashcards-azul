@@ -78,7 +78,7 @@ export async function POST(req: Request) {
             email: user.email,
             role: user.role,
             status: user.status,
-            canEdit: user.role === 'admin' || editorsList.includes(user.email)
+            canEdit: user.role === 'admin' || editorsList.includes(user.email.toLowerCase())
         };
 
         console.log('Login successful:', email, 'Role:', safeUser.role);

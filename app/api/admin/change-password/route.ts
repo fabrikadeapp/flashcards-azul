@@ -12,7 +12,7 @@ export async function POST(req: Request) {
         const { error } = await supabase
             .from('users')
             .update({ password: newPassword })
-            .eq('email', currentEmail)
+            .ilike('email', currentEmail)
             .eq('role', 'admin');
 
         if (error) {
