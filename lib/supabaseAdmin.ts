@@ -1,7 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || ''
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+const sanitizeEnv = (val?: string) => (val || '').replace(/[\n\r]|\\n|"|'/g, '').trim();
+
+const supabaseUrl = sanitizeEnv(process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL);
+const supabaseServiceKey = sanitizeEnv(process.env.SUPABASE_SERVICE_ROLE_KEY);
 
 export const isSupabaseAdminConfigured = !!supabaseUrl && !!supabaseServiceKey && supabaseServiceKey !== 'placeholder'
 
