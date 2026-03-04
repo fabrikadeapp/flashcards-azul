@@ -136,6 +136,8 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
         body: JSON.stringify(payload)
       })
 
+      const data = await res.json().catch(() => ({ error: 'Erro desconhecido' }));
+
       if (res.ok) {
         const newCards = [...shuffledCards]
         if (isFlipped) newCards[currentIndex].resposta = editValue
@@ -143,7 +145,7 @@ export default function FlashcardViewer({ flashcards }: FlashcardViewerProps) {
         setShuffledCards(newCards)
         setIsEditingMode(false)
       } else {
-        alert('Falha ao atualizar o card.')
+        alert(`Falha ao atualizar o card: ${data.error || 'Erro no servidor'}`)
       }
     } catch (err) {
       alert('Erro de conexão ao salvar.')

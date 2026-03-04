@@ -98,13 +98,17 @@ export async function POST(req: Request) {
         if (updateError) throw updateError;
 
         if (auditEntries.length > 0) {
-            await supabase.from('audit_logs').insert(auditEntries);
+            const { error: auditError } = await supabase.from('audit_logs').insert(auditEntries);
+            if (auditError) {
+                console.error("Erro fatal na auditoria:", auditError);
+                throw new Error('Falha ao registrar auditoria: ' + auditError.message);
+            }
         }
 
         console.log('Flashcard updated successfully:', numero);
         return NextResponse.json({ success: true });
     } catch (err: any) {
         console.error('Erro atualizar flashcard:', err);
-        return NextResponse.json({ error: 'Erro interno ao processar atualização' }, { status: 500 });
+        return NextResponse.json({ error: 'Erro interno: ' + (err.message || err.details || JSON.stringify(err)) }, { status: 500 });
     }
 }
