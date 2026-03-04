@@ -16,11 +16,13 @@ export async function POST(req: Request) {
         }
 
         // 1. VERIFICAR PERMISSÃO NO LADO DO SERVIDOR
-        const { data: user, error: userError } = await supabase
+        const { data: users, error: userError } = await supabase
             .from('users')
             .select('role, status')
             .ilike('email', userEmail.trim())
-            .single();
+            .limit(1);
+
+        const user = users?.[0];
 
         if (userError || !user) {
             return NextResponse.json({ error: 'Acesso negado: Usuário não autorizado' }, { status: 403 });

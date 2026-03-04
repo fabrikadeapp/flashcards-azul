@@ -24,25 +24,24 @@ export async function POST(req: Request) {
         const charCodes = cleanEmail.split('').map((c: string) => c.charCodeAt(0));
         console.log('Email char codes:', charCodes);
 
-        const { data: user, error } = await supabase
+        const { data: users, error } = await supabase
             .from('users')
             .select('*')
             .ilike('email', cleanEmail) // Muito mais robusto que .eq()
-            .single();
+            .limit(1);
+
+        const user = users?.[0];
 
         if (error) {
             console.error('Database Login Query Error:', error);
             if (error.code === '401' || error.message?.includes('Invalid key')) {
                 return NextResponse.json({ error: 'Erro de conexão: Chave Admin inválida ou expirada.' }, { status: 500 });
             }
-            if (error.code === 'PGRST116') { // 0 rows
-                return NextResponse.json({ error: 'Conta não encontrada com este e-mail - verifique se o e-mail está correto no Admin.' }, { status: 401 });
-            }
             return NextResponse.json({ error: 'Erro ao consultar banco: ' + error.message }, { status: 500 });
         }
 
         if (!user) {
-            return NextResponse.json({ error: 'Sistema não encontrou o usuário após a consulta.' }, { status: 401 });
+            return NextResponse.json({ error: 'Conta não encontrada com este e-mail - verifique se o e-mail está correto no Admin.' }, { status: 401 });
         }
 
         if (user.password !== password) {

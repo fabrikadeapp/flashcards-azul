@@ -19,15 +19,17 @@ export async function POST(req: Request) {
         }
 
         // 1. VERIFICAR PERMISSÃO NO LADO DO SERVIDOR
-        const { data: user, error: userError } = await supabase
+        const { data: users, error: userError } = await supabase
             .from('users')
             .select('role, status')
             .ilike('email', userEmail.trim())
-            .single();
+            .limit(1);
+
+        const user = users?.[0];
 
         if (userError || !user) {
-            console.warn('User not found for update:', userEmail);
-            return NextResponse.json({ error: 'Acesso negado: Usuário não encontrado' }, { status: 403 });
+            console.warn('User not found or query error for update:', userEmail, userError);
+            return NextResponse.json({ error: 'Acesso negado: Usuário não encontrado, Erro: ' + (userError?.message || userError?.details || 'Nenhum') }, { status: 403 });
         }
 
         if (user.role !== 'admin' && user.status !== 'active') {
