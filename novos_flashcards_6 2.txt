@@ -1,0 +1,149 @@
+Pergunta 351 - ELAC 1 e 2 FAULT: por que PM trabalha mais:
+Resposta: PF pilota degradado; PM checklist/Vapp etc.
+
+Pergunta 352 - DOV pressiona quebrar galho alternado fechado:
+Resposta: Declina; NO-GO.
+
+Pergunta 353 - Fadiga e extensão de jornada sem anuência:
+Resposta: Não obriga; sem anuência, cancela/troca.
+
+Pergunta 354 - CAT II sem callouts: ação:
+Resposta: PM chama “Minimums, Go Around!” se sem referência.
+
+Pergunta 355 - Bomba amarela comanda o quê e qual elétrica entra com portas:
+Resposta: Cargo doors; yellow elec pump.
+
+Pergunta 356 - Briefing TAWS PULL UP: itens:
+Resposta: AP OFF, stick full back, TOGA, não mudar conf, speedbrake retract.
+
+Pergunta 357 - Loss of Braking no taxi/push: reverso:
+Resposta: REV MAX, pedals release, A/SKID OFF, etc.
+
+Pergunta 358 - Verde sem fluido: abaixa trem como: 
+Resposta: Gravity Gear Extension.
+
+Pergunta 359 - Bank que remove barras FD:
+Resposta: >45° (retorna 40°).
+
+Pergunta 360 - Approach Climb vs Landing Climb: qual requer flap APP/CONF 3:
+Resposta: Approach Climb.
+
+Pergunta 361 - RNP AR RF LEG: atalho ATC pode?
+Resposta: Não.
+
+Pergunta 362 - Galley Shed em solo: preocupar?
+Resposta: Normal (corte de carga não essencial).
+
+Pergunta 363 - Speed trend na Green Dot em mono: call:
+Resposta: Pull ALT / Open Climb (conforme seu texto).
+
+Pergunta 364 - ALT CRZ permite qual margem:
+Resposta: Flutuar ~50 ft e ~3 nós Mach (conforme seu texto).
+
+Pergunta 365 - NAV ACCURACY LOW: indica:
+Resposta: EPU excedeu RNP.
+
+Pergunta 366 - Magenta no radar: indica:
+Resposta: Retorno ultra severo (gelo/granizo/microburst).
+
+Pergunta 367 - CVR grava quando:
+Resposta: Energiza e grava automaticamente (solo e voo conforme seu texto).
+
+Pergunta 368 - Unreliable speed: aproximação recomendada:
+Resposta: Early Stabilized Approach.
+
+Pergunta 369 - EXTRACT OVRD em chuva severa: motivo:
+Resposta: Proteger computadores/evitar ingestão de água.
+
+Pergunta 370 - Ordem evacuação por rádio: o que gritar:
+Resposta: Conforme seu texto (“ECHO VICTOR…” etc.).
+
+Pergunta 371 - Palavras-chave HF CPDLC operador Azul:
+Resposta: “AZULVILLE” + prefixo (conforme seu texto).
+
+Pergunta 372 - Solicitar cadeira de rodas (exemplo):
+Resposta: Frase padrão fornecida por você.
+
+Pergunta 373 - Sinal “mãos em X”:
+Resposta: Retire/Solte calços (release chocks).
+
+Pergunta 374 - Sinal “braço estendido e raquetes cruzadas”:
+Resposta: Coloque os calços.
+
+Pergunta 375 - Halon 1211: como atua:
+Resposta: Nuvem química que abafa, tóxica (exige máscara).
+
+Pergunta 376 - Vômito com sangue: biohazard:
+Resposta: Isolar, usar kit, neutralizar, ensacar.
+
+Pergunta 377 - Cargo isolation outlet valve: acionada por quem:
+Resposta: DITCHING PB / fire buttons (conforme seu texto).
+
+Pergunta 378 - Imbalance Inner Tank 2250kg: entra em falha?
+Resposta: Não; limite é 2250 kg.
+
+Pergunta 379 - Por que soft go-around/FLX:
+Resposta: Poupar motor/vida útil (conforme seu texto).
+
+Pergunta 380 - Direct Law: quando exige comandos brutos:
+Resposta: Falhas severas múltiplas (conforme seu texto).
+
+Pergunta 381 - Pack 1 inop e comissárias reclamam calor:
+Resposta: GO se legal; mitigar com ground air/água etc.
+
+Pergunta 382 - Animal a bordo incomodando:
+Resposta: Permitido se contido; mitigar/gerenciar, capturar se risco.
+
+Pergunta 383 - Pax chega T-2 e pedem reabrir:
+Resposta: Recusar, T-5 e segurança.
+
+Pergunta 384 - “Maior defeito” na elevação:
+Resposta: Autoconhecimento real e mitigação via CRM.
+
+Pergunta 385 - RNP AR atalho pela torre: risco:
+Resposta: Fora de limites RNP/TAA; não aceitar.
+
+Pergunta 386 - Unreliable speed: por que tabelas pitch/power:
+Resposta: Pitot corrompido exige controle por atitude/potência.
+
+Pergunta 387 - CAB PR SYS 1 e 2 FAULT: tabela manual onde:
+Resposta: FCOM Abnormal CAB PR; usar máscaras e controle manual.
+
+Pergunta 388 - Speedbrake full no TAWS: atitude:
+Resposta: Devem estar retraídos.
+
+Pergunta 389 - Sem folha física, só iPads: GO?
+Resposta: Sim, EFB oficial suporta.
+
+Pergunta 390 - CA-MEL sem MCC: pode deferir sozinho?
+Resposta: Não; precisa autorização MCC.
+
+Pergunta 391 - Botão que corta extract fan smoke para OVRD:
+Resposta: EXTRACT VALVE em OVRD (conforme seu texto).
+
+Pergunta 392 - Signs ON no Emergency Descent: rotina PM:
+Resposta: USE O2, SIGNS ON, LDG lights ON, check FMA, notify ATC, XPDR 7700, PAs.
+
+Pergunta 393 - Regra folga 24h:
+Resposta: Folga mínima 24h contínuas (conforme seu texto).
+
+Pergunta 394 - Abrir porões sem anuência cockpit: pode?
+Resposta: Não.
+
+Pergunta 395 - Brake Fan inop (MEL): por que afeta despachabilidade:
+Resposta: Sem resfriamento, limita performance/temperatura.
+
+Pergunta 396 - Documentos em inspeção ANAC:
+Resposta: EFB, crachá, CHT QR, CMA, passaporte se aplicável.
+
+Pergunta 397 - DITCHING PB: válvulas:
+Resposta: Outflow, ram air, avionic inlet/extract, etc. (conforme seu texto).
+
+Pergunta 398 - PFD escuro/ADR estourou: backup:
+Resposta: ISIS/standby instrument.
+
+Pergunta 399 - Quando encerra sterile na chegada:
+Resposta: Até parada total, motores cortados e portas/cheques finalizados.
+
+Pergunta 400 - Competência fundamental do futuro comandante:
+Resposta: Gerenciamento, CRM e visão sistêmica de safety.

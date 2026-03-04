@@ -1,0 +1,266 @@
+Pergunta 132 - Reactive Windshear:
+Resposta: Antes de V1 (Reject). Após V1: TOGA, rotacionar Vr, manter config.
+
+Pergunta 133 - Frases-Chave Simulador Azul (Mindset):
+Resposta: 1) Gerenciamento, não heroísmo. 2) Manual é correto, mas tempo importa. 3) PM trabalha mais no ELAC. 4) Pareceu smoke, trate como smoke. 5) Velocidade mental alinhada.
+
+Pergunta 134 - Hierarquia:
+Resposta: Comandante, Copiloto e Comissários.
+
+Pergunta 135 - Restrição Copiloto <100h:
+Resposta: O Cmdt realiza T/O e LND em vis <1200m, pista contaminada, vento través >15kt.
+
+Pergunta 136 - Ausência Cockpit:
+Resposta: Piloto remanescente DEVE usar a máscara de O2 se voando > FL350.
+
+Pergunta 137 - Jornada e Voo: 
+Resposta: Máx 90h/28 dias; 176h jornada/28 dias; 4 madrugadas consecutivas em 7 dias.
+
+Pergunta 138 - Sterile Cockpit:
+Resposta: Da checagem de portas até FL100 (subida) e FL100 até o corte (descida).
+
+Pergunta 139 - Abastecimento (Contingência):
+Resposta: É sempre a maior quantidade entre 5% ou 5 minutos de espera.
+
+Pergunta 140 - Extensão de Jornada Simples:
+Resposta: 1h de jornada e 30 min de tempo de voo. Avisar Azul em 24h.
+
+Pergunta 141 - Policial Armado e Indisciplina:
+Resposta: Não consome álcool. Indisciplina Nível 3 (violência física): Porta do cockpit jamais é aberta, trancar blindagem, pouso imediato e polícia no solo.
+
+Pergunta 142 - Apoderamento Ilícito:
+Resposta: XPDR 7500. A tripulação não luta, obedece, evita risco e tenta pousar rápido.
+
+Pergunta 143 - NORDO (Falha Rádio):
+Resposta: XPDR 7600. Manter voo de acordo com o plano enviado ao ATC (voo cego).
+
+Pergunta 144 - Embarque Segregado (Ganhar solo):
+Resposta: Se faltar tripulação do próximo trilho, embarca com 1 Piloto e metade dos comissários (ex: 2 CMS no A320) presentes até o resto chegar.
+
+Pergunta 145 - Criança/Menor Desacompanhado (UMNR):
+Resposta: O Supervisor de Base o embarca antes do fluxo geral e o coloca na 1ª ou 2ª fileira (corredor) sob visão do Cmdt.
+
+Pergunta 146 - Copiloto esqueceu Crachá (PSI):
+Resposta: O MGO dita porte obrigatório visível. Não voa (NO GO). Contatar a escala.
+
+Pergunta 147 - Atingiu MFR no ponto de espera e Pista Fechou:
+Resposta: Retornar. Não se decola com combustível abaixo do planejado/MFR. Infração severa e risco de secagem no ar.
+
+Pergunta 148 - Mecânico resetou avião mas sem licença/CHT válida:
+Resposta: Não sai. Logbook (TLB) exige mecânico devidamente credenciado ou despacho formalizado por CA-MEL com o MCC.
+
+Pergunta 149 - Mãe chegou T-4 e ponte sacou:
+Resposta: Não reacopla. Quebra regra de pista livre e segurança de solo (T-5 fechamento). Decola na hora.
+
+Pergunta 150 - CPDLC Falha:
+Resposta: Mensagem padronizada de resposta "UNABLE" se o FMS não processar ou a instrução bater de frente com a rota segura. Reportar mau funcionamento no TLB.
+
+Pergunta 151 - O que é o CHT Digital e como é validado?
+Resposta: Acessado via site da ANAC (SACI), a validação pela Autoridade Aeronáutica é feita por QR Code presente na página de obtenção do documento, devendo ser portado pelo tripulante em serviço.
+
+Pergunta 152 - Qual a antecedência mínima para revalidação do CMA?
+Resposta: A revalidação deve ser feita com no mínimo 15 dias de antecedência do vencimento.
+
+Pergunta 153 - O que acontece se o tripulante voar com licenças vencidas?
+Resposta: O exercício da função com licenças vencidas enseja multa prevista no CBA, é considerada falta grave pela Diretoria e ensejará sanção disciplinar.
+
+Pergunta 154 - Quais documentos devem estar obrigatoriamente a bordo em aeronaves sem EFB?
+Resposta: NSCA 3-13, MCA 100-15/16, ROTAER, AIP Brasil, Airport Briefing, Manual de Rotas Internacionais (MRI) e Manual Jeppesen.
+
+Pergunta 155 - Qual a responsabilidade do DOV (Despachante Operacional de Voo)?
+Resposta: Exercer controle operacional (co-responsabilidade) sobre qualquer operação conduzida sob o RBAC 121, exigindo experiência prévia na área.
+
+Pergunta 156 - Como a Azul avalia a fadiga se o tripulante declarar inaptidão?
+Resposta: Utiliza informações científicas, modelagem biomatemática, recomendações do FSAG (Fatigue Safety Action Group) e o reporte do tripulante.
+
+Pergunta 157 - Quantos comissários o A330 exige na Azul para demonstração de evacuação?
+Resposta: Pelo requisito seria um por fração de 50 assentos (6 comissários para 270 assentos), porém a Azul optou por realizar a demonstração e operar a tripulação simples com no mínimo 8 comissários.
+
+Pergunta 158 - Como deve ser calculado o Combustível de Reserva Final (MFR)? 
+Resposta: Quantidade requerida para voar 30 minutos em velocidade de espera a 1500 ft sobre o aeródromo de alternativa de destino.
+
+Pergunta 159 - Qual a arquitetura e a estrutura base dos Briefings na Azul?
+Resposta: A "arquitetura" é baseada na "Fase do Voo" e a estrutura na "Sequência de Eventos".
+
+Pergunta 160 - Após o fechamento das portas, elas podem ser abertas?
+Resposta: Só poderão ser reabertas após solicitação do Comissário Líder/Supervisor ao Comandante, que realizará o procedimento de Abertura e Cheque de Portas.
+
+Pergunta 161 - O que compõe o Termo de Abertura do Livro de Bordo (TLB)?
+Resposta: 40 páginas numeradas, exigindo data, nome completo, CANAC e assinatura.
+
+Pergunta 162 - Qual o Callout do PM no cruzamento do Nível de Transição (FL100/10.000 ft)?
+Resposta: “Tripulação, 10.000 PÉS”.
+
+Pergunta 163 - Qual o limite da velocidade IFR e VFR no espaço aéreo Classe G?
+Resposta: 250kt abaixo do FL100.
+
+Pergunta 164 - Em falha de um EFB em voo, qual a ação recomendada se for do PF?
+Resposta: Desligar a unidade inoperante, desconectar e trocar pelo EFB operacional do PM.
+
+Pergunta 165 - O que os pilotos devem fazer ao cruzar o FL250 em relação ao Oxigênio?
+Resposta: Ter máscara quick donning pronta para suprir sob demanda.
+
+Pergunta 166 - Aonde começa o segmento de aproximação final em procedimentos com Curva Base?
+Resposta: Quando a curva termina e a aeronave estabiliza na reta, no curso final e distância prevista.
+
+Pergunta 167 - Qual a regra fundamental de aproximação estabilizada da Azul?
+Resposta: "If not stable, go-around and start over!"
+
+Pergunta 168 - O que significa o sinal de interceptação "CALL SIGN”?
+Resposta: Qual é o indicativo de chamada?.
+
+Pergunta 169 - O que significa o sinal de interceptação "FOLLOW"? 
+Resposta: Siga-me.
+
+Pergunta 170 - O que significa o sinal de interceptação “DESCEND"?
+Resposta: Desça para pousar.
+
+Pergunta 171 - Qual o procedimento para desvios maiores que 10 NM de uma aerovia PBN sem contato ATC?
+Resposta: Luzes externas ON, manter nível até afastar 10 NM; transmitir 121.5 com identificação/nível/intenção e observar tráfego via TCAS.
+
+Pergunta 172 - Qual a ação de manuseio no painel de áudio após o voo (Pós-voo)?
+Resposta: Knobs de áudio no volume zero/pushed in.
+
+Pergunta 173 - Quais fontes de navegação devem ser checadas se houver perda parcial de sistemas (Stand-by)?
+Resposta: Cheques frequentes da bússola primária e stand-by vs fontes remanescentes.
+
+Pergunta 174 - Como proceder se a carta RNAV tiver nota "Comply with visual prescribed track”?
+Resposta: Selecionar cartas IFR e Visual no Chart Clip e brifar ambas.
+
+Pergunta 175 - Qual o sinal manual na rampa para "Coloque os calços”?
+Resposta: Braços estendidos, palmas para fora, mover mãos para dentro cruzando-as diante da face.
+
+Pergunta 176 - Qual o sinal manual na rampa para "Retire os calços"? 
+Resposta: Mãos cruzadas diante da face, palmas para fora, mover braços para fora.
+
+Pergunta 177 - Como é feita a identificação de clientes FREQUENT FLYER no manifesto?
+Resposta: Pelos códigos FQTV, FQTR ou AWUP.
+
+Pergunta 178 - O que significam os códigos DEPU e DEPA?
+Resposta: Deportados desacompanhados (DEPU) e Deportados acompanhados (DEPA).
+
+Pergunta 179 - Quais são as restrições para clientes VIP, Idosos e Grávidas?
+Resposta: Próximos aos lavatórios, nunca em saídas de emergência.
+
+Pergunta 180 - O que é exigido para uma gestante de 9 meses (PRG9)?
+Resposta: Acompanhada do obstetra, termo de responsabilidade e atestado médico.
+
+Pergunta 181 - Restos mortais humanos devem constar em qual área do despacho de cargas?
+Resposta: “Outras Cargas Especiais” da NOTOC (aeroportos/voo/peso/código IMP/ULD).
+
+Pergunta 182 - Policial pode embarcar armado em voo comercial? Se sim, por quais motivos?
+Resposta: Sim: escolta, vigilância ou quando despacho no porão inviabilizaria a operação.
+
+Pergunta 183 - Se um passageiro apresentar ameaça verbal no voo, o que deve ser anotado?
+Resposta: Sotaque, humor, domínio do idioma e comentários anexos ao Termo de Ameaça.
+
+Pergunta 184 - Quantas vias tem o formulário de passageiro armado e para quem vão?
+Resposta: 3 vias (passageiro / origem / anexada à arma se despachada).
+
+Pergunta 185 - Onde estão localizados os Extintores de Halon (Pictograma A330)?
+Resposta: Em estações de comissários, incluindo um no Cockpit.
+
+Pergunta 186 - Qual equipamento o Comandante leva consigo em uma evacuação?
+Resposta: Crash Axe e Extintor de Halon do Cockpit.
+
+Pergunta 187 - O que a sigla EEMK significa?
+Resposta: Kit Médico de Emergência (Emergency Medical Kit).
+
+Pergunta 188 - O que contém o First Aid Kit?
+Resposta: Compressas, fita, tesoura, lenços álcool, luvas, AMBU adulto/pediátrico e manual.
+
+Pergunta 189 - Quantos PBE existem no pictograma padrão para frotas maiores?
+Resposta: Múltiplas unidades (ex: 4 A320 / 5 A321) em FWD e AFT galleys.
+
+Pergunta 190 - Há exigência de Megafones a bordo?
+Resposta: Sim, normalmente em Forward e After stations.
+
+Pergunta 191 - O que são Bio-Hazard Kits?
+Resposta: Kits de limpeza de fluidos biológicos (risco biológico).
+
+Pergunta 192 - Qual a regra de Safety Cards?
+Resposta: 1 por conjunto de poltronas; na Executiva, 1 por poltrona.
+
+Pergunta 193 - As Smoke Goggles do Cockpit são para qual uso?
+Resposta: Proteção visual acoplada à Quick Donning Oxygen Mask em Avionic Smoke.
+
+Pergunta 194 - Flow completo do Emergency Descent para o PF?
+Resposta: ALT Turn and Pull; HDG Turn and Pull; SPD Pull; FMA announce; se A/THR não ativo: Thrust IDLE; SPD BRK FULL.
+
+Pergunta 195 - Flow completo do Emergency Descent para o PM?
+Resposta: Máscara USE; Signs ON; Landing Lights ON; FMA check; ATC notify; XPDR 7700.
+
+Pergunta 196 - Quais os PA exatos no Emergency Descent?
+Resposta: PF: “Atenção, descida rápida… remain seated”; PM: “Usem as máscaras, use masks”.
+
+Pergunta 197 - Ações do PM ao atingir FL100 pós Descida de Emergência?
+Resposta: Anuncia patamar de segurança, recolhe speed brake, gerencia velocidade, remove máscara, reseta Oxygen Control Slide e segue ECAM/QRH.
+
+Pergunta 198 - TAWS “SINK RATE” abaixo 1000ft IMC ou 500ft VMC: o que o QRH exige?
+Resposta: GO-AROUND CONSIDER.
+
+Pergunta 199 - TAWS “TOO LOW GEAR/FLAPS”: o que fazer?
+Resposta: GO-AROUND PERFORM.
+
+Pergunta 200 - Flow Stall Warning at Liftoff?
+Resposta: THRUST TOGA; PITCH 15°; BANK wings level.
+
+Pergunta 201 - Memory Item Unreliable Speed com CONF FULL?
+Resposta: Selecionar CONF 3 e manter; L/G UP.
+
+Pergunta 202 - Reação ao TCAS “CLIMB RA” em CONF 3/FULL?
+Resposta: Executar GO-AROUND (SRS GA) e monitorar VS.
+
+Pergunta 203 - Após “CLEAR OF CONFLICT”, ações?
+Resposta: AP/FD monitor/follow, ATC notify, ajustar lateral/vertical e speed.
+
+Pergunta 204 - Windshear Before V1: o que justifica abort?
+Resposta: Variações significativas de IAS e speed trend abaixo de V1.
+
+Pergunta 205 - Loss of Braking: chamada inicial?
+Resposta: “Loss of Braking”, REV MAX, Brake pedals RELEASE, A/SKID OFF.
+
+Pergunta 206 - Quantos cenários sorteados no simulador para elevação?
+Resposta: 5 números (1 a 8), cada um um cenário.
+
+Pergunta 207 - Quais os 5 pilares sorteados no Sistema Mosaico?
+Resposta: Plano MEL; System Reset no ponto; Pane em voo; Navegação sorteada; ATA 70 na 2ª etapa.
+
+Pergunta 208 - O que é cobrado no briefing MEL/CDL?
+Resposta: Interpretação da MEL, limites, penalidades no FlySmart e categoria (A/B/C/D).
+
+Pergunta 209 - Retorno pós-pane de sistema na 1ª etapa será com qual condição meteo?
+Resposta: Mandatory return em Icing Conditions.
+
+Pergunta 210 - Tipos de falhas ATA 70?
+Resposta: Engine Stall, Fire Unextinguishable, High Vibration (Bird Strike), Engine Fail with Damage, Low Oil Pressure.
+
+Pergunta 211 - Há sabatina punitiva de limitations no Mosaico?
+Resposta: Não; foco em gerenciamento, CRM, ECAM actions e FlySmart.
+
+Pergunta 212 - Como gerenciar um System Reset sorteado antes da decolagem?
+Resposta: No ponto de espera, aeronave parada; verificar QRH/FCOM se reset é permitido.
+
+Pergunta 213 - Speech (PA) em crise: copiloto pode fazer?
+Resposta: Primário do Cmte; pode delegar ao FO se carga extrema, com CRM.
+
+Pergunta 214 - Comissária perde óculos reserva: ação?
+Resposta: Acionar CCO/Escala; sem correção visual é incapacitação (NO GO para ela).
+
+Pergunta 215 - Comissário pede desembarcar por carona: Cmte libera?
+Resposta: Não. Cumprir escala; acionar liderança.
+
+Pergunta 216 - Faltam 20 min pra estourar jornada e comissário recusa estender: ação?
+Resposta: Extensão só com anuência/aptidão; se recusa por fadiga, não estende.
+
+Pergunta 217 - Velocidade para máximo gradiente de subida?
+Resposta: Green Dot speed.
+
+Pergunta 218 - Falha dupla hidráulica: por que PM trabalha mais?
+Resposta: PF foca pilotagem degradada; PM lê QRH, coordena ATC e checklists longos.
+
+Pergunta 219 - Regra “pareceu smoke”?
+Resposta: “Se parecer smoke, trate como smoke!”
+
+Pergunta 220 - Perda de freio após pouso: Parking Brake como?
+Resposta: Progressivo via alavanca (limitado pelo acumulador).
