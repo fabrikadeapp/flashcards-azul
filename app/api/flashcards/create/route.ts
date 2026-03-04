@@ -22,8 +22,12 @@ export async function POST(req: Request) {
             .ilike('email', userEmail.trim())
             .single();
 
-        if (userError || !user || user.status !== 'active') {
+        if (userError || !user) {
             return NextResponse.json({ error: 'Acesso negado: Usuário não autorizado' }, { status: 403 });
+        }
+
+        if (user.role !== 'admin' && user.status !== 'active') {
+            return NextResponse.json({ error: 'Acesso negado: Conta inativa' }, { status: 403 });
         }
 
         // Verifica se é admin ou se tem permissão explícita no settings

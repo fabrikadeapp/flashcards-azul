@@ -30,7 +30,7 @@ export async function POST(req: Request) {
             return NextResponse.json({ error: 'Acesso negado: Usuário não encontrado' }, { status: 403 });
         }
 
-        if (user.status !== 'active') {
+        if (user.role !== 'admin' && user.status !== 'active') {
             return NextResponse.json({ error: 'Acesso negado: Conta inativa' }, { status: 403 });
         }
 
