@@ -11,5 +11,13 @@ export const isSupabaseAdminConfigured = !!supabaseUrl && !!supabaseServiceKey &
 // pois ele ignora as regras de RLS (Row Level Security)
 export const supabaseAdmin = createClient(
     supabaseUrl || 'https://placeholder.supabase.co',
-    supabaseServiceKey || 'placeholder'
+    supabaseServiceKey || 'placeholder',
+    {
+        auth: { persistSession: false },
+        global: {
+            fetch: (url, options) => {
+                return fetch(url, { ...options, cache: 'no-store' });
+            }
+        }
+    }
 )
