@@ -187,7 +187,7 @@ export default function AdminDashboard() {
     }
 
     const handleDeleteUser = async (userId: string) => {
-        if (!confirm('Tem certeza que deseja BANIR COMPLETAMENTE/EXCLUIR a conta deste usuário? Esta ação é irreversível.')) return
+        if (!confirm('Tem certeza que deseja excluir o cadastro deste usuário? Ele poderá se cadastrar novamente no futuro usando os mesmos dados.')) return
 
         try {
             const res = await fetch('/api/admin/users/delete', {
